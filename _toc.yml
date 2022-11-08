@@ -1,0 +1,32 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+
+parts:
+- caption: Introduction to Jupyter
+  chapters: 
+  - file: jupyter/introduction-to-jupyter
+- caption: Data Centric Python
+  #maxdepth: 1
+  #numbered: true
+  chapters:
+  - file: python/python-intro.md
+  - file: python/1.1_Getting Started with Syntax
+  - file: python/1.2_Variables Data Types and Operators.ipynb
+  - file: python/1.3_Control flow and Conditional  Statements.ipynb
+  - file: python/1.4_Data Structures.ipynb
+  - file: python/1.5_Loops.ipynb
+  - file: python/1.6_ Functions.ipynb
+  - file: python/1.7_File Input and Output.ipynb
+- caption: Data Management
+  chapters:
+  - file: pandas/pandas-intro.md
+  - file: pandas/1 - What and Why Pandas.ipynb
+  - file: pandas/Data Structures.ipynb
+  - file: pandas/3 - Loading Data.ipynb
+  - file: pandas/4 - Basic Data Manipulation.ipynb
+  - file: pandas/Data Cleaning.ipynb
+  - file: pandas/Data Wrangling.ipynb
+  - file: pandas/Working with Time.ipynb
