@@ -1,0 +1,2192 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Python Data Structures &#8212; Python Data Basics</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Looping" href="1.5_Loops.html" />
+    <link rel="prev" title="Control Flow Statements and Conditional Statements" href="1.3_Control%20flow%20and%20Conditional%20%20Statements.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Python Data Basics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Python Data Basics
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to Jupyter
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../jupyter/introduction-to-jupyter.html">
+   Introduction to Jupyter
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Centric Python
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-intro.html">
+   Introduction to the Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.1_Getting%20Started%20with%20Syntax.html">
+   Getting Started in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.2_Variables%20Data%20Types%20and%20Operators.html">
+   Data Types and Operators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.3_Control%20flow%20and%20Conditional%20%20Statements.html">
+   Control Flow Statements and Conditional Statements
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Python Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.5_Loops.html">
+   Looping
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.6_%20Functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.7_File%20Input%20and%20Output.html">
+   File Input and Output
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Management
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/pandas-intro.html">
+   Introduction to the Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/1%20-%20What%20and%20Why%20Pandas.html">
+   Data Processing with Python: What and Why Pandas!
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/Data%20Structures.html">
+   Introduction to Pandas Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/3%20-%20Loading%20Data.html">
+   Loading Data: Reading Files into a Dataframe
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/4%20-%20Basic%20Data%20Manipulation.html">
+   Basic Data Manipulation: Exploring and Summarizing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/Data%20Cleaning.html">
+   Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/Data%20Wrangling.html">
+   Data Wrangling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/Working%20with%20Time.html">
+   Working with Time
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/RCEatPitt/Python-Data-Basics-Book/master?urlpath=tree/python/1.4_Data Structures.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/RCEatPitt/Python-Data-Basics-Book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/RCEatPitt/Python-Data-Basics-Book/issues/new?title=Issue%20on%20page%20%2Fpython/1.4_Data Structures.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/python/1.4_Data Structures.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lists">
+   Lists
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#disecting-a-list">
+     Disecting a list
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accessing-values-in-lists">
+     Accessing Values in Lists
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#try-it-yourself">
+       Try it yourself!
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Try it yourself!
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#leveraging-len">
+     Leveraging len()
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-a-list-within-a-list">
+     Creating a list within a list
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sorting-lists">
+     Sorting Lists
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Try it yourself
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#changing-content-of-lists">
+     Changing Content of Lists
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#deleting-and-removing-items-from-a-list">
+       Deleting and Removing Items from a List
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#removing-duplicates-from-a-list">
+       Removing Duplicates from a List
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Try it yourself!
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#inserting-updating-and-appending-items-to-a-list">
+       Inserting, Updating and Appending Items to a List
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#let-s-try-it">
+       Let’s try it!
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extend-vs-append">
+     Extend vs Append
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#slicing-lists">
+     Slicing lists
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#alternative-way-to-slice-a-list">
+       Alternative way to slice a list
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       Let’s Try It!
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tuples">
+   Tuples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tuples-vs-lists">
+     Tuples vs Lists
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dictionaries">
+   Dictionaries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accessing-values-in-a-dictionary">
+     Accessing Values in a Dictionary
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#updating-a-dictionary">
+     Updating a Dictionary
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#deleting-dictionary-elements">
+       Deleting Dictionary Elements
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice-questions">
+   Practice Questions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#answers">
+     Answers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resources-and-links">
+   Resources and Links
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Python Data Structures</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lists">
+   Lists
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#disecting-a-list">
+     Disecting a list
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accessing-values-in-lists">
+     Accessing Values in Lists
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#try-it-yourself">
+       Try it yourself!
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Try it yourself!
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#leveraging-len">
+     Leveraging len()
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-a-list-within-a-list">
+     Creating a list within a list
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sorting-lists">
+     Sorting Lists
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Try it yourself
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#changing-content-of-lists">
+     Changing Content of Lists
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#deleting-and-removing-items-from-a-list">
+       Deleting and Removing Items from a List
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#removing-duplicates-from-a-list">
+       Removing Duplicates from a List
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Try it yourself!
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#inserting-updating-and-appending-items-to-a-list">
+       Inserting, Updating and Appending Items to a List
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#let-s-try-it">
+       Let’s try it!
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extend-vs-append">
+     Extend vs Append
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#slicing-lists">
+     Slicing lists
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#alternative-way-to-slice-a-list">
+       Alternative way to slice a list
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       Let’s Try It!
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tuples">
+   Tuples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tuples-vs-lists">
+     Tuples vs Lists
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dictionaries">
+   Dictionaries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accessing-values-in-a-dictionary">
+     Accessing Values in a Dictionary
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#updating-a-dictionary">
+     Updating a Dictionary
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#deleting-dictionary-elements">
+       Deleting Dictionary Elements
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice-questions">
+   Practice Questions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#answers">
+     Answers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resources-and-links">
+   Resources and Links
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="python-data-structures">
+<h1>Python Data Structures<a class="headerlink" href="#python-data-structures" title="Permalink to this headline">#</a></h1>
+<p>In this module we will be covering the following topics.</p>
+<ul class="simple">
+<li><p>Lists</p></li>
+<li><p>Tuples</p></li>
+<li><p>Dictionaries</p></li>
+</ul>
+<p>We’ll review what they are and different codes and syntax required to edit the contents within these various data structures.</p>
+<section id="lists">
+<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">#</a></h2>
+<p>Lists are a datatype that contain multiple values, which are ordered sequentially. A list can contain string, integers, non-integers and Boolean variables as well as a mix of variable types. In the examples below, list1 contains only string variables, list2 contains integers and list 4 contains a mix. In list4, the first two items in a list are integers, the next 3 items are string and the last item is a Boolean variable type.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">list4</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span> 
+</pre></div>
+</div>
+<p>You will also notice the special syntax used to create lists. The items in your list must be contained within square brackets <code class="docutils literal notranslate"><span class="pre">[]</span></code>. Each item is separated by a comma <code class="docutils literal notranslate"><span class="pre">,</span></code>. Similar to assigning a value to a variable, the <code class="docutils literal notranslate"><span class="pre">=</span></code> sign to assign a list to a variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Examples of Lists </span>
+<span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">];</span>
+<span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
+<span class="n">list3</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">]</span>
+<span class="c1"># Note that the following list contains mixed data types</span>
+<span class="n">list4</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<section id="disecting-a-list">
+<h3>Disecting a list<a class="headerlink" href="#disecting-a-list" title="Permalink to this headline">#</a></h3>
+<p>Let’s explore the <code class="docutils literal notranslate"><span class="pre">index</span></code> and <code class="docutils literal notranslate"><span class="pre">len</span></code> function to further disect a list</p>
+<p>In a list, each item is assigned a position or <em>index</em>. The first item in the list is zero, the second item is one and so forth. In the list below, apples is assigned an index position of 0, oranges is assigned an index position of 1, pears is assigned an index position of 2.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">];</span>
+</pre></div>
+</div>
+</section>
+<section id="accessing-values-in-lists">
+<h3>Accessing Values in Lists<a class="headerlink" href="#accessing-values-in-lists" title="Permalink to this headline">#</a></h3>
+<p>To identify or access a specific element in the a list, we can use a number of different tools. Because in a list, each item is assigned an index value we can use the index number to identify the item. As previously mentioned the first item in a list is indexed 0, we can identify the first item by placing <code class="docutils literal notranslate"><span class="pre">[0]</span></code> within the argument of a print function. To identify the last item in a list, place <code class="docutils literal notranslate"><span class="pre">[-1]</span></code> in the print function. The second last item in a list is given the index value of -2, the third last item, -3 and so on.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># Get the first element of the list</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># Get the last element of the list</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># Get the first element of the list</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># Get the last element of the list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>apples
+berries
+</pre></div>
+</div>
+</div>
+</div>
+<section id="try-it-yourself">
+<h4>Try it yourself!<a class="headerlink" href="#try-it-yourself" title="Permalink to this headline">#</a></h4>
+<p>In the line below, create a list of any variable type. Identify the second to last item on the list.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">index()</span></code> function returns the index position of any specified element in the list. Using the fruits example, we can find the index position of any the items by firstly creating a new variable, in this case <em>fruits_index</em>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span>
+
+<span class="n">fruits_index</span> <span class="o">=</span> <span class="n">fruits</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;pears&#39;</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits_index</span><span class="p">)</span> 
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span>
+
+<span class="n">fruits_index</span> <span class="o">=</span> <span class="n">fruits</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;pears&#39;</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits_index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h4>Try it yourself!<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<p>In the line below, use the <code class="docutils literal notranslate"><span class="pre">index</span></code> function to find the index position of <em>‘peaches’</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Identify the index position of </span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="leveraging-len">
+<h3>Leveraging len()<a class="headerlink" href="#leveraging-len" title="Permalink to this headline">#</a></h3>
+<p>The len(list) function will count the number of items in the list. Run the code below to see how Python returns the number of items in a list. While we can see ourselves that there are only 4 items in <em>list2</em> for instance, there may be times in which the list is extremely long and it would be tedious to count each item.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list5</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="s2">&quot;derp&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;nested&quot;</span><span class="p">,</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="s2">&quot;strings&quot;</span><span class="p">]]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">list5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-a-list-within-a-list">
+<h3>Creating a list within a list<a class="headerlink" href="#creating-a-list-within-a-list" title="Permalink to this headline">#</a></h3>
+<p>The structure of lists also allows you to create a list within a list. You will notice the third item in list5 below is a list itself. You will notice that for list5, which contains a list within a list, when you use the <code class="docutils literal notranslate"><span class="pre">len()</span></code> function to count the number of elements, the embedded list is indexed as the 4th item.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">list5</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="s2">&quot;derp&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;nested&quot;</span><span class="p">,</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="s2">&quot;strings&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list5</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="s2">&quot;derp&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;nested&quot;</span><span class="p">,</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="s2">&quot;strings&quot;</span><span class="p">]]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">list5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sorting-lists">
+<h3>Sorting Lists<a class="headerlink" href="#sorting-lists" title="Permalink to this headline">#</a></h3>
+<p>The sort function allows you to rearrange the items in a list. By default, it will rearrange the items in ascending order. In the example below, sorting the price variable will arrange the list from lowest to highest. For string variables, the sorting function will arrange the items in alphabetical order. Run the following examples to see how the <code class="docutils literal notranslate"><span class="pre">sorted()</span></code> method rearranges items in he <em>fruits</em> list and the <em>price</em> list.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">price</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.55</span><span class="p">,</span> <span class="mf">2.99</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mf">2.25</span><span class="p">,</span> <span class="mf">4.99</span><span class="p">]</span> 
+<span class="n">sorted_price</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sorted_price</span><span class="p">)</span> 
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="n">sorted_fruits</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sorted_fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">price</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.55</span><span class="p">,</span> <span class="mf">2.99</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mf">2.25</span><span class="p">,</span> <span class="mf">4.99</span><span class="p">]</span> 
+<span class="n">sorted_price</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sorted_price</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.25, 1.55, 2.25, 2.99, 4.99]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="n">sorted_fruits</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sorted_fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;apples&#39;, &#39;berries&#39;, &#39;oranges&#39;, &#39;peaches&#39;, &#39;pears&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, the items will be sorted in ascending order, but you can also reverse the order of the list. The sort function can include the <em>reverse</em> parameter.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">price</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.55</span><span class="p">,</span> <span class="mf">2.99</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mf">2.25</span><span class="p">,</span> <span class="mf">4.99</span><span class="p">]</span> 
+<span class="n">price_descend</span> <span class="o">=</span> <span class="nb">sorted</span> <span class="p">(</span><span class="n">fruits</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">price_descend</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span>
+<span class="n">fruits_descend</span> <span class="o">=</span> <span class="nb">sorted</span> <span class="p">(</span><span class="n">fruits</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits_descend</span><span class="p">)</span> 
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">price</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.55</span><span class="p">,</span> <span class="mf">2.99</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mf">2.25</span><span class="p">,</span> <span class="mf">4.99</span><span class="p">]</span> 
+<span class="n">price_descend</span> <span class="o">=</span> <span class="nb">sorted</span> <span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">price_descend</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4.99, 2.99, 2.25, 1.55, 1.25]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="n">fruits_descend</span> <span class="o">=</span> <span class="nb">sorted</span> <span class="p">(</span><span class="n">fruits</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits_descend</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;pears&#39;, &#39;peaches&#39;, &#39;oranges&#39;, &#39;berries&#39;, &#39;apples&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the example above, we use the <code class="docutils literal notranslate"><span class="pre">sorted()</span></code> method to reorder the items in the list. Alternatively we can use the <code class="docutils literal notranslate"><span class="pre">sort()</span></code> method to perform the same function. The one key difference is that the <code class="docutils literal notranslate"><span class="pre">sort()</span></code> method changes the original variable. By constrast the <code class="docutils literal notranslate"><span class="pre">sorted()</span></code> requires you to create a new variable.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">price</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.55</span><span class="p">,</span> <span class="mf">2.99</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mf">2.25</span><span class="p">,</span> <span class="mf">4.99</span><span class="p">]</span> 
+<span class="n">price</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">price</span><span class="p">)</span> 
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span>
+<span class="n">fruits</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using the sort() method </span>
+<span class="n">price</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.55</span><span class="p">,</span> <span class="mf">2.99</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mf">2.25</span><span class="p">,</span> <span class="mf">4.99</span><span class="p">]</span> 
+<span class="n">price</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">price</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.25, 1.55, 2.25, 2.99, 4.99]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using the sort() method </span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span>
+<span class="n">fruits</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;apples&#39;, &#39;berries&#39;, &#39;oranges&#39;, &#39;peaches&#39;, &#39;pears&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id2">
+<h4>Try it yourself<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<p>In the next line, use either the sort() or sorted() method to arrange the list into ascending order. Next reverse the order into descending order.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">test_scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">92</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">81</span><span class="p">]</span>
+<span class="n">student_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Sarah&#39;</span><span class="p">,</span> <span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="s1">&#39;Jeremy&#39;</span><span class="p">,</span> <span class="s1">&#39;Beth&#39;</span><span class="p">,</span> <span class="s1">&#39;Emily&#39;</span><span class="p">,</span> <span class="s1">&#39;Anna&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Arrange the lists into ascending order </span>
+<span class="n">test_scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">92</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">81</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Arrange the lists into descending order </span>
+<span class="n">student_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Sarah&#39;</span><span class="p">,</span> <span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="s1">&#39;Jeremy&#39;</span><span class="p">,</span> <span class="s1">&#39;Beth&#39;</span><span class="p">,</span> <span class="s1">&#39;Emily&#39;</span><span class="p">,</span> <span class="s1">&#39;Anna&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="changing-content-of-lists">
+<h3>Changing Content of Lists<a class="headerlink" href="#changing-content-of-lists" title="Permalink to this headline">#</a></h3>
+<section id="deleting-and-removing-items-from-a-list">
+<h4>Deleting and Removing Items from a List<a class="headerlink" href="#deleting-and-removing-items-from-a-list" title="Permalink to this headline">#</a></h4>
+<p>One important component about the characteristic of lists, is that they are <em>mutable</em>, which means you can change the content of the list. You can remove or delete items, add items, slice, and combine different lists together.</p>
+<p><strong>Del</strong> method
+To delete an item from the list, there are few different methods: <code class="docutils literal notranslate"><span class="pre">del</span></code>, <code class="docutils literal notranslate"><span class="pre">remove</span></code> and <code class="docutils literal notranslate"><span class="pre">pop</span></code>. Using the <code class="docutils literal notranslate"><span class="pre">del</span></code> method, you have to specify the index position of the item. In the example below, we deleted <em>pears</em> from the list by specifying its index position.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">fruits</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also delete multiple items by using the <code class="docutils literal notranslate"><span class="pre">:</span></code> operator. The code below deletes the items between the index number of 2 and 4, it is inclusive of item 2 (<em>pears</em>) but excludes the 4th item, <em>berries</em>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">fruits</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">];</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Remove method</strong>
+An alternative method is the <code class="docutils literal notranslate"><span class="pre">remove</span></code> method. You don’t need specify the index position in the argument. You’ll notice instead of specifying <em>2</em>, we need to include item itself, <em>pears</em></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+<span class="n">fruits</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;pears&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Pop Method</strong>
+You can also use the <code class="docutils literal notranslate"><span class="pre">pop</span></code> method to remove an element from a list. You’ll notice that using the <code class="docutils literal notranslate"><span class="pre">del</span></code> and <code class="docutils literal notranslate"><span class="pre">remove</span></code> method, they both permaneantly change the original <em>fruits</em> lists. The <code class="docutils literal notranslate"><span class="pre">pop</span></code> method similarly alters the original list and permanently removes the item.</p>
+<p>By creating a new list variable name, and identifying the index position in the argument, the removed item is assigned to the variable. You’ll see that the removed item <em>pears</em> is assigned to the new variable <em>pears_pop</em>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+<span class="n">pears_pop</span> <span class="o">=</span> <span class="n">fruits</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pears_pop</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you do not identify the index position in the argument, Python by default removes the last item in the list.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span>
+<span class="n">fruits</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using the del method </span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">fruits</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;apples&#39;, &#39;oranges&#39;, &#39;pears&#39;, &#39;peaches&#39;, &#39;berries&#39;]
+[&#39;apples&#39;, &#39;oranges&#39;, &#39;peaches&#39;, &#39;berries&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Deleting multiple items </span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">fruits</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">];</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;apples&#39;, &#39;oranges&#39;, &#39;pears&#39;, &#39;peaches&#39;, &#39;berries&#39;]
+[&#39;apples&#39;, &#39;oranges&#39;, &#39;berries&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Using the remove method </span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+<span class="n">fruits</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;pears&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;apples&#39;, &#39;oranges&#39;, &#39;pears&#39;, &#39;peaches&#39;, &#39;berries&#39;]
+[&#39;apples&#39;, &#39;oranges&#39;, &#39;peaches&#39;, &#39;berries&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Using the pop method </span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+<span class="n">pears_pop</span> <span class="o">=</span> <span class="n">fruits</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pears_pop</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;apples&#39;, &#39;oranges&#39;, &#39;pears&#39;, &#39;peaches&#39;, &#39;berries&#39;]
+pears
+[&#39;apples&#39;, &#39;oranges&#39;, &#39;peaches&#39;, &#39;berries&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## When you don&#39;t specify the index position, Python deletes the last item in the list </span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span>
+<span class="n">fruits</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;apples&#39;, &#39;oranges&#39;, &#39;pears&#39;, &#39;peaches&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="removing-duplicates-from-a-list">
+<h4>Removing Duplicates from a List<a class="headerlink" href="#removing-duplicates-from-a-list" title="Permalink to this headline">#</a></h4>
+<p>When you have duplicates in a list, the <code class="docutils literal notranslate"><span class="pre">remove</span></code> method will remove the first matching duplicate. You’ll notice in the example below, the <code class="docutils literal notranslate"><span class="pre">remove</span></code> method removes the first instance that <em>peaches</em> but the two other duplicates of <em>peaches</em> remain in the list.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">]</span>
+<span class="n">fruits</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">peaches</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also check for duplicates by asking Python to return how many items a given item appears in the list using the <code class="docutils literal notranslate"><span class="pre">.count()</span></code> function</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">]</span>
+<span class="n">duplicates</span><span class="o">=</span><span class="n">fruits</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;peaches&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">duplicates</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">]</span>
+<span class="n">fruits</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;peaches&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;apples&#39;, &#39;oranges&#39;, &#39;pears&#39;, &#39;peaches&#39;, &#39;berries&#39;, &#39;peaches&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">]</span>
+<span class="n">duplicates</span><span class="o">=</span><span class="n">fruits</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;peaches&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">duplicates</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h4>Try it yourself!<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+<p>In the line below, first, reorder the list below using the <code class="docutils literal notranslate"><span class="pre">sorted</span></code> or <code class="docutils literal notranslate"><span class="pre">sort</span></code> method. Next, use the <code class="docutils literal notranslate"><span class="pre">del</span></code>, <code class="docutils literal notranslate"><span class="pre">remove</span></code> or <code class="docutils literal notranslate"><span class="pre">pop</span></code> method to take out the second element of the list.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">winter_olympic</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1968</span><span class="p">,</span> <span class="mi">1952</span><span class="p">,</span> <span class="mi">1988</span><span class="p">,</span> <span class="mi">2002</span><span class="p">,</span> <span class="mi">1998</span><span class="p">,</span> <span class="mi">2010</span><span class="p">]</span> 
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">winter_olympic</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1968</span><span class="p">,</span> <span class="mi">1952</span><span class="p">,</span> <span class="mi">1988</span><span class="p">,</span> <span class="mi">2002</span><span class="p">,</span> <span class="mi">1998</span><span class="p">,</span> <span class="mi">2010</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="inserting-updating-and-appending-items-to-a-list">
+<h4>Inserting, Updating and Appending Items to a List<a class="headerlink" href="#inserting-updating-and-appending-items-to-a-list" title="Permalink to this headline">#</a></h4>
+<p><strong>Insert</strong>
+You can add items to your list with the <code class="docutils literal notranslate"><span class="pre">insert()</span></code> method. It takes two parameters, the index number and the item. In the code below, the item <em>bananas</em> is added as the third item in the list, with an index position of 2.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="n">fruits</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;bananas&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Update</strong>
+You can change the items in your list by updating. Using this method, you have to specify the index position of the new item. In the example below, we add <em>bananas</em> to the list by assgining it an index position of 2. Run the code and see the new returned list. You’ll notice that <em>bananas</em> has replaced <em>pears</em> in the list.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="n">fruits</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bananas&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>You can also insert multiple items by specifying a range in the index positions. Let’s say we want to add bananas and mangos to the fruits list. In the code below, we are adding bananas by assigning it an index position of 2 and adding mangos by assigning it an index position of 3.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="n">fruits</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bananas&#39;</span><span class="p">,</span> <span class="s1">&#39;mangos&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Append</strong>
+You can also add items to your list by using the append function. By default, the new item will be added at the end of the list. In the example below, you’ll use the index function to return the item  position of <em>bananas</em>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+<span class="n">fruits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;bananas&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+<span class="n">fruit_index</span> <span class="o">=</span> <span class="n">fruits</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;bananas&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_index</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Combine</strong>
+You can also add items by combbining lists. Using this method, we have to create a new variable, <em>food</em></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="n">vegetables</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tomatoes&#39;</span><span class="p">,</span> <span class="s1">&#39;cucumbers&#39;</span><span class="p">,</span> <span class="s1">&#39;celery&#39;</span><span class="p">]</span>
+<span class="n">food</span> <span class="o">=</span> <span class="n">fruits</span> <span class="o">+</span> <span class="n">vegetables</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">food</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inserting items into lists</span>
+
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="n">fruits</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;bananas&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;apples&#39;, &#39;oranges&#39;, &#39;bananas&#39;, &#39;pears&#39;, &#39;peaches&#39;, &#39;berries&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Updating Lists</span>
+
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="n">fruits</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bananas&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;apples&#39;, &#39;oranges&#39;, &#39;bananas&#39;, &#39;peaches&#39;, &#39;berries&#39;]
+bananas
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Updating multiple items </span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="n">fruits</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bananas&#39;</span><span class="p">,</span> <span class="s1">&#39;mangos&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;apples&#39;, &#39;oranges&#39;, &#39;bananas&#39;, &#39;mangos&#39;, &#39;peaches&#39;, &#39;berries&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Appending a list</span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+<span class="n">fruits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;bananas&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+<span class="n">fruit_index</span> <span class="o">=</span> <span class="n">fruits</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;bananas&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;apples&#39;, &#39;oranges&#39;, &#39;pears&#39;, &#39;peaches&#39;, &#39;berries&#39;]
+[&#39;apples&#39;, &#39;oranges&#39;, &#39;pears&#39;, &#39;peaches&#39;, &#39;berries&#39;, &#39;bananas&#39;]
+5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Combine </span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="n">vegetables</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tomatoes&#39;</span><span class="p">,</span> <span class="s1">&#39;cucumbers&#39;</span><span class="p">,</span> <span class="s1">&#39;celery&#39;</span><span class="p">]</span>
+<span class="n">food</span> <span class="o">=</span> <span class="n">fruits</span> <span class="o">+</span> <span class="n">vegetables</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">food</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;apples&#39;, &#39;oranges&#39;, &#39;pears&#39;, &#39;peaches&#39;, &#39;berries&#39;, &#39;tomatoes&#39;, &#39;cucumbers&#39;, &#39;celery&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="let-s-try-it">
+<h4>Let’s try it!<a class="headerlink" href="#let-s-try-it" title="Permalink to this headline">#</a></h4>
+<p>Add two more PA area codes to the list. Add the Harrisburg area code (717) and the Erie area code (814) to the list. Use the <em>Update</em>, <em>Append</em> and <em>Combine</em> method. The two new area codes should appear as the third and fourth item on the list respectively.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">area_codes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">412</span><span class="p">,</span> <span class="mi">878</span><span class="p">,</span> <span class="mi">215</span><span class="p">,</span> <span class="mi">267</span><span class="p">,</span> <span class="mi">484</span><span class="p">,</span> <span class="mi">610</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## use the Update method to add two area codes to the list</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Use the Append method </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Use the Combine method </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="extend-vs-append">
+<h3>Extend vs Append<a class="headerlink" href="#extend-vs-append" title="Permalink to this headline">#</a></h3>
+<p>A similar method to append() is the extend() function. The extend method is useful when you have multiple items that you want to add to a list.</p>
+<p>In the example below, you’ll seee that with multiple items, the append method attaches a list to a list. It will attach the items as a single object. By contrast the extend method lengthens and extends the existing list to include each of the new items. When we use the len() function, you can see that with the extend method, the items in the fruit list lengthened the overall number of items in the grocery list.</p>
+<p><strong>Append</strong></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">grocery</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;eggs&#39;</span><span class="p">,</span> <span class="s1">&#39;milk&#39;</span><span class="p">,</span> <span class="s1">&#39;cheese&#39;</span><span class="p">]</span> 
+<span class="n">fruit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span> 
+
+<span class="n">grocery</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">grocery</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">grocery</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Extend</strong></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">grocery</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;eggs&#39;</span><span class="p">,</span> <span class="s1">&#39;milk&#39;</span><span class="p">,</span> <span class="s1">&#39;cheese&#39;</span><span class="p">]</span> 
+<span class="n">fruit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span> 
+
+<span class="n">grocery</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">grocery</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">grocery</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using append </span>
+<span class="n">grocery</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;eggs&#39;</span><span class="p">,</span> <span class="s1">&#39;milk&#39;</span><span class="p">,</span> <span class="s1">&#39;cheese&#39;</span><span class="p">]</span> 
+<span class="n">fruit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span> 
+
+<span class="n">grocery</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">grocery</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">grocery</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;eggs&#39;, &#39;milk&#39;, &#39;cheese&#39;, [&#39;apples&#39;, &#39;oranges&#39;, &#39;pears&#39;, &#39;berries&#39;]]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using extend</span>
+<span class="n">grocery</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;eggs&#39;</span><span class="p">,</span> <span class="s1">&#39;milk&#39;</span><span class="p">,</span> <span class="s1">&#39;cheese&#39;</span><span class="p">]</span> 
+<span class="n">fruit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span> 
+
+<span class="n">grocery</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">grocery</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">grocery</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;eggs&#39;, &#39;milk&#39;, &#39;cheese&#39;, &#39;apples&#39;, &#39;oranges&#39;, &#39;pears&#39;, &#39;berries&#39;]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="slicing-lists">
+<h3>Slicing lists<a class="headerlink" href="#slicing-lists" title="Permalink to this headline">#</a></h3>
+<p>Slicing returns a slice or a portion of objects of any datatype, including lists. The syntax for slicing includes identifying parameters within the brackets, <em>stop</em>, <em>stop</em>, <em>step</em>. <em>Start</em> refers to the starting index, where slice begins, <em>stop</em> refers to the index position, where the slice ends, and <em>step</em> is an optional argument that refers to the increment of each index position. By default the <em>step</em> or increment is one.</p>
+<p>The first method uses the slicing operator <code class="docutils literal notranslate"><span class="pre">:</span></code></p>
+<p>The image below depicts where the slice begins and ends. With list <em>L</em>, we are asking Python to slice the list from the beginning of index 2 and the end of index 7, with an increment of 1. Starting at index 2, this would include <em>c</em> at the beginning of the slice and excludes the item at the 7th index position, which is <em>h</em>. The sliced lists ends at <em>g</em>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">7</span><span class="p">])</span>
+</pre></div>
+</div>
+<img src='images/slicing.png' />
+<p>Source: <a class="reference external" href="https://www.learnbyexample.org/python-list-slicing/">https://www.learnbyexample.org/python-list-slicing/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the code to see how Python slices list L: </span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">7</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a
+h
+[&#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;, &#39;g&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s look at the <code class="docutils literal notranslate"><span class="pre">step</span></code> parameter. The image below depicts how Python returns a slice of the list when an increment is 2.</p>
+<p>In the code below, the last value in the argument is denoted by the number 2, which asks Python to slice the list to include every second number. Run the example below and you’ll see that Python returns a new list, which begins with <em>c</em>, and includes every other letter until the end of the slice at <em>g</em>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">7</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+<img src='images/slice_step.png' />
+<p>Source: <a class="reference external" href="https://www.learnbyexample.org/python-list-slicing/">https://www.learnbyexample.org/python-list-slicing/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">7</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;c&#39;, &#39;e&#39;, &#39;g&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the examples below, the first slice returns <code class="docutils literal notranslate"><span class="pre">apple</span></code>, because only 0 is identified in the argument, meaning it is both the start and stop of the slice. In the second example, we are asking Python to slice the list beginning at <em>apples</em>, and ending at the second item, with an increment of 1. If you wanted to include <em>pears</em> in the list, you should type <code class="docutils literal notranslate"><span class="pre">[0:3]</span></code> as the argument, which will include the second index item and stop at the 3rd item.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># returns the first element of the list</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># returns the first two elements of the list</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># returns everything before the element with index 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="mi">3</span><span class="p">:])</span> <span class="c1"># returns everything starting with the element with index 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># returns the last element of the list</span>
+</pre></div>
+</div>
+<p>You’ll also notice that when you slice a list, it will by default remain as a list structure regardless of how many items are in the list. Run the code below, and you’ll see the data type for <em>fruits</em> after slicing.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># returns the first element of the list</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># returns the first two elements of the list</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># returns everything before the element with index 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="mi">3</span><span class="p">:])</span> <span class="c1"># returns everything starting with the element with index 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># returns the last element of the list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>apples
+[&#39;apples&#39;, &#39;oranges&#39;]
+[&#39;apples&#39;, &#39;oranges&#39;, &#39;pears&#39;]
+[&#39;peaches&#39;, &#39;berries&#39;]
+berries
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>apples
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also slice a list by specifying negative index positions. In the image below, the last item in the list has an index position of -1 and the first item in the list has an index position of -9. The code below slices the list from -2 to -7, which would return a list that begins with <em>c</em> and ends with <em>g</em>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="o">-</span><span class="mi">7</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+<img src='images/neg.png' />
+<p>Source: <a class="reference external" href="https://www.learnbyexample.org/python-list-slicing/">https://www.learnbyexample.org/python-list-slicing/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="o">-</span><span class="mi">7</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;, &#39;g&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="alternative-way-to-slice-a-list">
+<h4>Alternative way to slice a list<a class="headerlink" href="#alternative-way-to-slice-a-list" title="Permalink to this headline">#</a></h4>
+<p>In the examples above, we used the <code class="docutils literal notranslate"><span class="pre">:</span></code> operator. We can also slice a list using the <code class="docutils literal notranslate"><span class="pre">slice()</span></code> function. The syntax is slightly different. Instead of separating the index positions with a colon <code class="docutils literal notranslate"><span class="pre">:</span></code>, we use commas. And instead of square brackets, we use round brackets.</p>
+<p>In the first example, the only value in the argument is 3,  this is equivalent to specifying the start as 0 and the end as 3, <code class="docutils literal notranslate"><span class="pre">slice(0,</span> <span class="pre">3)</span></code>. Both will return the identitcal list.</p>
+<p>In the third example, we are asking Python to slice the list at index 1 and end at index position 5, which returns a list the begins with 4 and ends at 10.</p>
+<p>In the last example, we specify 2 as the step, which will produce a list that includes every second number.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">even</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">even</span><span class="p">[</span><span class="n">s1</span><span class="p">])</span> 
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">even</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">even</span><span class="p">[</span><span class="n">s1</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">even</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">even</span><span class="p">[</span><span class="n">s2</span><span class="p">])</span> 
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">even</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">even</span><span class="p">[</span><span class="n">s3</span><span class="p">])</span>  
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">even</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">even</span><span class="p">[</span><span class="n">s1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 4, 6]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">even</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">even</span><span class="p">[</span><span class="n">s1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 4, 6]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">even</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">even</span><span class="p">[</span><span class="n">s2</span><span class="p">])</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4, 6, 8, 10]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">even</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">even</span><span class="p">[</span><span class="n">s3</span><span class="p">])</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4, 8, 12]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h4>Let’s Try It!<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h4>
+<p>Sort the first list <em>gas_price_june</em>, and then slice it so that the two highest values are added to the list, <em>gas_price_highest</em>. Then sort that second list.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">gas_price_june</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.89</span><span class="p">,</span> <span class="mf">2.91</span><span class="p">,</span> <span class="mf">4.26</span><span class="p">,</span> <span class="mf">5.23</span><span class="p">,</span> <span class="mf">3.65</span><span class="p">,</span> <span class="mf">4.15</span><span class="p">]</span> 
+<span class="n">gas_price_highest</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5.72</span><span class="p">,</span> <span class="mf">4.80</span><span class="p">,</span> <span class="mf">5.51</span><span class="p">,</span> <span class="mf">5.73</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gas_price_june</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.89</span><span class="p">,</span> <span class="mf">2.91</span><span class="p">,</span> <span class="mf">4.26</span><span class="p">,</span> <span class="mf">5.23</span><span class="p">,</span> <span class="mf">3.65</span><span class="p">,</span> <span class="mf">4.15</span><span class="p">]</span> 
+<span class="n">gas_price_highest</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5.72</span><span class="p">,</span> <span class="mf">4.80</span><span class="p">,</span> <span class="mf">5.51</span><span class="p">,</span> <span class="mf">5.73</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="tuples">
+<h2>Tuples<a class="headerlink" href="#tuples" title="Permalink to this headline">#</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">tuple</span></code> is very similar to a <code class="docutils literal notranslate"><span class="pre">list</span></code>, but one important distinguishing feature is that tuples are not mutable. Unlike a list, you cannot change the content of a tuple by deleting, inserting, or appending items.</p>
+<p>There is also a difference in syntax. Instead of squaret brackets, items in a tuple are contained within a pair of round brackets.</p>
+<p>Run the code below to see how Python identifies the datatype of the variable <em>age</em></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="p">(</span><span class="mi">41</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span> 
+<span class="nb">type</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="p">(</span><span class="mi">41</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span> 
+<span class="nb">type</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tuple
+</pre></div>
+</div>
+</div>
+</div>
+<section id="tuples-vs-lists">
+<h3>Tuples vs Lists<a class="headerlink" href="#tuples-vs-lists" title="Permalink to this headline">#</a></h3>
+<p>Let’s say we wanted to add a pizza type to the list or tuple. While there are a number of different methods to add a new item to a list, we are limited when it comes to Tuples.</p>
+<p>For example let’s try to add <em>Hawaiian</em> by inserting it into the list or updating the list. Both methods work with lists but you’ll notice with Tuples, an error message is returned:  <em>‘tuple’ object does not support item assignment</em></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pizza_list</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;cheese&#39;</span><span class="p">,</span> <span class="s1">&#39;pepperoni&#39;</span><span class="p">,</span> <span class="s1">&#39;veggie&#39;</span><span class="p">,</span> <span class="s1">&#39;margherita&#39;</span><span class="p">]</span> 
+<span class="n">pizza_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hawaiian&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pizza_list</span><span class="p">)</span> 
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pizza_list</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;cheese&#39;</span><span class="p">,</span> <span class="s1">&#39;pepperoni&#39;</span><span class="p">,</span> <span class="s1">&#39;veggie&#39;</span><span class="p">,</span> <span class="s1">&#39;margherita&#39;</span><span class="p">]</span> 
+<span class="n">pizza_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hawaiian&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pizza_list</span><span class="p">)</span> 
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pizza_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;cheese&#39;</span><span class="p">,</span> <span class="s1">&#39;pepperoni&#39;</span><span class="p">,</span> <span class="s1">&#39;veggie&#39;</span><span class="p">,</span> <span class="s1">&#39;margherita&#39;</span><span class="p">)</span>
+<span class="n">pizza_tuple</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Hawaiian&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In order to make changes to a Tuple, we first have to convert it to a list using the <code class="docutils literal notranslate"><span class="pre">list()</span></code> function.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pizza_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;cheese&#39;</span><span class="p">,</span> <span class="s1">&#39;pepperoni&#39;</span><span class="p">,</span> <span class="s1">&#39;veggie&#39;</span><span class="p">,</span> <span class="s1">&#39;margherita&#39;</span><span class="p">)</span>
+<span class="n">pizza_tuple</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Hawaiian&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pizza_tuple</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pizza_list</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;cheese&#39;</span><span class="p">,</span> <span class="s1">&#39;pepperoni&#39;</span><span class="p">,</span> <span class="s1">&#39;veggie&#39;</span><span class="p">,</span> <span class="s1">&#39;margherita&#39;</span><span class="p">]</span> 
+<span class="n">pizza_list</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Hawaiian&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pizza_list</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;cheese&#39;, &#39;Hawaiian&#39;, &#39;pepperoni&#39;, &#39;veggie&#39;, &#39;margherita&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pizza_list</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;cheese&#39;</span><span class="p">,</span> <span class="s1">&#39;pepperoni&#39;</span><span class="p">,</span> <span class="s1">&#39;veggie&#39;</span><span class="p">,</span> <span class="s1">&#39;margherita&#39;</span><span class="p">]</span> 
+<span class="n">pizza_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hawaiian&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pizza_list</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;cheese&#39;, &#39;pepperoni&#39;, &#39;Hawaiian&#39;, &#39;margherita&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pizza_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;cheese&#39;</span><span class="p">,</span> <span class="s1">&#39;pepperoni&#39;</span><span class="p">,</span> <span class="s1">&#39;veggie&#39;</span><span class="p">,</span> <span class="s1">&#39;margherita&#39;</span><span class="p">)</span>
+<span class="n">pizza_tuple</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Hawaiian&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="nn">Input In [47],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">pizza_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;cheese&#39;</span><span class="p">,</span> <span class="s1">&#39;pepperoni&#39;</span><span class="p">,</span> <span class="s1">&#39;veggie&#39;</span><span class="p">,</span> <span class="s1">&#39;margherita&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">pizza_tuple</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Hawaiian&#39;</span><span class="p">)</span>
+
+<span class="ne">AttributeError</span>: &#39;tuple&#39; object has no attribute &#39;insert&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pizza_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;cheese&#39;</span><span class="p">,</span> <span class="s1">&#39;pepperoni&#39;</span><span class="p">,</span> <span class="s1">&#39;veggie&#39;</span><span class="p">,</span> <span class="s1">&#39;margherita&#39;</span><span class="p">)</span>
+<span class="n">pizza_tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hawaiian&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pizza_tuple</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-154-36f38829359f&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">pizza_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;cheese&#39;</span><span class="p">,</span> <span class="s1">&#39;pepperoni&#39;</span><span class="p">,</span> <span class="s1">&#39;veggie&#39;</span><span class="p">,</span> <span class="s1">&#39;margherita&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">pizza_tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hawaiian&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">pizza_tuple</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: &#39;tuple&#39; object does not support item assignment
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Converting tuple to a list </span>
+
+<span class="n">pizza_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;cheese&#39;</span><span class="p">,</span> <span class="s1">&#39;pepperoni&#39;</span><span class="p">,</span> <span class="s1">&#39;veggie&#39;</span><span class="p">,</span> <span class="s1">&#39;margherita&#39;</span><span class="p">)</span>
+<span class="n">new_pizza_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pizza_tuple</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_pizza_list</span><span class="p">)</span>
+<span class="n">new_pizza_list</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Hawaiian&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_pizza_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;cheese&#39;, &#39;pepperoni&#39;, &#39;veggie&#39;, &#39;margherita&#39;]
+[&#39;cheese&#39;, &#39;Hawaiian&#39;, &#39;pepperoni&#39;, &#39;veggie&#39;, &#39;margherita&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="dictionaries">
+<h2>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">#</a></h2>
+<p>A dictionary is a collection of items that contains a key and value pair. The key and value pair are connected, for example you can think of test scores for each student, the price of each foood time; each value is therefore associated with a key.</p>
+<p>For the syntax, each key is separated from its value by a colon <code class="docutils literal notranslate"><span class="pre">(:)</span></code> and each item is separated by commas. The entire dictionary is enclosed in a pair of curly braces, <code class="docutils literal notranslate"><span class="pre">{}</span></code>.Keys are unique within a dictionary, but values do not need to be. The values of a dictionary can be of any type, but the keys must be immutable, such as strings, numbers, or tuples data types.</p>
+<p>Dicionaries like lists are mutable, meaning you can change, delete, and add items. It is also different from lists in that each item is not ordered. While in lists, each item is assigned an index position, there is no sequential order of the items in a dictionary.</p>
+<p>Run the code below to see how Python returns the data type of <em>age_dict</em></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">age_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;John&quot;</span> <span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
+    <span class="s2">&quot;Bob&quot;</span> <span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="s2">&quot;Jane&quot;</span> <span class="p">:</span> <span class="mi">29</span><span class="p">,</span>
+    <span class="s2">&quot;Ann&quot;</span> <span class="p">:</span> <span class="mi">71</span>
+<span class="p">}</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">age_dict</span><span class="p">)</span> 
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a dictionary</span>
+
+<span class="n">age_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;John&quot;</span> <span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
+    <span class="s2">&quot;Bob&quot;</span> <span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="s2">&quot;Jane&quot;</span> <span class="p">:</span> <span class="mi">29</span><span class="p">,</span>
+    <span class="s2">&quot;Ann&quot;</span> <span class="p">:</span> <span class="mi">71</span>
+<span class="p">}</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">age_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
+</pre></div>
+</div>
+</div>
+</div>
+<section id="accessing-values-in-a-dictionary">
+<h3>Accessing Values in a Dictionary<a class="headerlink" href="#accessing-values-in-a-dictionary" title="Permalink to this headline">#</a></h3>
+<p>You can ask Python to return the value associated with any particular key.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">age_dict</span><span class="p">[</span><span class="s2">&quot;John&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Accessing a value from a dictionary by its key</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">age_dict</span><span class="p">[</span><span class="s2">&quot;John&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">age_dict</span><span class="p">[</span><span class="s2">&quot;Bob&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">age_dict</span><span class="p">[</span><span class="s2">&quot;Jane&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38
+50
+29
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="updating-a-dictionary">
+<h3>Updating a Dictionary<a class="headerlink" href="#updating-a-dictionary" title="Permalink to this headline">#</a></h3>
+<p>Let’s say we want to change the value within a dictionary. For instance, what if John’s age is actually 38 and not 37. The code below shows how update a value.</p>
+<p>What if we wanted to add an item, or a key-value pair, to the dictionary. The code below shows how to add a new item, Rose age 32 to the dictionary. It will automatically appear at the end of the dictionary.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">age_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;John&quot;</span> <span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
+    <span class="s2">&quot;Bob&quot;</span> <span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="s2">&quot;Jane&quot;</span> <span class="p">:</span> <span class="mi">29</span><span class="p">,</span>
+    <span class="s2">&quot;Ann&quot;</span> <span class="p">:</span> <span class="mi">71</span>
+<span class="p">}</span>
+
+<span class="n">age_dict</span><span class="p">[</span><span class="s2">&quot;John&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">38</span> <span class="c1"># Update an item</span>
+<span class="n">age_dict</span><span class="p">[</span><span class="s2">&quot;Rose&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">32</span> <span class="c1"># Add new entry</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Updating Dictionary</span>
+<span class="n">age_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;John&quot;</span> <span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
+    <span class="s2">&quot;Bob&quot;</span> <span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="s2">&quot;Jane&quot;</span> <span class="p">:</span> <span class="mi">29</span><span class="p">,</span>
+    <span class="s2">&quot;Ann&quot;</span> <span class="p">:</span> <span class="mi">71</span>
+<span class="p">}</span>
+
+<span class="n">age_dict</span><span class="p">[</span><span class="s2">&quot;John&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">38</span> <span class="c1"># Update an item</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">age_dict</span><span class="p">)</span>
+<span class="n">age_dict</span><span class="p">[</span><span class="s2">&quot;Rose&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">32</span> <span class="c1"># Add new entry</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">age_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;John&#39;: 38, &#39;Bob&#39;: 50, &#39;Jane&#39;: 29, &#39;Ann&#39;: 71}
+{&#39;John&#39;: 38, &#39;Bob&#39;: 50, &#39;Jane&#39;: 29, &#39;Ann&#39;: 71, &#39;Rose&#39;: 32}
+</pre></div>
+</div>
+</div>
+</div>
+<section id="deleting-dictionary-elements">
+<h4>Deleting Dictionary Elements<a class="headerlink" href="#deleting-dictionary-elements" title="Permalink to this headline">#</a></h4>
+<p>To remove an item from a dictionary, you can specify the key. In the example below, we specify <em>John</em> in the argument, which deletes the first item, deleting both the key and its associated value.</p>
+<p>We can also clear all items in the dictionary, with the <code class="docutils literal notranslate"><span class="pre">clear()</span></code> function.</p>
+<p>del</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">age_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;John&quot;</span> <span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
+    <span class="s2">&quot;Bob&quot;</span> <span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="s2">&quot;Jane&quot;</span> <span class="p">:</span> <span class="mi">29</span><span class="p">,</span>
+    <span class="s2">&quot;Ann&quot;</span> <span class="p">:</span> <span class="mi">71</span>
+<span class="p">}</span>
+
+<span class="k">del</span> <span class="n">age_dict</span><span class="p">[</span><span class="s1">&#39;John&#39;</span><span class="p">]</span> <span class="c1"># remove entry with key &#39;John&#39;</span>
+<span class="n">age_dict</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>    <span class="c1"># remove all entries in dict</span>
+<span class="k">del</span> <span class="n">age_dict</span>     <span class="c1"># delete entire dictionary</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Deleting Dictionary Elements</span>
+<span class="n">age_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;John&quot;</span> <span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
+    <span class="s2">&quot;Bob&quot;</span> <span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="s2">&quot;Jane&quot;</span> <span class="p">:</span> <span class="mi">29</span><span class="p">,</span>
+    <span class="s2">&quot;Ann&quot;</span> <span class="p">:</span> <span class="mi">71</span>
+<span class="p">}</span>
+
+<span class="k">del</span> <span class="n">age_dict</span><span class="p">[</span><span class="s1">&#39;John&#39;</span><span class="p">]</span> <span class="c1"># remove entry with key &#39;John&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">age_dict</span><span class="p">)</span>
+<span class="n">age_dict</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span> <span class="c1"># remove all entries in dict</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">age_dict</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">age_dict</span>       <span class="c1"># delete entire dictionary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Bob&#39;: 50, &#39;Jane&#39;: 29, &#39;Ann&#39;: 71}
+{}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;John&quot;</span> <span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
+    <span class="s2">&quot;Bob&quot;</span> <span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="s2">&quot;Jane&quot;</span> <span class="p">:</span> <span class="mi">29</span><span class="p">,</span>
+    <span class="s2">&quot;Ann&quot;</span> <span class="p">:</span> <span class="mi">71</span>
+<span class="p">}</span>
+
+<span class="k">del</span> <span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;John&#39;</span><span class="p">];</span> <span class="c1"># remove entry with key &#39;John&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Bob&#39;: 50, &#39;Jane&#39;: 29, &#39;Ann&#39;: 71}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="practice-questions">
+<h2>Practice Questions<a class="headerlink" href="#practice-questions" title="Permalink to this headline">#</a></h2>
+<p>If you get stuck, scroll to the bottom for the answers!</p>
+<p>The price of berries are on sale, and have been reduced to 4.99. Change the value associated with the key <em>berries</em>, so that it reads the sale price of 4.99.</p>
+<p>Next, add an item. A new shipment of mangos arrived, add it to your diciontary. Mangos cost 2.35 each.</p>
+<p>Are tomatoes fruits? Delete them from the dictionary!</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruit_prices</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;apples&#39;</span><span class="p">:</span> <span class="mf">1.89</span><span class="p">,</span> 
+                <span class="s1">&#39;oranges&#39;</span><span class="p">:</span> <span class="mf">3.67</span><span class="p">,</span>
+                <span class="s1">&#39;pears&#39;</span><span class="p">:</span> <span class="mf">2.15</span><span class="p">,</span>
+                <span class="s1">&#39;peaches&#39;</span><span class="p">:</span> <span class="mf">3.35</span><span class="p">,</span>
+                <span class="s1">&#39;berries&#39;</span><span class="p">:</span> <span class="mf">6.99</span><span class="p">,</span>
+                <span class="s1">&#39;tomatoes&#39;</span><span class="p">:</span> <span class="mf">0.89</span>
+               <span class="p">}</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_prices</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change the value of berries to 4.99</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add mangos to the dictionary </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete Tomatoes!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="answers">
+<h3>Answers<a class="headerlink" href="#answers" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Changing the price of berries to sale price of 4.99 </span>
+
+<span class="n">fruit_prices</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;apples&#39;</span><span class="p">:</span> <span class="mf">1.89</span><span class="p">,</span> 
+                <span class="s1">&#39;oranges&#39;</span><span class="p">:</span> <span class="mf">3.67</span><span class="p">,</span>
+                <span class="s1">&#39;pears&#39;</span><span class="p">:</span> <span class="mf">2.15</span><span class="p">,</span>
+                <span class="s1">&#39;peaches&#39;</span><span class="p">:</span> <span class="mf">3.35</span><span class="p">,</span>
+                <span class="s1">&#39;berries&#39;</span><span class="p">:</span> <span class="mf">6.99</span><span class="p">,</span>
+                <span class="s1">&#39;tomatoes&#39;</span><span class="p">:</span> <span class="mf">0.89</span>
+               <span class="p">}</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_prices</span><span class="p">)</span>
+
+<span class="n">fruit_prices</span><span class="p">[</span><span class="s1">&#39;berries&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">4.99</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_prices</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apples&#39;: 1.89, &#39;oranges&#39;: 3.67, &#39;pears&#39;: 2.15, &#39;peaches&#39;: 3.35, &#39;berries&#39;: 6.99, &#39;tomatoes&#39;: 0.89}
+{&#39;apples&#39;: 1.89, &#39;oranges&#39;: 3.67, &#39;pears&#39;: 2.15, &#39;peaches&#39;: 3.35, &#39;berries&#39;: 4.99, &#39;tomatoes&#39;: 0.89}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding an item. A new shipment of mangos arrived, add it to your diciontary. Mangos cost 2.35 each. </span>
+
+<span class="n">fruit_prices</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;apples&#39;</span><span class="p">:</span> <span class="mf">1.89</span><span class="p">,</span> 
+                <span class="s1">&#39;oranges&#39;</span><span class="p">:</span> <span class="mf">3.67</span><span class="p">,</span>
+                <span class="s1">&#39;pears&#39;</span><span class="p">:</span> <span class="mf">2.15</span><span class="p">,</span>
+                <span class="s1">&#39;peaches&#39;</span><span class="p">:</span> <span class="mf">3.35</span><span class="p">,</span>
+                <span class="s1">&#39;berries&#39;</span><span class="p">:</span> <span class="mf">6.99</span><span class="p">,</span>
+                <span class="s1">&#39;tomatoes&#39;</span><span class="p">:</span> <span class="mf">0.89</span>
+               <span class="p">}</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_prices</span><span class="p">)</span>
+
+<span class="n">fruit_prices</span><span class="p">[</span><span class="s2">&quot;Mangos&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.35</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_prices</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apples&#39;: 1.89, &#39;oranges&#39;: 3.67, &#39;pears&#39;: 2.15, &#39;peaches&#39;: 3.35, &#39;berries&#39;: 6.99, &#39;tomatoes&#39;: 0.89}
+{&#39;apples&#39;: 1.89, &#39;oranges&#39;: 3.67, &#39;pears&#39;: 2.15, &#39;peaches&#39;: 3.35, &#39;berries&#39;: 6.99, &#39;tomatoes&#39;: 0.89, &#39;Mangos&#39;: 2.35}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Are tomatoes fruits? Delete them from the dictionary!  </span>
+
+
+<span class="n">fruit_prices</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;apples&#39;</span><span class="p">:</span> <span class="mf">1.89</span><span class="p">,</span> 
+                <span class="s1">&#39;oranges&#39;</span><span class="p">:</span> <span class="mf">3.67</span><span class="p">,</span>
+                <span class="s1">&#39;pears&#39;</span><span class="p">:</span> <span class="mf">2.15</span><span class="p">,</span>
+                <span class="s1">&#39;peaches&#39;</span><span class="p">:</span> <span class="mf">3.35</span><span class="p">,</span>
+                <span class="s1">&#39;berries&#39;</span><span class="p">:</span> <span class="mf">6.99</span><span class="p">,</span>
+                <span class="s1">&#39;tomatoes&#39;</span><span class="p">:</span> <span class="mf">0.89</span>
+               <span class="p">}</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_prices</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">fruit_prices</span><span class="p">[</span><span class="s1">&#39;tomatoes&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_prices</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apples&#39;: 1.89, &#39;oranges&#39;: 3.67, &#39;pears&#39;: 2.15, &#39;peaches&#39;: 3.35, &#39;berries&#39;: 6.99, &#39;tomatoes&#39;: 0.89}
+{&#39;apples&#39;: 1.89, &#39;oranges&#39;: 3.67, &#39;pears&#39;: 2.15, &#39;peaches&#39;: 3.35, &#39;berries&#39;: 6.99}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="resources-and-links">
+<h2>Resources and Links<a class="headerlink" href="#resources-and-links" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://www.tutorialspoint.com/python/python_lists.htm">https://www.tutorialspoint.com/python/python_lists.htm</a></p>
+<p><a class="reference external" href="https://www.tutorialspoint.com/python/python_dictionary.htm">https://www.tutorialspoint.com/python/python_dictionary.htm</a></p>
+<p><a class="reference external" href="https://www.learnbyexample.org/python-list-slicing/">https://www.learnbyexample.org/python-list-slicing/</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="1.3_Control%20flow%20and%20Conditional%20%20Statements.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Control Flow Statements and Conditional Statements</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="1.5_Loops.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Looping</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Matt Burton, Evelyn Chan, Others.<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

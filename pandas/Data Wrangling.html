@@ -1,0 +1,2171 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Data Wrangling &#8212; Python Data Basics</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Working with Time" href="Working%20with%20Time.html" />
+    <link rel="prev" title="Data Cleaning" href="Data%20Cleaning.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Python Data Basics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Python Data Basics
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to Jupyter
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../jupyter/introduction-to-jupyter.html">
+   Introduction to Jupyter
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Centric Python
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/python-intro.html">
+   Introduction to the Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/1.1_Getting%20Started%20with%20Syntax.html">
+   Getting Started in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/1.2_Variables%20Data%20Types%20and%20Operators.html">
+   Data Types and Operators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/1.3_Control%20flow%20and%20Conditional%20%20Statements.html">
+   Control Flow Statements and Conditional Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/1.4_Data%20Structures.html">
+   Python Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/1.5_Loops.html">
+   Looping
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/1.6_%20Functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/1.7_File%20Input%20and%20Output.html">
+   File Input and Output
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Management
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas-intro.html">
+   Introduction to the Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1%20-%20What%20and%20Why%20Pandas.html">
+   Data Processing with Python: What and Why Pandas!
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Data%20Structures.html">
+   Introduction to Pandas Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3%20-%20Loading%20Data.html">
+   Loading Data: Reading Files into a Dataframe
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4%20-%20Basic%20Data%20Manipulation.html">
+   Basic Data Manipulation: Exploring and Summarizing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Data%20Cleaning.html">
+   Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Data Wrangling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Working%20with%20Time.html">
+   Working with Time
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/RCEatPitt/Python-Data-Basics-Book/master?urlpath=tree/pandas/Data Wrangling.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/RCEatPitt/Python-Data-Basics-Book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/RCEatPitt/Python-Data-Basics-Book/issues/new?title=Issue%20on%20page%20%2Fpandas/Data Wrangling.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/pandas/Data Wrangling.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#merging-data">
+   Merging Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#merging-and-joining">
+     Merging and Joining
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#one-to-one-joins">
+       One-to-one joins
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#many-to-one-joins">
+       Many-to-one joins
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#many-to-many-joins">
+       Many-to-many joins
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pivoting-data">
+   Pivoting Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transpose">
+     Transpose
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#grouping-data">
+   Grouping Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#split-apply-combine-with-real-data">
+   Split, Apply, Combine with real data
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Data Wrangling</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#merging-data">
+   Merging Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#merging-and-joining">
+     Merging and Joining
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#one-to-one-joins">
+       One-to-one joins
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#many-to-one-joins">
+       Many-to-one joins
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#many-to-many-joins">
+       Many-to-many joins
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pivoting-data">
+   Pivoting Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transpose">
+     Transpose
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#grouping-data">
+   Grouping Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#split-apply-combine-with-real-data">
+   Split, Apply, Combine with real data
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="data-wrangling">
+<h1>Data Wrangling<a class="headerlink" href="#data-wrangling" title="Permalink to this headline">#</a></h1>
+<p>In this module, we will be covering the following topics:</p>
+<ul class="simple">
+<li><p>Merging Datasets together</p></li>
+<li><p>Pivoting data</p></li>
+<li><p>Grouping</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="merging-data">
+<h2>Merging Data<a class="headerlink" href="#merging-data" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Bringing disparate datasets together is one of the more powerful features of Pandas</p></li>
+<li><p>Like with Python lists, you can <code class="docutils literal notranslate"><span class="pre">append()</span></code> and <code class="docutils literal notranslate"><span class="pre">concat()</span></code> Pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code> and <code class="docutils literal notranslate"><span class="pre">Dataframes</span></code></p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">concat</span></code> is a module function, you call it directly from the pandas module (usually called <code class="docutils literal notranslate"><span class="pre">pd</span></code>)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># concatinate two series together</span>
+<span class="n">ser1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">ser2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">ser1</span><span class="p">,</span> <span class="n">ser2</span><span class="p">])</span> <span class="c1">#note the Seres are past as a list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1    A
+2    B
+3    C
+4    D
+5    E
+6    F
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># order matters</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">ser2</span><span class="p">,</span> <span class="n">ser1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4    D
+5    E
+6    F
+1    A
+2    B
+3    C
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># concatinate two dataframes</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:[</span><span class="s2">&quot;A1&quot;</span><span class="p">,</span> <span class="s2">&quot;A2&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;B&quot;</span><span class="p">:[</span><span class="s2">&quot;B1&quot;</span><span class="p">,</span><span class="s2">&quot;B2&quot;</span><span class="p">]},</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:[</span><span class="s2">&quot;A3&quot;</span><span class="p">,</span> <span class="s2">&quot;A4&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;B&quot;</span><span class="p">:[</span><span class="s2">&quot;B3&quot;</span><span class="p">,</span><span class="s2">&quot;B4&quot;</span><span class="p">]},</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A3</td>
+      <td>B3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>A4</td>
+      <td>B4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Pandas will automatically line up matching indexes</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># concatinate dataframes horizontally</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:[</span><span class="s2">&quot;A1&quot;</span><span class="p">,</span> <span class="s2">&quot;A2&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;B&quot;</span><span class="p">:[</span><span class="s2">&quot;B1&quot;</span><span class="p">,</span><span class="s2">&quot;B2&quot;</span><span class="p">]},</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;C&quot;</span><span class="p">:[</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="s2">&quot;C2&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;D&quot;</span><span class="p">:[</span><span class="s2">&quot;D1&quot;</span><span class="p">,</span><span class="s2">&quot;D2&quot;</span><span class="p">]},</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+      <td>D1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>D2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>And pandas will gracefully handle mis-alignment</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># What happens when indexes don&#39;t line up</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:[</span><span class="s2">&quot;A1&quot;</span><span class="p">,</span> <span class="s2">&quot;A2&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;B&quot;</span><span class="p">:[</span><span class="s2">&quot;B1&quot;</span><span class="p">,</span><span class="s2">&quot;B2&quot;</span><span class="p">]},</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:[</span><span class="s2">&quot;A3&quot;</span><span class="p">,</span> <span class="s2">&quot;A4&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;B&quot;</span><span class="p">:[</span><span class="s2">&quot;B3&quot;</span><span class="p">,</span><span class="s2">&quot;B4&quot;</span><span class="p">]},</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>A</th>
+      <th>B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>A3</td>
+      <td>B3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>A4</td>
+      <td>B4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a hierarchical index</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:[</span><span class="s2">&quot;A1&quot;</span><span class="p">,</span> <span class="s2">&quot;A2&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;B&quot;</span><span class="p">:[</span><span class="s2">&quot;B1&quot;</span><span class="p">,</span><span class="s2">&quot;B2&quot;</span><span class="p">]},</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:[</span><span class="s2">&quot;A3&quot;</span><span class="p">,</span> <span class="s2">&quot;A4&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;B&quot;</span><span class="p">:[</span><span class="s2">&quot;B3&quot;</span><span class="p">,</span><span class="s2">&quot;B4&quot;</span><span class="p">]},</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">],</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;df1&quot;</span><span class="p">,</span> <span class="s1">&#39;df2&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">df1</th>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">df2</th>
+      <th>3</th>
+      <td>A3</td>
+      <td>B3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>A4</td>
+      <td>B4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">append</span></code> function is a method of a Series/Dataframe and returns a new object</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># append df2 to df1</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/v9/vyyhxg7x1w3ftnfc1c558ngw0000gn/T/ipykernel_54642/2179595481.py:2: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df1.append(df2)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A3</td>
+      <td>B3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>A4</td>
+      <td>B4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="merging-and-joining">
+<h3>Merging and Joining<a class="headerlink" href="#merging-and-joining" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>While <code class="docutils literal notranslate"><span class="pre">concat()</span></code> is useful it lacks the power to do complex data merging</p></li>
+<li><p>For example, I have two tables of different data but one overlapping column</p></li>
+<li><p>This is where the <code class="docutils literal notranslate"><span class="pre">merge()</span></code> function becomes useful because it lets you <em>join</em> datasets</p></li>
+<li><p>The concept of “join” has lots of theory and is a richly developed method for <em>joining</em> data</p></li>
+</ul>
+<section id="one-to-one-joins">
+<h4>One-to-one joins<a class="headerlink" href="#one-to-one-joins" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create two dataframes with one shared column</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;employee&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Jake&#39;</span><span class="p">,</span> <span class="s1">&#39;Lisa&#39;</span><span class="p">,</span> <span class="s1">&#39;Sue&#39;</span><span class="p">,</span> <span class="s2">&quot;Nancy&quot;</span><span class="p">],</span>
+                    <span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Accounting&#39;</span><span class="p">,</span> <span class="s1">&#39;Engineering&#39;</span><span class="p">,</span> <span class="s1">&#39;Engineering&#39;</span><span class="p">,</span> <span class="s1">&#39;HR&#39;</span><span class="p">,</span> <span class="s2">&quot;Librarian&quot;</span><span class="p">]})</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;employee&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Lisa&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Jake&#39;</span><span class="p">,</span> <span class="s1">&#39;Sue&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;hire_date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2004</span><span class="p">,</span> <span class="mi">2008</span><span class="p">,</span> <span class="mi">2012</span><span class="p">,</span> <span class="mi">2014</span><span class="p">]})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># display df1</span>
+<span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee</th>
+      <th>group</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bob</td>
+      <td>Accounting</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jake</td>
+      <td>Engineering</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lisa</td>
+      <td>Engineering</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sue</td>
+      <td>HR</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Nancy</td>
+      <td>Librarian</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># display df2</span>
+<span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee</th>
+      <th>hire_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Lisa</td>
+      <td>2004</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bob</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Jake</td>
+      <td>2012</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sue</td>
+      <td>2014</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># merge df1 and df2 into a new dataframe df3</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">)</span>
+<span class="n">df3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee</th>
+      <th>group</th>
+      <th>hire_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bob</td>
+      <td>Accounting</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jake</td>
+      <td>Engineering</td>
+      <td>2012</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lisa</td>
+      <td>Engineering</td>
+      <td>2004</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sue</td>
+      <td>HR</td>
+      <td>2014</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>The new dataframe <code class="docutils literal notranslate"><span class="pre">df3</span></code> now has all of the data from df1 and df2</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">merge</span></code> function automatically connected the two tables on the “employee” column</p></li>
+<li><p>But what happens when your data don’t line up?</p></li>
+</ul>
+</section>
+<section id="many-to-one-joins">
+<h4>Many-to-one joins<a class="headerlink" href="#many-to-one-joins" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>Sometimes there isn’t a one to one relationshp between rows in the two datasets</p></li>
+<li><p>A <em>many-to-one</em> join lets you combine these datasets</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee</th>
+      <th>group</th>
+      <th>hire_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bob</td>
+      <td>Accounting</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jake</td>
+      <td>Engineering</td>
+      <td>2012</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lisa</td>
+      <td>Engineering</td>
+      <td>2004</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sue</td>
+      <td>HR</td>
+      <td>2014</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make another dataframe about the supervisor for each group</span>
+<span class="n">df4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Accounting&#39;</span><span class="p">,</span> <span class="s1">&#39;Engineering&#39;</span><span class="p">,</span> <span class="s1">&#39;HR&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;supervisor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Carly&#39;</span><span class="p">,</span> <span class="s1">&#39;Guido&#39;</span><span class="p">,</span> <span class="s1">&#39;Steve&#39;</span><span class="p">]})</span>
+<span class="n">df4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>group</th>
+      <th>supervisor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Accounting</td>
+      <td>Carly</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Engineering</td>
+      <td>Guido</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>HR</td>
+      <td>Steve</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Merge df3 from above with the supervisor info in df4</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df3</span><span class="p">,</span><span class="n">df4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee</th>
+      <th>group</th>
+      <th>hire_date</th>
+      <th>supervisor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bob</td>
+      <td>Accounting</td>
+      <td>2008</td>
+      <td>Carly</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jake</td>
+      <td>Engineering</td>
+      <td>2012</td>
+      <td>Guido</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lisa</td>
+      <td>Engineering</td>
+      <td>2004</td>
+      <td>Guido</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sue</td>
+      <td>HR</td>
+      <td>2014</td>
+      <td>Steve</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Notice how the information about Guido, the manager for Engineering, is repeated.</p></li>
+<li><p>Pandas automatically fills in these values to maintain the tabular, 2 dimensional structure of the data</p></li>
+<li><p>While this might seem like duplicated data, it makes it easier to quickly look up Jake and Lisa’s supervisor without consulting multiple tables</p></li>
+</ul>
+</section>
+<section id="many-to-many-joins">
+<h4>Many-to-many joins<a class="headerlink" href="#many-to-many-joins" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>Let’s combine the employee information with skills information</p></li>
+<li><p>Notice there isn’t a one to one or even a one to many relationship between these tables</p></li>
+<li><p>Each group can have multiple skills, so <strong>what do you think will happen?</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the employee table specified above</span>
+<span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee</th>
+      <th>group</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bob</td>
+      <td>Accounting</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jake</td>
+      <td>Engineering</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lisa</td>
+      <td>Engineering</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sue</td>
+      <td>HR</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Nancy</td>
+      <td>Librarian</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a new dataframe with skills information</span>
+<span class="n">df5</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Accounting&#39;</span><span class="p">,</span> <span class="s1">&#39;Accounting&#39;</span><span class="p">,</span>
+                              <span class="s1">&#39;Engineering&#39;</span><span class="p">,</span> <span class="s1">&#39;Engineering&#39;</span><span class="p">,</span> <span class="s1">&#39;HR&#39;</span><span class="p">,</span> <span class="s1">&#39;HR&#39;</span><span class="p">,</span> <span class="s1">&#39;Librarian&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;skills&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;math&#39;</span><span class="p">,</span> <span class="s1">&#39;spreadsheets&#39;</span><span class="p">,</span> <span class="s1">&#39;coding&#39;</span><span class="p">,</span> <span class="s1">&#39;linux&#39;</span><span class="p">,</span>
+                               <span class="s1">&#39;spreadsheets&#39;</span><span class="p">,</span> <span class="s1">&#39;organization&#39;</span><span class="p">,</span> <span class="s1">&#39;nunchucks&#39;</span><span class="p">]})</span>
+<span class="n">df5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>group</th>
+      <th>skills</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Accounting</td>
+      <td>math</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Accounting</td>
+      <td>spreadsheets</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Engineering</td>
+      <td>coding</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Engineering</td>
+      <td>linux</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>HR</td>
+      <td>spreadsheets</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>HR</td>
+      <td>organization</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Librarian</td>
+      <td>nunchucks</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee</th>
+      <th>group</th>
+      <th>skills</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bob</td>
+      <td>Accounting</td>
+      <td>math</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bob</td>
+      <td>Accounting</td>
+      <td>spreadsheets</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Jake</td>
+      <td>Engineering</td>
+      <td>coding</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Jake</td>
+      <td>Engineering</td>
+      <td>linux</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Lisa</td>
+      <td>Engineering</td>
+      <td>coding</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Lisa</td>
+      <td>Engineering</td>
+      <td>linux</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Sue</td>
+      <td>HR</td>
+      <td>spreadsheets</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Sue</td>
+      <td>HR</td>
+      <td>organization</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Nancy</td>
+      <td>Librarian</td>
+      <td>nunchucks</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Amazing, Pandas merge capabilities are very useful</p></li>
+<li><p>But what do you do if the names of your columns don’t match?</p></li>
+<li><p>You could change column names…</p></li>
+<li><p>But that is crazy! Just use the <code class="docutils literal notranslate"><span class="pre">left_on</span></code> and <code class="docutils literal notranslate"><span class="pre">right_on</span></code> parameters to the <code class="docutils literal notranslate"><span class="pre">merge()</span></code> function</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the employee table specified above</span>
+<span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee</th>
+      <th>group</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bob</td>
+      <td>Accounting</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jake</td>
+      <td>Engineering</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lisa</td>
+      <td>Engineering</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sue</td>
+      <td>HR</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Nancy</td>
+      <td>Librarian</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new salary table, but use &quot;name&quot; instead of &quot;employee&quot; for the column index</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Jake&#39;</span><span class="p">,</span> <span class="s1">&#39;Lisa&#39;</span><span class="p">,</span> <span class="s1">&#39;Sue&#39;</span><span class="p">,</span><span class="s1">&#39;Nancy&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;salary&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">70000</span><span class="p">,</span> <span class="mi">80000</span><span class="p">,</span> <span class="mi">120000</span><span class="p">,</span> <span class="mi">90000</span><span class="p">,</span><span class="mi">1000000</span><span class="p">]})</span>
+<span class="n">df3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bob</td>
+      <td>70000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jake</td>
+      <td>80000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lisa</td>
+      <td>120000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sue</td>
+      <td>90000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Nancy</td>
+      <td>1000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets try and merge them without specifying what to merge on</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">MergeError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">Input In [21],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># lets try and merge them without specifying what to merge on</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df3</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/reshape/merge.py:107,</span> in <span class="ni">merge</span><span class="nt">(left, right, how, on, left_on, right_on, left_index, right_index, sort, suffixes, copy, indicator, validate)</span>
+<span class="g g-Whitespace">     </span><span class="mi">90</span> <span class="nd">@Substitution</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">left : DataFrame or named Series&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">91</span> <span class="nd">@Appender</span><span class="p">(</span><span class="n">_merge_doc</span><span class="p">,</span> <span class="n">indents</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span> <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">105</span>     <span class="n">validate</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">107</span>     <span class="n">op</span> <span class="o">=</span> <span class="n">_MergeOperation</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span>         <span class="n">left</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">109</span>         <span class="n">right</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span>         <span class="n">how</span><span class="o">=</span><span class="n">how</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span>         <span class="n">on</span><span class="o">=</span><span class="n">on</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span>         <span class="n">left_on</span><span class="o">=</span><span class="n">left_on</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">113</span>         <span class="n">right_on</span><span class="o">=</span><span class="n">right_on</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span>         <span class="n">left_index</span><span class="o">=</span><span class="n">left_index</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span>         <span class="n">right_index</span><span class="o">=</span><span class="n">right_index</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">116</span>         <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">117</span>         <span class="n">suffixes</span><span class="o">=</span><span class="n">suffixes</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">118</span>         <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span>         <span class="n">indicator</span><span class="o">=</span><span class="n">indicator</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span>         <span class="n">validate</span><span class="o">=</span><span class="n">validate</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span>     <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="n">get_result</span><span class="p">()</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/reshape/merge.py:682,</span> in <span class="ni">_MergeOperation.__init__</span><span class="nt">(self, left, right, how, on, left_on, right_on, axis, left_index, right_index, sort, suffixes, copy, indicator, validate)</span>
+<span class="g g-Whitespace">    </span><span class="mi">678</span>     <span class="c1"># stacklevel chosen to be correct when this is reached via pd.merge</span>
+<span class="g g-Whitespace">    </span><span class="mi">679</span>     <span class="c1"># (and not DataFrame.join)</span>
+<span class="g g-Whitespace">    </span><span class="mi">680</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="ne">FutureWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="n">find_stack_level</span><span class="p">())</span>
+<span class="ne">--&gt; </span><span class="mi">682</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_specification</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">684</span> <span class="n">cross_col</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">685</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">how</span> <span class="o">==</span> <span class="s2">&quot;cross&quot;</span><span class="p">:</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/reshape/merge.py:1349,</span> in <span class="ni">_MergeOperation._validate_specification</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1347</span> <span class="n">common_cols</span> <span class="o">=</span> <span class="n">left_cols</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">right_cols</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1348</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">common_cols</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1349</span>     <span class="k">raise</span> <span class="n">MergeError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1350</span>         <span class="s2">&quot;No common columns to perform merge on. &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1351</span>         <span class="sa">f</span><span class="s2">&quot;Merge options: left_on=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">left_on</span><span class="si">}</span><span class="s2">, &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1352</span>         <span class="sa">f</span><span class="s2">&quot;right_on=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">right_on</span><span class="si">}</span><span class="s2">, &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1353</span>         <span class="sa">f</span><span class="s2">&quot;left_index=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">left_index</span><span class="si">}</span><span class="s2">, &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1354</span>         <span class="sa">f</span><span class="s2">&quot;right_index=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">right_index</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1355</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1356</span> <span class="k">if</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1357</span>     <span class="ow">not</span> <span class="n">left_cols</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">common_cols</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_unique</span>
+<span class="g g-Whitespace">   </span><span class="mi">1358</span>     <span class="ow">or</span> <span class="ow">not</span> <span class="n">right_cols</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">common_cols</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_unique</span>
+<span class="g g-Whitespace">   </span><span class="mi">1359</span> <span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1360</span>     <span class="k">raise</span> <span class="n">MergeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data columns not unique: </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">common_cols</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="ne">MergeError</span>: No common columns to perform merge on. Merge options: left_on=None, right_on=None, left_index=False, right_index=False
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>What are the column names I should specify?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets specify the column name </span>
+<span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df3</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">&quot;employee&quot;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">&quot;name&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Notice we now have a redundant employee/name column, this is a by-product of merging different columns</p></li>
+<li><p>If you want to get rid of it you can use the <code class="docutils literal notranslate"><span class="pre">drop</span></code> method</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># drop the name column, axis=1 means axis=&#39;col&#39;, which is confusing</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df3</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">&quot;employee&quot;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">&quot;name&quot;</span> <span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>This is just a taste of merging and joining data</p></li>
+<li><p>We will cover more of this in the SQL and Relational Databases sessions</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="pivoting-data">
+<h2>Pivoting Data<a class="headerlink" href="#pivoting-data" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Sometimes you get what is called “long” or “stacked” data (streaming values from an instrument or periodic observational data)</p></li>
+<li><p>Data in this shape can be difficult to work with</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load the CSV file</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../4 - data management one/community-center-attendance.csv&quot;</span><span class="p">,</span>
+                  <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;_id&quot;</span><span class="p">)</span>
+                   
+<span class="c1"># look at the first ten rows of the data</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># How many rows we got?</span>
+<span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>These data are looooooong</p></li>
+<li><p>Each row represents a community center in Pittsburgh reporting how many people visited the center</p></li>
+<li><p>Given this shape it is possible to do some calculations, but it might make more sense to <em>pivot</em> the data so that each column is a community center and each row is a day</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the pivot function to make column values into columns</span>
+<span class="n">pivoted_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="c1"># these values will be rows</span>
+                          <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;center_name&quot;</span><span class="p">,</span> <span class="c1"># these values will be columns</span>
+                          <span class="n">values</span><span class="o">=</span><span class="s2">&quot;attendance_count&quot;</span> <span class="c1"># these values will populate the table</span>
+                         <span class="p">)</span>
+<span class="n">pivoted_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Now we can easily find out things about our favorite community centers</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Total number of people who have visited Magee</span>
+<span class="n">pivoted_data</span><span class="p">[</span><span class="s1">&#39;Magee Community Center&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Average attendence per day at Magee</span>
+<span class="n">pivoted_data</span><span class="p">[</span><span class="s1">&#39;Magee Community Center&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="transpose">
+<h3>Transpose<a class="headerlink" href="#transpose" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Pandas has a handy function for <em>transposing</em> dataframes</p></li>
+<li><p>It just rotates the table</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pivoted_data</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Now the Column and row indexes are swapped</p></li>
+</ul>
+</section>
+</section>
+<section id="grouping-data">
+<h2>Grouping Data<a class="headerlink" href="#grouping-data" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>A common pattern in data analysis is splitting data by a key and then performing some math on all of the values with that key and finally combining it all back together</p></li>
+<li><p>This is commonly known in data circles as <em>split, apply, combine</em></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a dataframe to illustrate GroupBy</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">],</span>
+                   <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
+                   <span class="s1">&#39;counts&#39;</span><span class="p">:[</span><span class="mi">45</span><span class="p">,</span><span class="mi">234</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1324</span><span class="p">,</span><span class="mi">345</span><span class="p">],</span> 
+                   <span class="s1">&#39;things&#39;</span><span class="p">:[</span><span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">]}</span>
+                 <span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dataframes have a method, groupby(), that takes a column name be be the grouping key</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Cool, but what is that? Well, we need to tell Pandas what to <em>do</em> with the groups</p></li>
+<li><p>This is where we get to the <em>apply</em> step</p></li>
+<li><p>We need to specify what kind of aggregation, transformation, or computation to perform on the group</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tell pandas to add up all of the values for each key</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Group for key:&quot;</span><span class="p">,</span> <span class="n">group</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Under the hood Pandas is creating a bunch of new Dataframes based on the grouping column values</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped_dataframe</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span>
+<span class="n">grouped_dataframe</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The following table summarizes some other built-in Pandas aggregations:</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aggregation</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">count()</span></code></p></td>
+<td><p>Total number of items</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">size()</span></code></p></td>
+<td><p>Total number of items w/ NaNs</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">first()</span></code>, <code class="docutils literal notranslate"><span class="pre">last()</span></code></p></td>
+<td><p>First and last item</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mean()</span></code>, <code class="docutils literal notranslate"><span class="pre">median()</span></code></p></td>
+<td><p>Mean and median</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">min()</span></code>, <code class="docutils literal notranslate"><span class="pre">max()</span></code></p></td>
+<td><p>Minimum and maximum</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">std()</span></code>, <code class="docutils literal notranslate"><span class="pre">var()</span></code></p></td>
+<td><p>Standard deviation and variance</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mad()</span></code></p></td>
+<td><p>Mean absolute deviation</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">prod()</span></code></p></td>
+<td><p>Product of all items</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sum()</span></code></p></td>
+<td><p>Sum of all items</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>These are all methods of <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> and <code class="docutils literal notranslate"><span class="pre">Series</span></code> objects.</p></li>
+<li><p>You can also do multiple levels of grouping</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;things&#39;</span><span class="p">,</span><span class="s1">&#39;key&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>What you are seeing is what is called a [Multilevel Index](<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/advanced.html">https://pandas.pydata.org/pandas-docs/stable/advanced.html</a></p></li>
+<li><p>Sadly, we don’t have time to cover that topic, but this chapter on <a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/03.05-hierarchical-indexing.html">Hierarchical Indexing</a> in the <a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/">Python Data Science Handbook</a> is a great introduction to the topic.</p></li>
+</ul>
+</section>
+<section id="split-apply-combine-with-real-data">
+<h2>Split, Apply, Combine with real data<a class="headerlink" href="#split-apply-combine-with-real-data" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Lets grab a dataset from the WPRDC, the <a class="reference external" href="https://data.wprdc.org/dataset/allegheny-county-jail-daily-census">Allegheny County Jail Daily Census</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Grab three months of data</span>
+<span class="n">january17_jail_census</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://data.wprdc.org/datastore/dump/3b5d9c45-b5f4-4e05-9cf1-127642ad1d17&quot;</span><span class="p">)</span>
+<span class="n">feburary17_jail_census</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://data.wprdc.org/datastore/dump/cb8dc876-6285-43a8-9db3-90b84eedb46f&quot;</span><span class="p">)</span>
+<span class="n">march17_jail_census</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://data.wprdc.org/datastore/dump/68645668-3f89-4831-b1de-de1e77e52dd3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">january17_jail_census</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the concat function to combine all three into one dataframe</span>
+<span class="c1"># Remember I need to make a list of the all the dataframes for</span>
+<span class="c1"># the concat fuction</span>
+<span class="n">jail_census</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">january17_jail_census</span><span class="p">,</span> 
+                         <span class="n">feburary17_jail_census</span><span class="p">,</span> 
+                         <span class="n">march17_jail_census</span><span class="p">])</span>
+<span class="n">jail_census</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Even though these are valid computations because we are looking at a daily census, we can still use these data for demonstration purposes</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute the average age ate booking by gender</span>
+<span class="n">jail_census</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Gender&#39;</span><span class="p">)[</span><span class="s1">&#39;Age at Booking&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute the average age at booking by race then gender </span>
+<span class="n">jail_census</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Race&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">])[</span><span class="s1">&#39;Age at Booking&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we look at the <a class="reference external" href="https://data.wprdc.org/dataset/allegheny-county-jail-daily-census/resource/f0550174-16b0-4f6e-88dc-fa917e74b56c">data dictionary</a> we can see the following mapping for race categories</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Race</span> <span class="n">of</span> <span class="n">Inmate</span>
+<span class="n">A</span><span class="o">-</span><span class="n">ASIAN</span> <span class="n">OR</span> <span class="n">PACIFIC</span> <span class="n">ISLANDER</span>
+<span class="n">B</span><span class="o">-</span><span class="n">BLACK</span> <span class="n">OR</span> <span class="n">AFRICAN</span> <span class="n">AMERICAN</span>
+<span class="n">H</span><span class="o">-</span><span class="n">HISPANIC</span> 
+<span class="n">I</span><span class="o">-</span><span class="n">AMERICAN</span> <span class="n">INDIAN</span> <span class="n">OR</span> <span class="n">ALASKAN</span> <span class="n">NATIVE</span>
+<span class="n">U</span><span class="o">-</span><span class="n">UNKNOWN</span>
+<span class="n">W</span><span class="o">-</span><span class="n">WHITE</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">x</span></code> category hasn’t been described.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># how many total rows in the dataset have &quot;x&quot; for race</span>
+<span class="n">jail_census</span><span class="p">[</span><span class="s1">&#39;Race&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the statistical summary of age at booking by gender</span>
+<span class="n">jail_census</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Gender&#39;</span><span class="p">)[</span><span class="s1">&#39;Age at Booking&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute the difference between Age at Booking and current age</span>
+<span class="n">age_difference</span> <span class="o">=</span> <span class="n">jail_census</span><span class="p">[</span><span class="s1">&#39;Current Age&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">jail_census</span><span class="p">[</span><span class="s1">&#39;Age at Booking&#39;</span><span class="p">]</span>
+<span class="n">age_difference</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jail_census</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jail_census</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">jail_census</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">jail_census</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">jail_census</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">jail_census</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">jail_census</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="n">jail_census</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jail_census</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jail_census</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>This is a really awkward way of dealing with time</p></li>
+<li><p>We shouldn’t have to make a separate column for year, month, day</p></li>
+<li><p>There must be a better way to do this time stuff…</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./pandas"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Data%20Cleaning.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Data Cleaning</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Working%20with%20Time.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Working with Time</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Matt Burton, Evelyn Chan, Others.<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

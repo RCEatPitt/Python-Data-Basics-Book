@@ -1,0 +1,1235 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Looping &#8212; Python Data Basics</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Functions" href="1.6_%20Functions.html" />
+    <link rel="prev" title="Python Data Structures" href="1.4_Data%20Structures.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Python Data Basics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Python Data Basics
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to Jupyter
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../jupyter/introduction-to-jupyter.html">
+   Introduction to Jupyter
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Centric Python
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-intro.html">
+   Introduction to the Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.1_Getting%20Started%20with%20Syntax.html">
+   Getting Started in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.2_Variables%20Data%20Types%20and%20Operators.html">
+   Data Types and Operators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.3_Control%20flow%20and%20Conditional%20%20Statements.html">
+   Control Flow Statements and Conditional Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.4_Data%20Structures.html">
+   Python Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Looping
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.6_%20Functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.7_File%20Input%20and%20Output.html">
+   File Input and Output
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Management
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/pandas-intro.html">
+   Introduction to the Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/1%20-%20What%20and%20Why%20Pandas.html">
+   Data Processing with Python: What and Why Pandas!
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/Data%20Structures.html">
+   Introduction to Pandas Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/3%20-%20Loading%20Data.html">
+   Loading Data: Reading Files into a Dataframe
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/4%20-%20Basic%20Data%20Manipulation.html">
+   Basic Data Manipulation: Exploring and Summarizing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/Data%20Cleaning.html">
+   Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/Data%20Wrangling.html">
+   Data Wrangling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/Working%20with%20Time.html">
+   Working with Time
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/RCEatPitt/Python-Data-Basics-Book/master?urlpath=tree/python/1.5_Loops.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/RCEatPitt/Python-Data-Basics-Book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/RCEatPitt/Python-Data-Basics-Book/issues/new?title=Issue%20on%20page%20%2Fpython/1.5_Loops.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/python/1.5_Loops.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-try-it">
+   Let’s Try it
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-comprehensions">
+   List Comprehensions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Let’s try it!
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dictionary-comprehensions">
+   Dictionary Comprehensions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice-questions">
+   Practice Questions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#question-1">
+     Question 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#question-2">
+     Question 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#answers">
+     Answers
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Looping</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-try-it">
+   Let’s Try it
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-comprehensions">
+   List Comprehensions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Let’s try it!
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dictionary-comprehensions">
+   Dictionary Comprehensions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice-questions">
+   Practice Questions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#question-1">
+     Question 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#question-2">
+     Question 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#answers">
+     Answers
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="looping">
+<h1>Looping<a class="headerlink" href="#looping" title="Permalink to this headline">#</a></h1>
+<p>In this module we will be covering the following topic:</p>
+<ul class="simple">
+<li><p>For Loops</p></li>
+<li><p>List Comprehensions</p></li>
+<li><p>Dictionary Comprehensions</p></li>
+</ul>
+<p>Loops like conditional statements allow you to create a more complex block of code, in which you repeat an operation across an iterator. They allow you to perform repetitive tasks.</p>
+<p><strong>For</strong> each item <strong>in</strong> “the list”, perform this operation. Lists are an example of an iterator. An iterator is an oject that has a countable numer of items. They include ,for instance lists, tuples, dictionaries, and range.</p>
+<p>For example, let’s say we wanted to create a new list based on <em>list a</em>. If we wanted to each multiple each number in list a by 2, we could perform the tedious tasks of writing 5 lines of code.</p>
+<p>Altneratively, a more efficient way of crating list b would be to use for loops in the code below.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> 
+</pre></div>
+</div>
+<p><strong>For Loops</strong></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+    <span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 5]
+[2, 4, 6, 8, 10]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+    <span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 4, 6, 8, 10]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Similiar in syntax to conditional statements, include a colon <code class="docutils literal notranslate"><span class="pre">:</span></code> after the <code class="docutils literal notranslate"><span class="pre">for</span></code> and <code class="docutils literal notranslate"><span class="pre">in</span></code> statement and make sure to indent in the following line. What follows the <code class="docutils literal notranslate"><span class="pre">for</span></code> can be any string literal. You can call it <em>i</em> or <em>element</em>. You cannot assign it a numerical literal.</p>
+<p>In the first example we are asking Python to print every <em>i</em> or number in the range of numbers from 0 to 10.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    
+<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+<p>In the examples below, we are working with lists and dictionaries.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">fruits</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">fruits</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;John&quot;</span> <span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
+    <span class="s2">&quot;Bob&quot;</span> <span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="s2">&quot;Jane&quot;</span> <span class="p">:</span> <span class="mi">29</span><span class="p">,</span>
+    <span class="s2">&quot;Ann&quot;</span> <span class="p">:</span> <span class="mi">71</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Iterating through a range of values to read from a list</span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">fruits</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>apples
+oranges
+pears
+peaches
+berries
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Iterating through items in a list</span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">,</span> <span class="s1">&#39;peaches&#39;</span><span class="p">,</span> <span class="s1">&#39;berries&#39;</span><span class="p">];</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">fruits</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>apples
+oranges
+pears
+peaches
+berries
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Iterating through a dictionary</span>
+<span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;John&quot;</span> <span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
+    <span class="s2">&quot;Bob&quot;</span> <span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="s2">&quot;Jane&quot;</span> <span class="p">:</span> <span class="mi">29</span><span class="p">,</span>
+    <span class="s2">&quot;Ann&quot;</span> <span class="p">:</span> <span class="mi">71</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>John 37
+Bob 50
+Jane 29
+Ann 71
+</pre></div>
+</div>
+</div>
+</div>
+<p>The Loop function allows us to modify every item or value in a list or dictionary in a single block of text.</p>
+<p>Let’s use loops to every value in a diciontary. With inflation, the cost of food has risen. Let’s add 0.25 to the price for every type of coffee drink. In other words, add 0.25 to each value per key in the dictionary.</p>
+<p>You’ll notice a few things with the syntax. When working with dictionaries, you need to include two string literals, separated by a comma after <code class="docutils literal notranslate"><span class="pre">for</span></code>. They denote the key and value in the dictionary. In the example, <em>key</em> and <em>value</em> are used but you can use any string literal. The next line, which is indented, performs the operation, which asks that 0.25 be added to each value per key.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_price</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Americano&#39;</span> <span class="p">:</span><span class="mf">2.45</span><span class="p">,</span> 
+                <span class="s1">&#39;Latte&#39;</span> <span class="p">:</span><span class="mf">3.59</span><span class="p">,</span>
+                <span class="s1">&#39;Espresso&#39;</span> <span class="p">:</span> <span class="mf">1.89</span> <span class="p">,</span>
+                <span class="s1">&#39;Mocha&#39;</span> <span class="p">:</span> <span class="mf">3.75</span> <span class="p">,</span>
+                <span class="s1">&#39;Cappuccino&#39;</span> <span class="p">:</span> <span class="mf">4.18</span>
+               <span class="p">}</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">coffee_price</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">coffee_price</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span><span class="mf">0.25</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coffee_price</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_price</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Americano&#39;</span> <span class="p">:</span><span class="mf">2.45</span><span class="p">,</span> 
+                <span class="s1">&#39;Latte&#39;</span> <span class="p">:</span><span class="mf">3.59</span><span class="p">,</span>
+                <span class="s1">&#39;Espresso&#39;</span> <span class="p">:</span> <span class="mf">1.89</span> <span class="p">,</span>
+                <span class="s1">&#39;Mocha&#39;</span> <span class="p">:</span> <span class="mf">3.75</span> <span class="p">,</span>
+                <span class="s1">&#39;Cappuccino&#39;</span> <span class="p">:</span> <span class="mf">4.18</span>
+               <span class="p">}</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">coffee_price</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">coffee_price</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span><span class="mf">0.25</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coffee_price</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Americano&#39;: 2.7, &#39;Latte&#39;: 3.84, &#39;Espresso&#39;: 2.1399999999999997, &#39;Mocha&#39;: 4.0, &#39;Cappuccino&#39;: 4.43}
+</pre></div>
+</div>
+</div>
+</div>
+<section id="let-s-try-it">
+<h2>Let’s Try it<a class="headerlink" href="#let-s-try-it" title="Permalink to this headline">#</a></h2>
+<p>We have two lists in this example. 1) Sort the gas_price_june list 2) Find the median value in the list. 3) Use a loop to iterate across the gas_price_june list, for prices that are above the median, add to the gas_price_highest list. You can use any of the methods reviewed in Module 1.4, like append or combine.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">gas_price_june</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.89</span><span class="p">,</span> <span class="mf">2.91</span><span class="p">,</span> <span class="mf">4.26</span><span class="p">,</span> <span class="mf">4.91</span><span class="p">,</span> <span class="mf">5.23</span><span class="p">,</span> <span class="mf">3.65</span><span class="p">,</span> <span class="mf">4.15</span><span class="p">]</span> 
+<span class="n">gas_price_highest</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5.72</span><span class="p">,</span> <span class="mf">4.80</span><span class="p">,</span> <span class="mf">5.51</span><span class="p">,</span> <span class="mf">5.73</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gas_price_june</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.89</span><span class="p">,</span> <span class="mf">2.91</span><span class="p">,</span> <span class="mf">4.26</span><span class="p">,</span> <span class="mf">4.91</span><span class="p">,</span> <span class="mf">5.23</span><span class="p">,</span> <span class="mf">3.65</span><span class="p">,</span> <span class="mf">4.15</span><span class="p">]</span> 
+<span class="n">gas_price_highest</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5.72</span><span class="p">,</span> <span class="mf">4.80</span><span class="p">,</span> <span class="mf">5.51</span><span class="p">,</span> <span class="mf">5.73</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="list-comprehensions">
+<h2>List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permalink to this headline">#</a></h2>
+<p>A list comprehension performs the same function as for loops and conditional statements, but the execute codes more concisely and efficiently.</p>
+<p>In the example below, 3 is multiplied to every number in the list called <em>even</em>. Using the for loop method, we first create an empty list called <em>new_even</em>. For every item in the list, we multiple by 3 and append each number to the empty list. Run the code and print the list, <em>new_even</em>.</p>
+<p>List comprehensions can produce the same results but more concisely</p>
+<p><strong>For Loop Method</strong></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">even</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span> <span class="p">]</span>
+<span class="n">new_even</span> <span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">even</span><span class="p">:</span>
+    <span class="n">new_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_even</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>List Comprehension</strong></p>
+<p>A list comprehension produces the same result but with less lines of code. In the a list comprehension, the <code class="docutils literal notranslate"><span class="pre">for</span></code> and <code class="docutils literal notranslate"><span class="pre">in</span></code> operators are not at the beginning of the statement. Rather the operation is listed first and is followed by the <code class="docutils literal notranslate"><span class="pre">for</span></code> and <code class="docutils literal notranslate"><span class="pre">in</span></code> operators.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">number</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">new_number</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">number</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_number</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">new_number</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">number</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_number</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3, 6, 9, 12, 15]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Using List Comprehension </span>
+<span class="n">number</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">new_number</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">number</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_number</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3, 6, 9, 12, 15]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h2>Let’s try it!<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>Create a for loop or a list comprehension. Find the even numbers in the list, <em>num</em>. And Append to a new list called called <em>new_num</em>. Hint: you will need the modulus operator and include an if conditional statement!</p>
+<p>Use both for loops statement and list comprehensions to find</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">new_num</span> <span class="o">=</span><span class="p">[]</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">new_num</span> <span class="o">=</span><span class="p">[]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dictionary-comprehensions">
+<h2>Dictionary Comprehensions<a class="headerlink" href="#dictionary-comprehensions" title="Permalink to this headline">#</a></h2>
+<p>Like list comprehensions, dictionary comprehensions provide a more concise way to iterate over items in a dictionary in contrast to for-loops.</p>
+<p>The following dictionary shows the height in feet. Let’s say we wanted to change the values so they are in inches. We need to multiply each value per key by 12. We can use for loop and a dictionary comprehension. You’ll notice that we created a new dictionary called height_inches. As well, the we included the round() function in the operation so that numbers would be rounded up without any decimals.</p>
+<p><strong>For Loop</strong></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">height</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Lara&#39;</span><span class="p">:</span> <span class="mf">4.8</span><span class="p">,</span> <span class="s1">&#39;Mark&#39;</span><span class="p">:</span> <span class="mf">6.1</span><span class="p">,</span> <span class="s1">&#39;Ian&#39;</span><span class="p">:</span> <span class="mf">5.8</span><span class="p">,</span> <span class="s1">&#39;Annie&#39;</span><span class="p">:</span> <span class="mf">5.3</span><span class="p">}</span>
+<span class="n">height_inches</span> <span class="o">=</span><span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">height</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">height_inches</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">v</span><span class="o">*</span><span class="mf">12.0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">height_inches</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can perform the same operation using a diciontary comprehension, which only requires one line of code.</p>
+<p><strong>Diciontary Comprehension</strong></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">height</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Lara&#39;</span><span class="p">:</span> <span class="mf">4.8</span><span class="p">,</span> <span class="s1">&#39;Mark&#39;</span><span class="p">:</span> <span class="mf">6.1</span><span class="p">,</span> <span class="s1">&#39;Ian&#39;</span><span class="p">:</span> <span class="mf">5.8</span><span class="p">,</span> <span class="s1">&#39;Annie&#39;</span><span class="p">:</span> <span class="mf">5.3</span><span class="p">}</span>
+
+<span class="n">height_inches</span>  <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">value</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">height</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>  
+<span class="nb">print</span><span class="p">(</span><span class="n">height_inches</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Using a For Loop</span>
+<span class="c1">## Notice we made a new dictionary called height_inches using the key, values from the height dictionary </span>
+<span class="c1">## Also notice the round() function, this rounds are number so we don&#39;t have decimals </span>
+
+<span class="n">height</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Lara&#39;</span><span class="p">:</span> <span class="mf">4.8</span><span class="p">,</span> <span class="s1">&#39;Mark&#39;</span><span class="p">:</span> <span class="mf">6.1</span><span class="p">,</span> <span class="s1">&#39;Ian&#39;</span><span class="p">:</span> <span class="mf">5.8</span><span class="p">,</span> <span class="s1">&#39;Annie&#39;</span><span class="p">:</span> <span class="mf">5.3</span><span class="p">}</span>
+<span class="n">height_inches</span> <span class="o">=</span><span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">height</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">height_inches</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">v</span><span class="o">*</span><span class="mf">12.0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">height_inches</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Lara&#39;: 58, &#39;Mark&#39;: 73, &#39;Ian&#39;: 70, &#39;Annie&#39;: 64}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">height</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Lara&#39;</span><span class="p">:</span> <span class="mf">4.8</span><span class="p">,</span> <span class="s1">&#39;Mark&#39;</span><span class="p">:</span> <span class="mf">6.1</span><span class="p">,</span> <span class="s1">&#39;Ian&#39;</span><span class="p">:</span> <span class="mf">5.8</span><span class="p">,</span> <span class="s1">&#39;Annie&#39;</span><span class="p">:</span> <span class="mf">5.3</span><span class="p">}</span>
+
+<span class="n">height_inches</span>  <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">value</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">height</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>  
+<span class="nb">print</span><span class="p">(</span><span class="n">height_inches</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Lara&#39;: 58, &#39;Mark&#39;: 73, &#39;Ian&#39;: 70, &#39;Annie&#39;: 64}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="practice-questions">
+<h2>Practice Questions<a class="headerlink" href="#practice-questions" title="Permalink to this headline">#</a></h2>
+<section id="question-1">
+<h3>Question 1<a class="headerlink" href="#question-1" title="Permalink to this headline">#</a></h3>
+<p>Use a for loop with the range function generate <code class="docutils literal notranslate"><span class="pre">c</span></code> by doing the element-wise addition of a with b. Hint, the final list for c should read: c=[6, 8, 10, 12]</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-2">
+<h3>Question 2<a class="headerlink" href="#question-2" title="Permalink to this headline">#</a></h3>
+<p>** Shopping List **</p>
+<p>This program creates a list called groceries and defines two dictionaries, stock and prices. Using these structures, it computes the bill for the list of groceries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, create a list called shopping_list that contains the strings &quot;banana&quot;, &quot;orange&quot;, and &quot;apple&quot;</span>
+<span class="n">shopping_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;apple&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Next, create the empty prices dictionary</span>
+<span class="n">prices</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># We can then add values to the dictionary</span>
+<span class="n">prices</span><span class="p">[</span><span class="s2">&quot;banana&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">prices</span><span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">prices</span><span class="p">[</span><span class="s2">&quot;orange&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">prices</span><span class="p">[</span><span class="s2">&quot;pear&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Next, create the stock dictionary</span>
+<span class="c1"># We will use a different method from before and simply create the dictionary all at once</span>
+<span class="c1"># Note that we use commas to separate items and a comma does not appear after the last item in the dictionary</span>
+<span class="c1"># Also note that the dictionary can be declared on one line or multiple</span>
+<span class="n">stock</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;banana&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="s2">&quot;apple&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;orange&quot;</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span>
+    <span class="s2">&quot;pear&quot;</span><span class="p">:</span> <span class="mi">15</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># To illustrate how to print out the items in a dictionary along with their associated values, </span>
+<span class="c1"># we can use a loop like the one below</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">prices</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;price: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">prices</span><span class="p">[</span><span class="n">item</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stock: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stock</span><span class="p">[</span><span class="n">item</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>banana
+price: 4
+stock: 6
+apple
+price: 2
+stock: 0
+orange
+price: 1.5
+stock: 32
+pear
+price: 3
+stock: 15
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now we can compute the bill for the shopping list</span>
+<span class="c1"># We will do this by looping through the items in the list, checking to see if the store has the item in stock,</span>
+<span class="c1"># and adding the price to a variable called grocery_bill</span>
+<span class="c1"># Also, we will update the stock dictionary to reflect any changes in the quantity of a good if it is on the list</span>
+<span class="n">grocery_bill</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">shopping_list</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">stock</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">price</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[</span><span class="n">item</span><span class="p">]</span>
+        <span class="n">grocery_bill</span> <span class="o">=</span> <span class="n">grocery_bill</span> <span class="o">+</span> <span class="n">price</span>
+        <span class="n">stock</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">=</span> <span class="n">stock</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">item</span> <span class="o">+</span> <span class="s2">&quot;s are not in stock!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>apples are not in stock!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Finally, output the result</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cost of groceries: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">grocery_bill</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cost of groceries: 5.5
+</pre></div>
+</div>
+</div>
+</div>
+<p>** Shopping List: Challenge 1**</p>
+<p>Write a loop to determine the value of the store’s entire stock.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write challenge 1 solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="answers">
+<h3>Answers<a class="headerlink" href="#answers" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Using a list comprehension</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[6, 8, 10, 12]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Answers for Question 1</span>
+
+<span class="c1">#Using a list comprehension</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">c</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">))])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[6, 8, 10, 12]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>** Shopping List: Challenge 1 Solution**</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, create a list called shopping_list that contains the strings &quot;banana&quot;, &quot;orange&quot;, and &quot;apple&quot;</span>
+<span class="n">shopping_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;apple&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Next, create the empty prices dictionary</span>
+<span class="n">prices</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># We can then add values to the dictionary</span>
+<span class="n">prices</span><span class="p">[</span><span class="s2">&quot;banana&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">prices</span><span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">prices</span><span class="p">[</span><span class="s2">&quot;orange&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">prices</span><span class="p">[</span><span class="s2">&quot;pear&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Next, create the stock dictionary</span>
+<span class="c1"># We will use a different method from before and simply create the dictionary all at once</span>
+<span class="c1"># Note that we use commas to separate items and a comma does not appear after the last item in the dictionary</span>
+<span class="c1"># Also note that the dictionary can be declared on one line or multiple</span>
+<span class="n">stock</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;banana&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="s2">&quot;apple&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;orange&quot;</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span>
+    <span class="s2">&quot;pear&quot;</span><span class="p">:</span> <span class="mi">15</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># To illustrate how to print out the items in a dictionary along with their associated values, </span>
+<span class="c1"># we can use a loop like the one below</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">prices</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;price: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">prices</span><span class="p">[</span><span class="n">item</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stock: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stock</span><span class="p">[</span><span class="n">item</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>banana
+price: 4
+stock: 6
+apple
+price: 2
+stock: 0
+orange
+price: 1.5
+stock: 32
+pear
+price: 3
+stock: 15
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now we can compute the bill for the shopping list</span>
+<span class="c1"># We will do this by looping through the items in the list, checking to see if the store has the item in stock,</span>
+<span class="c1"># and adding the price to a variable called grocery_bill</span>
+<span class="c1"># Also, we will update the stock dictionary to reflect any changes in the quantity of a good if it is on the list</span>
+<span class="n">grocery_bill</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">shopping_list</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">stock</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">price</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[</span><span class="n">item</span><span class="p">]</span>
+        <span class="n">grocery_bill</span> <span class="o">=</span> <span class="n">grocery_bill</span> <span class="o">+</span> <span class="n">price</span>
+        <span class="n">stock</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">=</span> <span class="n">stock</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">item</span> <span class="o">+</span> <span class="s2">&quot;s are not in stock!&quot;</span><span class="p">)</span>
+        
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Your total bill is&quot;</span><span class="p">,</span> <span class="n">grocery_bill</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>apples are not in stock!
+Your total bill is 5.5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Challenge solution</span>
+<span class="n">total_stock</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">stock</span><span class="p">:</span>
+    <span class="n">total_stock</span> <span class="o">=</span> <span class="n">total_stock</span> <span class="o">+</span> <span class="n">stock</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">*</span> <span class="n">prices</span><span class="p">[</span><span class="n">item</span><span class="p">]</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The value of the store&#39;s stock is &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">total_stock</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The value of the store&#39;s stock is 111.5
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="1.4_Data%20Structures.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Python Data Structures</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="1.6_%20Functions.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Functions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Matt Burton, Evelyn Chan, Others.<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

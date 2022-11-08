@@ -1,0 +1,1143 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Getting Started in Python &#8212; Python Data Basics</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Types and Operators" href="1.2_Variables%20Data%20Types%20and%20Operators.html" />
+    <link rel="prev" title="Introduction to the Python" href="python-intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Python Data Basics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Python Data Basics
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to Jupyter
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../jupyter/introduction-to-jupyter.html">
+   Introduction to Jupyter
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Centric Python
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-intro.html">
+   Introduction to the Python
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Getting Started in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.2_Variables%20Data%20Types%20and%20Operators.html">
+   Data Types and Operators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.3_Control%20flow%20and%20Conditional%20%20Statements.html">
+   Control Flow Statements and Conditional Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.4_Data%20Structures.html">
+   Python Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.5_Loops.html">
+   Looping
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.6_%20Functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.7_File%20Input%20and%20Output.html">
+   File Input and Output
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Management
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/pandas-intro.html">
+   Introduction to the Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/1%20-%20What%20and%20Why%20Pandas.html">
+   Data Processing with Python: What and Why Pandas!
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/Data%20Structures.html">
+   Introduction to Pandas Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/3%20-%20Loading%20Data.html">
+   Loading Data: Reading Files into a Dataframe
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/4%20-%20Basic%20Data%20Manipulation.html">
+   Basic Data Manipulation: Exploring and Summarizing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/Data%20Cleaning.html">
+   Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/Data%20Wrangling.html">
+   Data Wrangling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/Working%20with%20Time.html">
+   Working with Time
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/RCEatPitt/Python-Data-Basics-Book/master?urlpath=tree/python/1.1_Getting Started with Syntax.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/RCEatPitt/Python-Data-Basics-Book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/RCEatPitt/Python-Data-Basics-Book/issues/new?title=Issue%20on%20page%20%2Fpython/1.1_Getting Started with Syntax.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/python/1.1_Getting Started with Syntax.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-syntax">
+   Basic Syntax
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#making-comments">
+     Making Comments
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#case-sensitivity">
+     Case Sensitivity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#print-function">
+     Print Function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#try-it-yourself">
+     Try it yourself!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indentation-and-white-space">
+     Indentation and White Space
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parentheses">
+     Parentheses
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#error-messages">
+   Error Messages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-vocabulary">
+   Python Vocabulary
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expressions">
+     Expressions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statements">
+     Statements
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice-questions">
+   Practice Questions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     1) Error Messages
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statements-vs-expressions">
+     2) Statements vs Expressions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#answers-to-practice-questions">
+   Answers to Practice Questions
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Getting Started in Python</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-syntax">
+   Basic Syntax
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#making-comments">
+     Making Comments
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#case-sensitivity">
+     Case Sensitivity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#print-function">
+     Print Function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#try-it-yourself">
+     Try it yourself!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indentation-and-white-space">
+     Indentation and White Space
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parentheses">
+     Parentheses
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#error-messages">
+   Error Messages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-vocabulary">
+   Python Vocabulary
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expressions">
+     Expressions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statements">
+     Statements
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice-questions">
+   Practice Questions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     1) Error Messages
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statements-vs-expressions">
+     2) Statements vs Expressions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#answers-to-practice-questions">
+   Answers to Practice Questions
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="getting-started-in-python">
+<h1>Getting Started in Python<a class="headerlink" href="#getting-started-in-python" title="Permalink to this headline">#</a></h1>
+<p>In this module, students will be introduced to basic syntax and how to run code in Juptyr Notebook. We will be covering the following topics:</p>
+<ul class="simple">
+<li><p>Basic Syntax</p></li>
+<li><p>Error Messages</p></li>
+<li><p>Python Vocabulary</p></li>
+</ul>
+<section id="basic-syntax">
+<h2>Basic Syntax<a class="headerlink" href="#basic-syntax" title="Permalink to this headline">#</a></h2>
+<section id="making-comments">
+<h3>Making Comments<a class="headerlink" href="#making-comments" title="Permalink to this headline">#</a></h3>
+<p>When running code, you might want to include notes and comments. Simply, type the pound sign or hashtag <code class="docutils literal notranslate"><span class="pre">#</span></code> before the text. When your code is run, any text after the <code class="docutils literal notranslate"><span class="pre">#</span></code> sign is ignored by Python. Including comments can be a helpful way to explain your  code to readers. It will not affect the execution of your code. If you do include comments, but forget to add the <code class="docutils literal notranslate"><span class="pre">#</span></code> in front, it will result in error code.</p>
+</section>
+<section id="case-sensitivity">
+<h3>Case Sensitivity<a class="headerlink" href="#case-sensitivity" title="Permalink to this headline">#</a></h3>
+<p>Python code is case sensitive. A common error is mistyping the name of variables with the incorrect letter cases.</p>
+<p>In the cell below, type</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span>Ford = 1903
+print(FORD)```
+
+The example results in a `NameError` because Ford was assgined the value of 1903 and is stored in memory
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ford</span> <span class="o">=</span> <span class="mi">1903</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">ford</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">Ford</span> <span class="o">=</span> <span class="mi">1903</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="nb">print</span> <span class="p">(</span><span class="n">ford</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;ford&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="print-function">
+<h3>Print Function<a class="headerlink" href="#print-function" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">print</span> <span class="pre">function</span></code> allows you to see the contents of the variable. You must include parenthesis around the variable.</p>
+<p>Try an example. In the cell below, assign any number to the variable <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">print</span> <span class="pre">x</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>x = 
+print(x) ```
+</pre></div>
+</div>
+<p>You can also use semi colons <code class="docutils literal notranslate"><span class="pre">;</span></code> instead of a new line of code. In the example below, the code will successfully print the variable <code class="docutils literal notranslate"><span class="pre">y</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;car&#39;</span><span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="try-it-yourself">
+<h3>Try it yourself!<a class="headerlink" href="#try-it-yourself" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try the print function by assigning a numeric value to the variable &#39;age&#39;</span>
+
+<span class="n">age</span> <span class="o">=</span> <span class="mi">21</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try the print function by assigning a string value to the variable &#39;county&#39;</span>
+
+<span class="n">county</span> <span class="o">=</span> <span class="s1">&#39;Allegheny&#39;</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="indentation-and-white-space">
+<h3>Indentation and White Space<a class="headerlink" href="#indentation-and-white-space" title="Permalink to this headline">#</a></h3>
+<p>White space between characters within the same line will not affect your code. In the example below, <code class="docutils literal notranslate"><span class="pre">x</span></code> will still equal 22 regardless of the space between the characters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">8</span><span class="o">*</span> <span class="mi">2</span>    <span class="o">+</span>   <span class="mi">6</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, if you create an indentation in the following line, it will result in <code class="docutils literal notranslate"><span class="pre">IndentationError</span></code>. In this case, what space is important!<br />
+In the example below, the <code class="docutils literal notranslate"><span class="pre">print</span></code> function is indented, which leads to a common error. When you create an indentation in your line of code, you are indicating that it is part of a single block code. When declaring that <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">car</span></code>, the statement is complete, and there is no need to indent in the following line.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">=</span> <span class="s1">&#39;car&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Indentation therefore is part of a block of code. An indented line should follow a colon <code class="docutils literal notranslate"><span class="pre">:</span></code> In the example below, there are two functions that necessitate two indentations and two colons. This is an example of a control flow statement, denoted by <code class="docutils literal notranslate"><span class="pre">for</span></code> and <code class="docutils literal notranslate"><span class="pre">in</span></code> and a conditional statement denoted by <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code>.</p>
+<p>First we will create two lists of a sequence of numbers. For every number between 1 and 20 , <code class="docutils literal notranslate"><span class="pre">if</span></code> it’s less than 10, we will <code class="docutils literal notranslate"><span class="pre">append</span></code> it to the empty list called <code class="docutils literal notranslate"><span class="pre">under_list</span></code>. All <code class="docutils literal notranslate"><span class="pre">else</span></code> (for numbers equal and over 10) we will be appended them to the <code class="docutils literal notranslate"><span class="pre">over_list</span></code>. You will notice:</p>
+<ul class="simple">
+<li><p>for every colon, an indented line follows in the next line</p></li>
+<li><p>the print function is not contingent on the previous line of code and therefore it does not need an indentation</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">under_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">over_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">):</span>
+        <span class="n">under_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">over_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">under_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">over_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="parentheses">
+<h3>Parentheses<a class="headerlink" href="#parentheses" title="Permalink to this headline">#</a></h3>
+<p>Different types are of parentheses and brackets are used in Python and serve different functions.</p>
+<ul class="simple">
+<li><p>Round brackets <code class="docutils literal notranslate"><span class="pre">()</span></code> are used to call a function. For instance to <code class="docutils literal notranslate"><span class="pre">print</span></code> a variable. They are also used to create tuples and for mathematical order</p></li>
+<li><p>Index brackets <code class="docutils literal notranslate"><span class="pre">[]</span></code> are used to create lists, as well as to slice and index items in a list</p></li>
+<li><p>Braces <code class="docutils literal notranslate"><span class="pre">{}</span></code> are used to create dictionaries</p></li>
+</ul>
+<p>We will return to <code class="docutils literal notranslate"><span class="pre">lists</span></code>, <code class="docutils literal notranslate"><span class="pre">dictionaries</span></code>, and <code class="docutils literal notranslate"><span class="pre">tuples</span></code> in the module on Data Structures!</p>
+</section>
+</section>
+<section id="error-messages">
+<h2>Error Messages<a class="headerlink" href="#error-messages" title="Permalink to this headline">#</a></h2>
+<p>Understanding error messages are important to help correct your code. Let’s look back at the indentation error. Run the code in the line below and dissect the error term.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">=</span> <span class="s1">&#39;car&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The first line in green text tells us the error is on <code class="docutils literal notranslate"><span class="pre">line</span> <span class="pre">2</span></code></p></li>
+<li><p>The second line and third line, denoted by the yellow text and <code class="docutils literal notranslate"><span class="pre">^</span></code> symbol indicate that the print function caused the error</p></li>
+<li><p>The last line summarizes the error</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">=</span> <span class="s1">&#39;car&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="python-vocabulary">
+<h2>Python Vocabulary<a class="headerlink" href="#python-vocabulary" title="Permalink to this headline">#</a></h2>
+<section id="expressions">
+<h3>Expressions<a class="headerlink" href="#expressions" title="Permalink to this headline">#</a></h3>
+<p>An expression is a combination of <code class="docutils literal notranslate"><span class="pre">variables</span></code>, <code class="docutils literal notranslate"><span class="pre">operators</span></code>, <code class="docutils literal notranslate"><span class="pre">values</span></code>, and <code class="docutils literal notranslate"><span class="pre">functions</span></code>. They always produce and result in a value. The following are some examples of when expressions are used:</p>
+<ul class="simple">
+<li><p>Performing and displaying operators</p></li>
+<li><p>Calls to Functions like printing variables</p></li>
+</ul>
+<p>The print function is an example of an expression. It asks Python to return the variable after it was assigned a string value.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;hello world&#39;</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;hello world&#39;</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Similarly the <code class="docutils literal notranslate"><span class="pre">Type</span></code> and <code class="docutils literal notranslate"><span class="pre">Len</span></code> functions asks Python to return a value. The <code class="docutils literal notranslate"><span class="pre">Type</span></code> function for instance identifies the type or classification of the variable. It asks Python to return the type of the varaible. Similarly the <code class="docutils literal notranslate"><span class="pre">Len</span></code> counts the number of characters in a string or list in a variable. In a list, <code class="docutils literal notranslate"><span class="pre">len()</span></code> will count the number of items in a list, and in a string variable, the number of characters.</p>
+<p>In the example below,</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="mf">3.14</span>
+<span class="nb">type</span> <span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">o</span> <span class="o">=</span> <span class="s1">&#39;orange&#39;</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="mf">3.14</span>
+<span class="nb">type</span> <span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">o</span> <span class="o">=</span> <span class="s1">&#39;orange&#39;</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="statements">
+<h3>Statements<a class="headerlink" href="#statements" title="Permalink to this headline">#</a></h3>
+<p>By contrast, statements instruct Python to carry out or execute a command. It is the smallest executable unit; every line in a piece of code is a statement. While expressions produce a value, statements execute code.</p>
+<p>In the example below, every line is a statement. Assigning <code class="docutils literal notranslate"><span class="pre">hello</span> <span class="pre">world</span></code> to the variable <code class="docutils literal notranslate"><span class="pre">x</span></code> is a statement. But only the last line is an expression; it is asking Python to produce a value.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;hello world&#39;</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="practice-questions">
+<h2>Practice Questions<a class="headerlink" href="#practice-questions" title="Permalink to this headline">#</a></h2>
+<p>Let’s try some practice questions! If you’re stumped, scroll to the end for the answers!</p>
+<section id="id1">
+<h3>1) Error Messages<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>Run the codes below and you’ll see they will result in an error. Identify what caused the error. Next provide the correct codes and run them</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#1.a) Error Message</span>
+
+<span class="n">state</span> <span class="o">=</span> <span class="s2">&quot;Pennsylvania&quot;</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">State</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the correct code here:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#1.b) Error Message</span>
+<span class="n">coffee</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;latte&#39;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">,</span> <span class="s1">&#39;americano&#39;</span><span class="p">:</span> <span class="mf">3.75</span><span class="p">,</span> <span class="s1">&#39;cappuccino&#39;</span><span class="p">:</span> <span class="mf">5.25</span><span class="p">,</span> <span class="s1">&#39;drip&#39;</span><span class="p">:</span> <span class="mf">2.95</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">coffee</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+       <span class="k">if</span> <span class="n">key</span> <span class="o">==</span><span class="s1">&#39;americano&#39;</span>
+            <span class="n">coffee</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.55</span>
+
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the correct code here: </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#1.c) Error Message</span>
+
+<span class="n">mascot_name</span> <span class="o">=</span> <span class="n">panther</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the correct code here: </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="statements-vs-expressions">
+<h3>2) Statements vs Expressions<a class="headerlink" href="#statements-vs-expressions" title="Permalink to this headline">#</a></h3>
+<p>Run the following codes and identify whether they are an expression or a statement!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. a) Is the code below an expression or statement? </span>
+
+<span class="mi">17</span><span class="o">/</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Answer</span><span class="p">:</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. b) Is the code below an expression or statement? </span>
+
+<span class="n">weight</span> <span class="o">=</span> <span class="p">[</span><span class="mi">95</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">105</span><span class="p">,</span> <span class="mi">155</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Answer</span><span class="p">:</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. c) Is the code below an expression or statement?</span>
+
+<span class="n">subjects</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;English&#39;</span><span class="p">,</span> <span class="s1">&#39;History&#39;</span><span class="p">,</span> <span class="s1">&#39;Algebra&#39;</span><span class="p">,</span> <span class="s1">&#39;Biology&#39;</span><span class="p">,</span> <span class="s1">&#39;Civics&#39;</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">subjects</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Answer</span><span class="p">:</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. d) Is the code below an expression or statement?</span>
+
+<span class="n">subjects</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;English&#39;</span><span class="p">,</span> <span class="s1">&#39;History&#39;</span><span class="p">,</span> <span class="s1">&#39;Algebra&#39;</span><span class="p">,</span> <span class="s1">&#39;Biology&#39;</span><span class="p">,</span> <span class="s1">&#39;Civics&#39;</span><span class="p">]</span>
+<span class="n">subjects</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Answer</span><span class="p">:</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. e) In the code below, which are expressions and which are statements? </span>
+
+<span class="n">subjects</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;English&#39;</span><span class="p">,</span> <span class="s1">&#39;History&#39;</span><span class="p">,</span> <span class="s1">&#39;Algebra&#39;</span><span class="p">,</span> <span class="s1">&#39;Biology&#39;</span><span class="p">,</span> <span class="s1">&#39;Civics&#39;</span><span class="p">]</span>
+<span class="n">subjects</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">subjects</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Answer</span><span class="p">:</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="answers-to-practice-questions">
+<h2>Answers to Practice Questions<a class="headerlink" href="#answers-to-practice-questions" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. a) Error Message </span>
+<span class="c1">## Correction: Recall that variables are case sensitive!  </span>
+
+<span class="n">state</span> <span class="o">=</span> <span class="s2">&quot;Pennsylvania&quot;</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">state</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. b) Error Message </span>
+<span class="c1">## Correction: You must include colon (:) after the if statement. Every indented line is preceded by a colon (:) </span>
+
+
+<span class="n">coffee</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;latte&#39;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">,</span> <span class="s1">&#39;americano&#39;</span><span class="p">:</span> <span class="mf">3.75</span><span class="p">,</span> <span class="s1">&#39;cappuccino&#39;</span><span class="p">:</span> <span class="mf">5.25</span><span class="p">,</span> <span class="s1">&#39;drip&#39;</span><span class="p">:</span> <span class="mf">2.95</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">coffee</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+       <span class="k">if</span> <span class="n">key</span> <span class="o">==</span><span class="s1">&#39;americano&#39;</span><span class="p">:</span>
+            <span class="n">coffee</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.55</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. a) Is the code below an expression or statement? </span>
+<span class="c1">## ANSWER: Expression </span>
+
+<span class="mi">17</span><span class="o">/</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. b) Is the code below an expression or statement? </span>
+<span class="c1">## ANSWER: Statement </span>
+
+<span class="n">weight</span> <span class="o">=</span> <span class="p">[</span><span class="mi">95</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">105</span><span class="p">,</span> <span class="mi">155</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. c) Is the code below an expression or statement?</span>
+<span class="c1">## ANSWER: Expression </span>
+
+<span class="n">subjects</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;English&#39;</span><span class="p">,</span> <span class="s1">&#39;History&#39;</span><span class="p">,</span> <span class="s1">&#39;Algebra&#39;</span><span class="p">,</span> <span class="s1">&#39;Biology&#39;</span><span class="p">,</span> <span class="s1">&#39;Civics&#39;</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">subjects</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. d) Is the code below an expression or statement?</span>
+<span class="c1">## ANSWER: Statement </span>
+
+<span class="n">subjects</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;English&#39;</span><span class="p">,</span> <span class="s1">&#39;History&#39;</span><span class="p">,</span> <span class="s1">&#39;Algebra&#39;</span><span class="p">,</span> <span class="s1">&#39;Biology&#39;</span><span class="p">,</span> <span class="s1">&#39;Civics&#39;</span><span class="p">]</span>
+<span class="n">subjects</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. e) In the code below, which are expressions and which are statements? </span>
+<span class="c1">## ANSWER: Expression </span>
+
+<span class="n">subjects</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;English&#39;</span><span class="p">,</span> <span class="s1">&#39;History&#39;</span><span class="p">,</span> <span class="s1">&#39;Algebra&#39;</span><span class="p">,</span> <span class="s1">&#39;Biology&#39;</span><span class="p">,</span> <span class="s1">&#39;Civics&#39;</span><span class="p">]</span>
+<span class="n">subjects</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">subjects</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="python-intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction to the Python</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="1.2_Variables%20Data%20Types%20and%20Operators.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Types and Operators</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Matt Burton, Evelyn Chan, Others.<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "/Users/mcburton/opt/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/Users/mcburton/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/mcburton/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/mcburton/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/mcburton/opt/anaconda3/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/Users/mcburton/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/mcburton/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/mcburton/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+my_date = parser.parse("<your date string here>")
+my_date
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mParserError[0m                               Traceback (most recent call last)
+Input [0;32mIn [8][0m, in [0;36m<cell line: 1>[0;34m()[0m
+[0;32m----> 1[0m my_date [38;5;241m=[39m [43mparser[49m[38;5;241;43m.[39;49m[43mparse[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43m<your date string here>[39;49m[38;5;124;43m"[39;49m[43m)[49m
+[1;32m      2[0m my_date
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/dateutil/parser/_parser.py:1368[0m, in [0;36mparse[0;34m(timestr, parserinfo, **kwargs)[0m
+[1;32m   1366[0m     [38;5;28;01mreturn[39;00m parser(parserinfo)[38;5;241m.[39mparse(timestr, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+[1;32m   1367[0m [38;5;28;01melse[39;00m:
+[0;32m-> 1368[0m     [38;5;28;01mreturn[39;00m [43mDEFAULTPARSER[49m[38;5;241;43m.[39;49m[43mparse[49m[43m([49m[43mtimestr[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/dateutil/parser/_parser.py:643[0m, in [0;36mparser.parse[0;34m(self, timestr, default, ignoretz, tzinfos, **kwargs)[0m
+[1;32m    640[0m res, skipped_tokens [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_parse(timestr, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+[1;32m    642[0m [38;5;28;01mif[39;00m res [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[0;32m--> 643[0m     [38;5;28;01mraise[39;00m ParserError([38;5;124m"[39m[38;5;124mUnknown string format: [39m[38;5;132;01m%s[39;00m[38;5;124m"[39m, timestr)
+[1;32m    645[0m [38;5;28;01mif[39;00m [38;5;28mlen[39m(res) [38;5;241m==[39m [38;5;241m0[39m:
+[1;32m    646[0m     [38;5;28;01mraise[39;00m ParserError([38;5;124m"[39m[38;5;124mString does not contain a date: [39m[38;5;132;01m%s[39;00m[38;5;124m"[39m, timestr)
+
+[0;31mParserError[0m: Unknown string format: <your date string here>
+ParserError: Unknown string format: <your date string here>
+

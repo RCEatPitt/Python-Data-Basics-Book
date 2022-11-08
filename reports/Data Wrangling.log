@@ -1,0 +1,80 @@
+Traceback (most recent call last):
+  File "/Users/mcburton/opt/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/Users/mcburton/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/mcburton/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/mcburton/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/mcburton/opt/anaconda3/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/Users/mcburton/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/mcburton/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/mcburton/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# lets try and merge them without specifying what to merge on
+pd.merge(df1, df3)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mMergeError[0m                                Traceback (most recent call last)
+Input [0;32mIn [21][0m, in [0;36m<cell line: 2>[0;34m()[0m
+[1;32m      1[0m [38;5;66;03m# lets try and merge them without specifying what to merge on[39;00m
+[0;32m----> 2[0m [43mpd[49m[38;5;241;43m.[39;49m[43mmerge[49m[43m([49m[43mdf1[49m[43m,[49m[43m [49m[43mdf3[49m[43m)[49m
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/reshape/merge.py:107[0m, in [0;36mmerge[0;34m(left, right, how, on, left_on, right_on, left_index, right_index, sort, suffixes, copy, indicator, validate)[0m
+[1;32m     90[0m [38;5;129m@Substitution[39m([38;5;124m"[39m[38;5;130;01m\n[39;00m[38;5;124mleft : DataFrame or named Series[39m[38;5;124m"[39m)
+[1;32m     91[0m [38;5;129m@Appender[39m(_merge_doc, indents[38;5;241m=[39m[38;5;241m0[39m)
+[1;32m     92[0m [38;5;28;01mdef[39;00m [38;5;21mmerge[39m(
+[0;32m   (...)[0m
+[1;32m    105[0m     validate: [38;5;28mstr[39m [38;5;241m|[39m [38;5;28;01mNone[39;00m [38;5;241m=[39m [38;5;28;01mNone[39;00m,
+[1;32m    106[0m ) [38;5;241m-[39m[38;5;241m>[39m DataFrame:
+[0;32m--> 107[0m     op [38;5;241m=[39m [43m_MergeOperation[49m[43m([49m
+[1;32m    108[0m [43m        [49m[43mleft[49m[43m,[49m
+[1;32m    109[0m [43m        [49m[43mright[49m[43m,[49m
+[1;32m    110[0m [43m        [49m[43mhow[49m[38;5;241;43m=[39;49m[43mhow[49m[43m,[49m
+[1;32m    111[0m [43m        [49m[43mon[49m[38;5;241;43m=[39;49m[43mon[49m[43m,[49m
+[1;32m    112[0m [43m        [49m[43mleft_on[49m[38;5;241;43m=[39;49m[43mleft_on[49m[43m,[49m
+[1;32m    113[0m [43m        [49m[43mright_on[49m[38;5;241;43m=[39;49m[43mright_on[49m[43m,[49m
+[1;32m    114[0m [43m        [49m[43mleft_index[49m[38;5;241;43m=[39;49m[43mleft_index[49m[43m,[49m
+[1;32m    115[0m [43m        [49m[43mright_index[49m[38;5;241;43m=[39;49m[43mright_index[49m[43m,[49m
+[1;32m    116[0m [43m        [49m[43msort[49m[38;5;241;43m=[39;49m[43msort[49m[43m,[49m
+[1;32m    117[0m [43m        [49m[43msuffixes[49m[38;5;241;43m=[39;49m[43msuffixes[49m[43m,[49m
+[1;32m    118[0m [43m        [49m[43mcopy[49m[38;5;241;43m=[39;49m[43mcopy[49m[43m,[49m
+[1;32m    119[0m [43m        [49m[43mindicator[49m[38;5;241;43m=[39;49m[43mindicator[49m[43m,[49m
+[1;32m    120[0m [43m        [49m[43mvalidate[49m[38;5;241;43m=[39;49m[43mvalidate[49m[43m,[49m
+[1;32m    121[0m [43m    [49m[43m)[49m
+[1;32m    122[0m     [38;5;28;01mreturn[39;00m op[38;5;241m.[39mget_result()
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/reshape/merge.py:682[0m, in [0;36m_MergeOperation.__init__[0;34m(self, left, right, how, on, left_on, right_on, axis, left_index, right_index, sort, suffixes, copy, indicator, validate)[0m
+[1;32m    678[0m     [38;5;66;03m# stacklevel chosen to be correct when this is reached via pd.merge[39;00m
+[1;32m    679[0m     [38;5;66;03m# (and not DataFrame.join)[39;00m
+[1;32m    680[0m     warnings[38;5;241m.[39mwarn(msg, [38;5;167;01mFutureWarning[39;00m, stacklevel[38;5;241m=[39mfind_stack_level())
+[0;32m--> 682[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_validate_specification[49m[43m([49m[43m)[49m
+[1;32m    684[0m cross_col [38;5;241m=[39m [38;5;28;01mNone[39;00m
+[1;32m    685[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mhow [38;5;241m==[39m [38;5;124m"[39m[38;5;124mcross[39m[38;5;124m"[39m:
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/reshape/merge.py:1349[0m, in [0;36m_MergeOperation._validate_specification[0;34m(self)[0m
+[1;32m   1347[0m common_cols [38;5;241m=[39m left_cols[38;5;241m.[39mintersection(right_cols)
+[1;32m   1348[0m [38;5;28;01mif[39;00m [38;5;28mlen[39m(common_cols) [38;5;241m==[39m [38;5;241m0[39m:
+[0;32m-> 1349[0m     [38;5;28;01mraise[39;00m MergeError(
+[1;32m   1350[0m         [38;5;124m"[39m[38;5;124mNo common columns to perform merge on. [39m[38;5;124m"[39m
+[1;32m   1351[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mMerge options: left_on=[39m[38;5;132;01m{[39;00m[38;5;28mself[39m[38;5;241m.[39mleft_on[38;5;132;01m}[39;00m[38;5;124m, [39m[38;5;124m"[39m
+[1;32m   1352[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mright_on=[39m[38;5;132;01m{[39;00m[38;5;28mself[39m[38;5;241m.[39mright_on[38;5;132;01m}[39;00m[38;5;124m, [39m[38;5;124m"[39m
+[1;32m   1353[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mleft_index=[39m[38;5;132;01m{[39;00m[38;5;28mself[39m[38;5;241m.[39mleft_index[38;5;132;01m}[39;00m[38;5;124m, [39m[38;5;124m"[39m
+[1;32m   1354[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mright_index=[39m[38;5;132;01m{[39;00m[38;5;28mself[39m[38;5;241m.[39mright_index[38;5;132;01m}[39;00m[38;5;124m"[39m
+[1;32m   1355[0m     )
+[1;32m   1356[0m [38;5;28;01mif[39;00m (
+[1;32m   1357[0m     [38;5;129;01mnot[39;00m left_cols[38;5;241m.[39mjoin(common_cols, how[38;5;241m=[39m[38;5;124m"[39m[38;5;124minner[39m[38;5;124m"[39m)[38;5;241m.[39mis_unique
+[1;32m   1358[0m     [38;5;129;01mor[39;00m [38;5;129;01mnot[39;00m right_cols[38;5;241m.[39mjoin(common_cols, how[38;5;241m=[39m[38;5;124m"[39m[38;5;124minner[39m[38;5;124m"[39m)[38;5;241m.[39mis_unique
+[1;32m   1359[0m ):
+[1;32m   1360[0m     [38;5;28;01mraise[39;00m MergeError([38;5;124mf[39m[38;5;124m"[39m[38;5;124mData columns not unique: [39m[38;5;132;01m{[39;00m[38;5;28mrepr[39m(common_cols)[38;5;132;01m}[39;00m[38;5;124m"[39m)
+
+[0;31mMergeError[0m: No common columns to perform merge on. Merge options: left_on=None, right_on=None, left_index=False, right_index=False
+MergeError: No common columns to perform merge on. Merge options: left_on=None, right_on=None, left_index=False, right_index=False
+

@@ -1,0 +1,2501 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>File Input and Output &#8212; Python Data Basics</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction to the Pandas" href="../pandas/pandas-intro.html" />
+    <link rel="prev" title="Functions" href="1.6_%20Functions.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Python Data Basics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Python Data Basics
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to Jupyter
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../jupyter/introduction-to-jupyter.html">
+   Introduction to Jupyter
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Centric Python
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-intro.html">
+   Introduction to the Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.1_Getting%20Started%20with%20Syntax.html">
+   Getting Started in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.2_Variables%20Data%20Types%20and%20Operators.html">
+   Data Types and Operators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.3_Control%20flow%20and%20Conditional%20%20Statements.html">
+   Control Flow Statements and Conditional Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.4_Data%20Structures.html">
+   Python Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.5_Loops.html">
+   Looping
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1.6_%20Functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   File Input and Output
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Management
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/pandas-intro.html">
+   Introduction to the Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/1%20-%20What%20and%20Why%20Pandas.html">
+   Data Processing with Python: What and Why Pandas!
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/Data%20Structures.html">
+   Introduction to Pandas Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/3%20-%20Loading%20Data.html">
+   Loading Data: Reading Files into a Dataframe
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/4%20-%20Basic%20Data%20Manipulation.html">
+   Basic Data Manipulation: Exploring and Summarizing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/Data%20Cleaning.html">
+   Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/Data%20Wrangling.html">
+   Data Wrangling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pandas/Working%20with%20Time.html">
+   Working with Time
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/RCEatPitt/Python-Data-Basics-Book/master?urlpath=tree/python/1.7_File Input and Output.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/RCEatPitt/Python-Data-Basics-Book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/RCEatPitt/Python-Data-Basics-Book/issues/new?title=Issue%20on%20page%20%2Fpython/1.7_File Input and Output.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/python/1.7_File Input and Output.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#opening-files">
+   Opening files
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#remember-to-close-the-file">
+     Remember to close the file!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-n-character">
+     The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       \n
+      </span>
+     </code>
+     Character
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#working-with-files-line-by-line">
+     Working with files line by line
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reading-data-files">
+     Reading Data Files
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-in-all-the-data">
+   Reading in all the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#write-mode-writing-files">
+   Write() Mode: writing files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#append-mode-append-files">
+   Append() Mode: append files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#with-open">
+   With Open
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-give-it-a-try">
+   Let’s give it a try!
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-csv-files">
+   Working With CSV Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice-questions">
+   Practice Questions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#csv-files-challenge-1">
+     CSV files - Challenge 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#answers">
+     Answers
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>File Input and Output</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#opening-files">
+   Opening files
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#remember-to-close-the-file">
+     Remember to close the file!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-n-character">
+     The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       \n
+      </span>
+     </code>
+     Character
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#working-with-files-line-by-line">
+     Working with files line by line
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reading-data-files">
+     Reading Data Files
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-in-all-the-data">
+   Reading in all the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#write-mode-writing-files">
+   Write() Mode: writing files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#append-mode-append-files">
+   Append() Mode: append files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#with-open">
+   With Open
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-give-it-a-try">
+   Let’s give it a try!
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-csv-files">
+   Working With CSV Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice-questions">
+   Practice Questions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#csv-files-challenge-1">
+     CSV files - Challenge 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#answers">
+     Answers
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="file-input-and-output">
+<h1>File Input and Output<a class="headerlink" href="#file-input-and-output" title="Permalink to this headline">#</a></h1>
+<p>Up to now we haven’t really been doing much with data, only what we type into the notebooks (short strings, numbers, lists etc). In many cases our source of data comes from files. Learning how to import, open and save files are important for processing larger amounts of data.</p>
+<p>In this module we will cover the following topics:</p>
+<ul class="simple">
+<li><p>how to read and open files</p></li>
+<li><p>how to write files</p></li>
+<li><p>hope to close files</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use the shell command cat to display the contents of the file test.txt</span>
+<span class="o">!</span>cat test.txt
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cat: test.txt: No such file or directory
+</pre></div>
+</div>
+</div>
+</div>
+<section id="opening-files">
+<h2>Opening files<a class="headerlink" href="#opening-files" title="Permalink to this headline">#</a></h2>
+<p>We use the <code class="docutils literal notranslate"><span class="pre">open()</span></code> function to establish a <em>connection</em> to a file on disk. Once a file has been opened, we can perform operations on it like reading it into memory. Also be sure to use the <code class="docutils literal notranslate"><span class="pre">close()</span></code> function when you are done with the file (i.e. read the contents into memory)</p>
+<p><strong>Syntax</strong>
+When we open a file, we assign it to an empty object, which in the case is <code class="docutils literal notranslate"><span class="pre">find_handler</span></code>. <code class="docutils literal notranslate"><span class="pre">file_handler</span></code> is a connection to the file, but it isn’t the file contents itself. The name directory of the file and name of the file follows the <code class="docutils literal notranslate"><span class="pre">open</span></code> function and is placed within the parenthesis. Be sure to use quotations, double or single, when you identify the directory and name of the file. It’s then followed by a built-in feature with the open function, here we are opening the document in <code class="docutils literal notranslate"><span class="pre">read</span></code> mode. In <code class="docutils literal notranslate"><span class="pre">read</span></code> mode, Python reads the entire file into memory at once. Don’t do this with large files! We will use other techniques to read their contents.</p>
+<p>We then assign file_handler to an empty variable, called <code class="docutils literal notranslate"><span class="pre">file_contents</span></code>. We then print file_contents, which produces the contents of the text file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_handler</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;assets/test.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="c1"># the &#39;r&#39; tells Python you are Reading the file</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read the file into a variable</span>
+<span class="n">file_contents</span> <span class="o">=</span> <span class="n">file_handler</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">file_contents</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;I am a text file.\nI am not very big.\nOnly three lines of text.&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## You can also read the contents without creating a new varaible </span>
+<span class="n">file_handler</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="remember-to-close-the-file">
+<h3>Remember to close the file!<a class="headerlink" href="#remember-to-close-the-file" title="Permalink to this headline">#</a></h3>
+<p>Notice when we run the same code again, it comes up empty, the contents of the file that was printed above don’t appear again. That’s because once we read() a file, we have to close it and re-open it. For good meausre, you shoudl always close a file when you’re done with it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read the file into a variable</span>
+<span class="n">file_contents</span> <span class="o">=</span> <span class="n">file_handler</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">file_contents</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># close the previous open</span>
+<span class="n">file_handler</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># re-open the file and read it in</span>
+<span class="n">file_handler</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;assets/test.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> 
+<span class="n">file_contents</span> <span class="o">=</span> <span class="n">file_handler</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">file_contents</span><span class="p">)</span>
+<span class="n">file_handler</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># close it for good measure, you should always close a file when you are done</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am a text file.
+I am not very big.
+Only three lines of text.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-n-character">
+<h3>The <code class="docutils literal notranslate"><span class="pre">\n</span></code> Character<a class="headerlink" href="#the-n-character" title="Permalink to this headline">#</a></h3>
+<p>One thing to note, the “\n” gets printed as a newline by the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function vs. raw output from Jupyter. When working with files, it is really important to understand the <em>newline</em> character A newline is represented in a string by <code class="docutils literal notranslate"><span class="pre">\n</span></code>. This is useful for processing a text file line-by-line</p>
+<p>Print the following code, one without the <code class="docutils literal notranslate"><span class="pre">\n</span></code> character and one with the <code class="docutils literal notranslate"><span class="pre">\n</span></code> character.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello</span><span class="se">\n</span><span class="s2">World!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can use the repr() function to see the raw string from the file.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="s2">&quot;Hello</span><span class="se">\n</span><span class="s2">World!&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A string with a newline in it</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello</span><span class="se">\n</span><span class="s2">World!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello
+World!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># leveraging the repr() function:</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="s2">&quot;Hello</span><span class="se">\n</span><span class="s2">World!&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Hello\nWorld!&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="working-with-files-line-by-line">
+<h3>Working with files line by line<a class="headerlink" href="#working-with-files-line-by-line" title="Permalink to this headline">#</a></h3>
+<p>When you have files with data on each line, especially large files, you can loop over them. Just like iterating over lists, you can iterate over files. Python reads the contents of the file until it hits “\n” and then it puts that in the loop variable. Useful for working with <em>extremely large</em> files because you only store one line in memory at a time</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_handler</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;assets/test.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file_handler</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="n">file_handler</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am a text file.
+
+I am not very big.
+
+Only three lines of text.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="reading-data-files">
+<h3>Reading Data Files<a class="headerlink" href="#reading-data-files" title="Permalink to this headline">#</a></h3>
+<p>A file handler is not the file, it is a pointer to the file. This is how python can work with HUGE files. We can process large files line by line (assuming there are multiple lines). Each line gets treated as a separate string.</p>
+<p>The following code counts the number of lines in the document.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># count the number of lines in the text file</span>
+<span class="n">file_handler</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;assets/diabetes.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file_handler</span><span class="p">:</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="c1">#count+=1</span>
+<span class="n">file_handler</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use the unix command head to see the first 25 lines of the file</span>
+<span class="o">!</span>head -n <span class="m">25</span> diabetes.csv
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>head: diabetes.csv: No such file or directory
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Lets count the lines of the file</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># count the number of lines in the text file</span>
+<span class="n">file_handler</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;assets/diabetes.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file_handler</span><span class="p">:</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="c1">#count+=1</span>
+<span class="n">file_handler</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>404
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="reading-in-all-the-data">
+<h2>Reading in all the data<a class="headerlink" href="#reading-in-all-the-data" title="Permalink to this headline">#</a></h2>
+<p>Why don’t we read every line of the file into memory as a list? To start, we need create an empty list. We then append each line to the empty list. Each line therefore becomes one item in a list called <em>data</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create an empty list to store each line</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span> 
+
+<span class="c1"># count the number of lines in the text file</span>
+<span class="n">file_handler</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;assets/diabetes.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file_handler</span><span class="p">:</span>
+    <span class="c1"># use the append function to add each line</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="n">file_handler</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># close the file handler now that we are done.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Length:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First 10 lines:&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Length: 404
+First 10 lines: [&#39;id,chol,stab.glu,hdl,age,gender,height,weight,frame,bp.1s,bp.1d\n&#39;, &#39;1000,203,82,56,46,female,62,121,medium,118,59\n&#39;, &#39;1001,165,97,24,29,female,64,218,large,112,68\n&#39;, &#39;1002,228,92,37,58,female,61,256,large,190,92\n&#39;, &#39;1003,78,93,12,67,male,67,119,large,110,50\n&#39;, &#39;1005,249,90,28,64,male,68,183,medium,138,80\n&#39;, &#39;1008,248,94,69,34,male,71,190,large,132,86\n&#39;, &#39;1011,195,92,41,30,male,69,191,medium,161,112\n&#39;, &#39;1015,227,75,44,37,male,59,170,medium,,\n&#39;, &#39;1016,177,87,49,45,male,69,166,large,160,80\n&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="write-mode-writing-files">
+<h2>Write() Mode: writing files<a class="headerlink" href="#write-mode-writing-files" title="Permalink to this headline">#</a></h2>
+<p>Above we looked at the read() mode within the open() function. There’s also an option to <code class="docutils literal notranslate"><span class="pre">write()</span></code> files. Instead of reading the contents of a file into an object, write() mode, writes the content into a file. For an existing document, it will overwrite the content already in the file.</p>
+<p>Let’s look at an example. If we open and read this text, you’ll notice the content are numbers. When we use the write() mode, we are overwriting the file with new content. We’ll use the write() mode to change the existing content, and substitute numbers with alphabetical characters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;assets/numbers_test.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> 
+<span class="n">numbers</span> <span class="o">=</span> <span class="n">num</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span> <span class="p">)</span>
+<span class="n">num</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>one two three four five
+one two three four five
+</pre></div>
+</div>
+</div>
+</div>
+<p>To overwrite the existing text file, we create a new variable that contains the new content we would like to replace the text file with. We then re-open file, since in the previous line we closed the file. Within the parameters of the write() function, we identify the variable that contains the new text</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">new_text</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;one two three four five&#39;</span><span class="p">)</span>
+<span class="n">num</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;assets/numbers_test.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> 
+<span class="n">num</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">new_text</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To test if we successfully overwrite the file with alphabetical characters, let’s read the file back in.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;assets/numbers_test.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> 
+<span class="n">numbers</span> <span class="o">=</span> <span class="n">num</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span> <span class="p">)</span>
+<span class="n">num</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_text</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;one two three four five&#39;</span><span class="p">)</span>
+<span class="n">num</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;assets/numbers_test.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> 
+<span class="n">num</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">new_text</span><span class="p">)</span>
+<span class="c1"># Closing file</span>
+<span class="n">num</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;assets/numbers_test.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> 
+<span class="n">numbers</span> <span class="o">=</span> <span class="n">num</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span> <span class="p">)</span>
+<span class="n">num</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>one two three four five
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="append-mode-append-files">
+<h2>Append() Mode: append files<a class="headerlink" href="#append-mode-append-files" title="Permalink to this headline">#</a></h2>
+<p>If you don’t want to overwrite an existing file but just want to add content to the file, it’s best to use the <code class="docutils literal notranslate"><span class="pre">append()</span></code> mode. It will append data to the end of a document file. You’ll notice we insert <code class="docutils literal notranslate"><span class="pre">\n</span></code> before the <code class="docutils literal notranslate"><span class="pre">new_text</span></code> variable. This inserts a new line before we append contents of new_text to the file.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;assets/numbers_test.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> 
+<span class="n">num</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">new_text</span><span class="p">)</span>
+<span class="c1"># Closing file</span>
+<span class="n">num</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;assets/numbers_test.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> 
+<span class="n">num</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">new_text</span><span class="p">)</span>
+<span class="c1"># Closing file</span>
+<span class="n">num</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="with-open">
+<h2>With Open<a class="headerlink" href="#with-open" title="Permalink to this headline">#</a></h2>
+<p>In the code blocks above, it was strongly advised to <code class="docutils literal notranslate"><span class="pre">close()</span></code> the file once you’re done reading or writing the file. The <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">open()</span></code> function allows you to avoid having to close() the file every time. Let’s go back to the <code class="docutils literal notranslate"><span class="pre">test.txt</span></code> file</p>
+<p><strong>Syntax</strong></p>
+<p>You begin the code with <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">open</span></code>, include the directory and name of the file in the paramater of the function. Make sure to include single or double quotations around the directory and file name. This is followed by the <code class="docutils literal notranslate"><span class="pre">as</span></code> keyword and the name of the empty object. You can give the empty object any name. Here, we’ve reused file_handler again. Create a new variable and assign the object to the variable, which in the example below is <em>test_doc</em>. Here, we are using the read() option to read the text file. You can also use the write() and append() option with the <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">open</span></code> function.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;assets/test.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_handler</span><span class="p">:</span>
+    <span class="n">test_doc</span> <span class="o">=</span> <span class="n">file_handler</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">test_doc</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;assets/test.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_handler</span><span class="p">:</span>
+    <span class="n">test_doc</span> <span class="o">=</span> <span class="n">file_handler</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">test_doc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am a text file.
+I am not very big.
+Only three lines of text.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="let-s-give-it-a-try">
+<h2>Let’s give it a try!<a class="headerlink" href="#let-s-give-it-a-try" title="Permalink to this headline">#</a></h2>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">open</span></code> function, write or append text to the document called <code class="docutils literal notranslate"><span class="pre">tryit.txt</span></code>. You’ll find the text file in the <code class="docutils literal notranslate"><span class="pre">Assets</span></code> folder.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Wrote code here that uses the with open function to write or append text to the tryit.txt file. </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="working-with-csv-files">
+<h2>Working With CSV Files<a class="headerlink" href="#working-with-csv-files" title="Permalink to this headline">#</a></h2>
+<p>CSV files are used to store a large number of variables – or data. They are incredibly simplified spreadsheets – think Excel – only the content is stored in plaintext. Python has a CSV parser as part of the standard library. To parse CSV files, we use the csv module. The csv module provides a number of built-in functions to make it easier to parse and iterate through CSV files.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  load the CSV module </span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="c1"># open the diabetes file</span>
+<span class="n">diabetes_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;assets/diabetes.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Now we need to tell Python that the file stored in diabetes_file variable should be read as and interpreted as a CSV file.</p></li>
+<li><p>We do that by calling on the <code class="docutils literal notranslate"><span class="pre">reader()</span></code> function of the csv module</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a CSV reader </span>
+<span class="n">diabetes_data</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">diabetes_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>At this point, the entire CSV file is treated as a table - a collection of rows and columns</p></li>
+<li><p>We can iterate (loop) through this table and get access to each individual row, just like the line-by-line above</p></li>
+<li><p>But CSV automatically splits it all into different values!</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># loop over the file and print the row contents</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">diabetes_data</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;id&#39;, &#39;chol&#39;, &#39;stab.glu&#39;, &#39;hdl&#39;, &#39;age&#39;, &#39;gender&#39;, &#39;height&#39;, &#39;weight&#39;, &#39;frame&#39;, &#39;bp.1s&#39;, &#39;bp.1d&#39;]
+[&#39;1000&#39;, &#39;203&#39;, &#39;82&#39;, &#39;56&#39;, &#39;46&#39;, &#39;female&#39;, &#39;62&#39;, &#39;121&#39;, &#39;medium&#39;, &#39;118&#39;, &#39;59&#39;]
+[&#39;1001&#39;, &#39;165&#39;, &#39;97&#39;, &#39;24&#39;, &#39;29&#39;, &#39;female&#39;, &#39;64&#39;, &#39;218&#39;, &#39;large&#39;, &#39;112&#39;, &#39;68&#39;]
+[&#39;1002&#39;, &#39;228&#39;, &#39;92&#39;, &#39;37&#39;, &#39;58&#39;, &#39;female&#39;, &#39;61&#39;, &#39;256&#39;, &#39;large&#39;, &#39;190&#39;, &#39;92&#39;]
+[&#39;1003&#39;, &#39;78&#39;, &#39;93&#39;, &#39;12&#39;, &#39;67&#39;, &#39;male&#39;, &#39;67&#39;, &#39;119&#39;, &#39;large&#39;, &#39;110&#39;, &#39;50&#39;]
+[&#39;1005&#39;, &#39;249&#39;, &#39;90&#39;, &#39;28&#39;, &#39;64&#39;, &#39;male&#39;, &#39;68&#39;, &#39;183&#39;, &#39;medium&#39;, &#39;138&#39;, &#39;80&#39;]
+[&#39;1008&#39;, &#39;248&#39;, &#39;94&#39;, &#39;69&#39;, &#39;34&#39;, &#39;male&#39;, &#39;71&#39;, &#39;190&#39;, &#39;large&#39;, &#39;132&#39;, &#39;86&#39;]
+[&#39;1011&#39;, &#39;195&#39;, &#39;92&#39;, &#39;41&#39;, &#39;30&#39;, &#39;male&#39;, &#39;69&#39;, &#39;191&#39;, &#39;medium&#39;, &#39;161&#39;, &#39;112&#39;]
+[&#39;1015&#39;, &#39;227&#39;, &#39;75&#39;, &#39;44&#39;, &#39;37&#39;, &#39;male&#39;, &#39;59&#39;, &#39;170&#39;, &#39;medium&#39;, &#39;&#39;, &#39;&#39;]
+[&#39;1016&#39;, &#39;177&#39;, &#39;87&#39;, &#39;49&#39;, &#39;45&#39;, &#39;male&#39;, &#39;69&#39;, &#39;166&#39;, &#39;large&#39;, &#39;160&#39;, &#39;80&#39;]
+[&#39;1022&#39;, &#39;263&#39;, &#39;89&#39;, &#39;40&#39;, &#39;55&#39;, &#39;female&#39;, &#39;63&#39;, &#39;202&#39;, &#39;small&#39;, &#39;108&#39;, &#39;72&#39;]
+[&#39;1024&#39;, &#39;242&#39;, &#39;82&#39;, &#39;54&#39;, &#39;60&#39;, &#39;female&#39;, &#39;65&#39;, &#39;156&#39;, &#39;medium&#39;, &#39;130&#39;, &#39;90&#39;]
+[&#39;1029&#39;, &#39;215&#39;, &#39;128&#39;, &#39;34&#39;, &#39;38&#39;, &#39;female&#39;, &#39;58&#39;, &#39;195&#39;, &#39;medium&#39;, &#39;102&#39;, &#39;68&#39;]
+[&#39;1030&#39;, &#39;238&#39;, &#39;75&#39;, &#39;36&#39;, &#39;27&#39;, &#39;female&#39;, &#39;60&#39;, &#39;170&#39;, &#39;medium&#39;, &#39;130&#39;, &#39;80&#39;]
+[&#39;1031&#39;, &#39;183&#39;, &#39;79&#39;, &#39;46&#39;, &#39;40&#39;, &#39;female&#39;, &#39;59&#39;, &#39;165&#39;, &#39;medium&#39;, &#39;&#39;, &#39;&#39;]
+[&#39;1035&#39;, &#39;191&#39;, &#39;76&#39;, &#39;30&#39;, &#39;36&#39;, &#39;male&#39;, &#39;69&#39;, &#39;183&#39;, &#39;medium&#39;, &#39;100&#39;, &#39;66&#39;]
+[&#39;1036&#39;, &#39;213&#39;, &#39;83&#39;, &#39;47&#39;, &#39;33&#39;, &#39;female&#39;, &#39;65&#39;, &#39;157&#39;, &#39;medium&#39;, &#39;130&#39;, &#39;90&#39;]
+[&#39;1037&#39;, &#39;255&#39;, &#39;78&#39;, &#39;38&#39;, &#39;50&#39;, &#39;female&#39;, &#39;65&#39;, &#39;183&#39;, &#39;medium&#39;, &#39;130&#39;, &#39;100&#39;]
+[&#39;1041&#39;, &#39;230&#39;, &#39;112&#39;, &#39;64&#39;, &#39;20&#39;, &#39;male&#39;, &#39;67&#39;, &#39;159&#39;, &#39;medium&#39;, &#39;100&#39;, &#39;90&#39;]
+[&#39;1045&#39;, &#39;194&#39;, &#39;81&#39;, &#39;36&#39;, &#39;36&#39;, &#39;male&#39;, &#39;64&#39;, &#39;126&#39;, &#39;medium&#39;, &#39;110&#39;, &#39;76&#39;]
+[&#39;1250&#39;, &#39;196&#39;, &#39;206&#39;, &#39;41&#39;, &#39;62&#39;, &#39;female&#39;, &#39;65&#39;, &#39;196&#39;, &#39;large&#39;, &#39;178&#39;, &#39;90&#39;]
+[&#39;1252&#39;, &#39;186&#39;, &#39;97&#39;, &#39;50&#39;, &#39;70&#39;, &#39;male&#39;, &#39;67&#39;, &#39;178&#39;, &#39;large&#39;, &#39;148&#39;, &#39;88&#39;]
+[&#39;1253&#39;, &#39;234&#39;, &#39;65&#39;, &#39;76&#39;, &#39;47&#39;, &#39;male&#39;, &#39;67&#39;, &#39;230&#39;, &#39;large&#39;, &#39;137&#39;, &#39;100&#39;]
+[&#39;1254&#39;, &#39;203&#39;, &#39;299&#39;, &#39;43&#39;, &#39;38&#39;, &#39;female&#39;, &#39;69&#39;, &#39;288&#39;, &#39;large&#39;, &#39;136&#39;, &#39;83&#39;]
+[&#39;1256&#39;, &#39;281&#39;, &#39;92&#39;, &#39;41&#39;, &#39;66&#39;, &#39;female&#39;, &#39;62&#39;, &#39;185&#39;, &#39;large&#39;, &#39;158&#39;, &#39;88&#39;]
+[&#39;1271&#39;, &#39;228&#39;, &#39;66&#39;, &#39;45&#39;, &#39;24&#39;, &#39;female&#39;, &#39;61&#39;, &#39;113&#39;, &#39;medium&#39;, &#39;100&#39;, &#39;70&#39;]
+[&#39;1277&#39;, &#39;179&#39;, &#39;80&#39;, &#39;92&#39;, &#39;41&#39;, &#39;female&#39;, &#39;72&#39;, &#39;118&#39;, &#39;small&#39;, &#39;144&#39;, &#39;112&#39;]
+[&#39;1280&#39;, &#39;232&#39;, &#39;87&#39;, &#39;30&#39;, &#39;37&#39;, &#39;male&#39;, &#39;68&#39;, &#39;252&#39;, &#39;large&#39;, &#39;140&#39;, &#39;95&#39;]
+[&#39;1281&#39;, &#39;&#39;, &#39;74&#39;, &#39;&#39;, &#39;48&#39;, &#39;male&#39;, &#39;68&#39;, &#39;100&#39;, &#39;small&#39;, &#39;120&#39;, &#39;85&#39;]
+[&#39;1282&#39;, &#39;254&#39;, &#39;84&#39;, &#39;52&#39;, &#39;43&#39;, &#39;female&#39;, &#39;62&#39;, &#39;145&#39;, &#39;medium&#39;, &#39;125&#39;, &#39;70&#39;]
+[&#39;1285&#39;, &#39;215&#39;, &#39;72&#39;, &#39;42&#39;, &#39;40&#39;, &#39;male&#39;, &#39;70&#39;, &#39;189&#39;, &#39;medium&#39;, &#39;180&#39;, &#39;122&#39;]
+[&#39;1301&#39;, &#39;177&#39;, &#39;101&#39;, &#39;36&#39;, &#39;42&#39;, &#39;female&#39;, &#39;65&#39;, &#39;174&#39;, &#39;medium&#39;, &#39;146&#39;, &#39;94&#39;]
+[&#39;1303&#39;, &#39;182&#39;, &#39;85&#39;, &#39;43&#39;, &#39;52&#39;, &#39;male&#39;, &#39;68&#39;, &#39;139&#39;, &#39;large&#39;, &#39;130&#39;, &#39;90&#39;]
+[&#39;1304&#39;, &#39;265&#39;, &#39;330&#39;, &#39;34&#39;, &#39;61&#39;, &#39;male&#39;, &#39;74&#39;, &#39;191&#39;, &#39;medium&#39;, &#39;170&#39;, &#39;88&#39;]
+[&#39;1305&#39;, &#39;182&#39;, &#39;85&#39;, &#39;37&#39;, &#39;61&#39;, &#39;female&#39;, &#39;69&#39;, &#39;174&#39;, &#39;medium&#39;, &#39;176&#39;, &#39;86&#39;]
+[&#39;1309&#39;, &#39;199&#39;, &#39;87&#39;, &#39;63&#39;, &#39;25&#39;, &#39;male&#39;, &#39;66&#39;, &#39;118&#39;, &#39;medium&#39;, &#39;120&#39;, &#39;78&#39;]
+[&#39;1312&#39;, &#39;183&#39;, &#39;81&#39;, &#39;60&#39;, &#39;47&#39;, &#39;female&#39;, &#39;66&#39;, &#39;186&#39;, &#39;medium&#39;, &#39;140&#39;, &#39;97&#39;]
+[&#39;1313&#39;, &#39;194&#39;, &#39;86&#39;, &#39;67&#39;, &#39;35&#39;, &#39;male&#39;, &#39;66&#39;, &#39;159&#39;, &#39;medium&#39;, &#39;115&#39;, &#39;64&#39;]
+[&#39;1314&#39;, &#39;190&#39;, &#39;107&#39;, &#39;32&#39;, &#39;46&#39;, &#39;male&#39;, &#39;72&#39;, &#39;205&#39;, &#39;medium&#39;, &#39;&#39;, &#39;&#39;]
+[&#39;1315&#39;, &#39;173&#39;, &#39;80&#39;, &#39;57&#39;, &#39;57&#39;, &#39;male&#39;, &#39;71&#39;, &#39;145&#39;, &#39;medium&#39;, &#39;124&#39;, &#39;64&#39;]
+[&#39;1316&#39;, &#39;182&#39;, &#39;206&#39;, &#39;43&#39;, &#39;70&#39;, &#39;male&#39;, &#39;69&#39;, &#39;214&#39;, &#39;large&#39;, &#39;158&#39;, &#39;90&#39;]
+[&#39;1317&#39;, &#39;136&#39;, &#39;81&#39;, &#39;51&#39;, &#39;22&#39;, &#39;female&#39;, &#39;66&#39;, &#39;160&#39;, &#39;large&#39;, &#39;105&#39;, &#39;85&#39;]
+[&#39;1321&#39;, &#39;218&#39;, &#39;68&#39;, &#39;46&#39;, &#39;52&#39;, &#39;female&#39;, &#39;62&#39;, &#39;170&#39;, &#39;medium&#39;, &#39;142&#39;, &#39;79&#39;]
+[&#39;1323&#39;, &#39;225&#39;, &#39;83&#39;, &#39;42&#39;, &#39;36&#39;, &#39;male&#39;, &#39;67&#39;, &#39;192&#39;, &#39;large&#39;, &#39;149&#39;, &#39;89&#39;]
+[&#39;1326&#39;, &#39;262&#39;, &#39;84&#39;, &#39;38&#39;, &#39;43&#39;, &#39;male&#39;, &#39;75&#39;, &#39;253&#39;, &#39;large&#39;, &#39;124&#39;, &#39;80&#39;]
+[&#39;1500&#39;, &#39;213&#39;, &#39;76&#39;, &#39;40&#39;, &#39;72&#39;, &#39;female&#39;, &#39;59&#39;, &#39;137&#39;, &#39;large&#39;, &#39;130&#39;, &#39;60&#39;]
+[&#39;1501&#39;, &#39;243&#39;, &#39;52&#39;, &#39;59&#39;, &#39;37&#39;, &#39;female&#39;, &#39;64&#39;, &#39;233&#39;, &#39;medium&#39;, &#39;110&#39;, &#39;82&#39;]
+[&#39;1502&#39;, &#39;148&#39;, &#39;193&#39;, &#39;14&#39;, &#39;54&#39;, &#39;female&#39;, &#39;67&#39;, &#39;165&#39;, &#39;medium&#39;, &#39;140&#39;, &#39;65&#39;]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;2004&#39;, &#39;128&#39;, &#39;223&#39;, &#39;24&#39;, &#39;60&#39;, &#39;male&#39;, &#39;67&#39;, &#39;196&#39;, &#39;medium&#39;, &#39;110&#39;, &#39;68&#39;]
+[&#39;2750&#39;, &#39;169&#39;, &#39;85&#39;, &#39;51&#39;, &#39;40&#39;, &#39;female&#39;, &#39;65&#39;, &#39;180&#39;, &#39;medium&#39;, &#39;106&#39;, &#39;82&#39;]
+[&#39;2753&#39;, &#39;157&#39;, &#39;74&#39;, &#39;47&#39;, &#39;55&#39;, &#39;female&#39;, &#39;66&#39;, &#39;219&#39;, &#39;medium&#39;, &#39;150&#39;, &#39;82&#39;]
+[&#39;2754&#39;, &#39;196&#39;, &#39;82&#39;, &#39;58&#39;, &#39;76&#39;, &#39;male&#39;, &#39;65&#39;, &#39;154&#39;, &#39;&#39;, &#39;158&#39;, &#39;78&#39;]
+[&#39;2756&#39;, &#39;237&#39;, &#39;87&#39;, &#39;41&#39;, &#39;43&#39;, &#39;female&#39;, &#39;64&#39;, &#39;181&#39;, &#39;medium&#39;, &#39;104&#39;, &#39;90&#39;]
+[&#39;2757&#39;, &#39;212&#39;, &#39;97&#39;, &#39;45&#39;, &#39;65&#39;, &#39;female&#39;, &#39;61&#39;, &#39;187&#39;, &#39;large&#39;, &#39;158&#39;, &#39;94&#39;]
+[&#39;2758&#39;, &#39;233&#39;, &#39;92&#39;, &#39;39&#39;, &#39;45&#39;, &#39;female&#39;, &#39;64&#39;, &#39;167&#39;, &#39;large&#39;, &#39;124&#39;, &#39;86&#39;]
+[&#39;2762&#39;, &#39;289&#39;, &#39;111&#39;, &#39;50&#39;, &#39;70&#39;, &#39;female&#39;, &#39;60&#39;, &#39;220&#39;, &#39;medium&#39;, &#39;126&#39;, &#39;80&#39;]
+[&#39;2763&#39;, &#39;193&#39;, &#39;106&#39;, &#39;63&#39;, &#39;20&#39;, &#39;female&#39;, &#39;68&#39;, &#39;274&#39;, &#39;small&#39;, &#39;165&#39;, &#39;110&#39;]
+[&#39;2765&#39;, &#39;204&#39;, &#39;128&#39;, &#39;61&#39;, &#39;62&#39;, &#39;male&#39;, &#39;68&#39;, &#39;180&#39;, &#39;large&#39;, &#39;141&#39;, &#39;81&#39;]
+[&#39;2770&#39;, &#39;165&#39;, &#39;94&#39;, &#39;69&#39;, &#39;92&#39;, &#39;female&#39;, &#39;62&#39;, &#39;217&#39;, &#39;large&#39;, &#39;160&#39;, &#39;82&#39;]
+[&#39;2773&#39;, &#39;237&#39;, &#39;233&#39;, &#39;58&#39;, &#39;49&#39;, &#39;female&#39;, &#39;62&#39;, &#39;189&#39;, &#39;large&#39;, &#39;130&#39;, &#39;90&#39;]
+[&#39;2774&#39;, &#39;218&#39;, &#39;88&#39;, &#39;39&#39;, &#39;44&#39;, &#39;female&#39;, &#39;66&#39;, &#39;191&#39;, &#39;large&#39;, &#39;138&#39;, &#39;79&#39;]
+[&#39;2775&#39;, &#39;296&#39;, &#39;262&#39;, &#39;60&#39;, &#39;74&#39;, &#39;female&#39;, &#39;63&#39;, &#39;183&#39;, &#39;large&#39;, &#39;159&#39;, &#39;99&#39;]
+[&#39;2777&#39;, &#39;178&#39;, &#39;78&#39;, &#39;59&#39;, &#39;36&#39;, &#39;male&#39;, &#39;70&#39;, &#39;161&#39;, &#39;medium&#39;, &#39;130&#39;, &#39;79&#39;]
+[&#39;2778&#39;, &#39;443&#39;, &#39;185&#39;, &#39;23&#39;, &#39;51&#39;, &#39;female&#39;, &#39;70&#39;, &#39;235&#39;, &#39;medium&#39;, &#39;158&#39;, &#39;98&#39;]
+[&#39;2780&#39;, &#39;145&#39;, &#39;85&#39;, &#39;29&#39;, &#39;38&#39;, &#39;female&#39;, &#39;&#39;, &#39;125&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;]
+[&#39;2784&#39;, &#39;234&#39;, &#39;80&#39;, &#39;63&#39;, &#39;31&#39;, &#39;male&#39;, &#39;70&#39;, &#39;165&#39;, &#39;medium&#39;, &#39;121&#39;, &#39;71&#39;]
+[&#39;2785&#39;, &#39;146&#39;, &#39;77&#39;, &#39;60&#39;, &#39;28&#39;, &#39;female&#39;, &#39;64&#39;, &#39;126&#39;, &#39;small&#39;, &#39;120&#39;, &#39;90&#39;]
+[&#39;2787&#39;, &#39;223&#39;, &#39;75&#39;, &#39;85&#39;, &#39;22&#39;, &#39;female&#39;, &#39;62&#39;, &#39;137&#39;, &#39;medium&#39;, &#39;120&#39;, &#39;70&#39;]
+[&#39;2791&#39;, &#39;213&#39;, &#39;203&#39;, &#39;75&#39;, &#39;71&#39;, &#39;female&#39;, &#39;63&#39;, &#39;165&#39;, &#39;medium&#39;, &#39;150&#39;, &#39;80&#39;]
+[&#39;2793&#39;, &#39;173&#39;, &#39;131&#39;, &#39;69&#39;, &#39;76&#39;, &#39;female&#39;, &#39;61&#39;, &#39;102&#39;, &#39;medium&#39;, &#39;160&#39;, &#39;60&#39;]
+[&#39;2794&#39;, &#39;232&#39;, &#39;184&#39;, &#39;114&#39;, &#39;91&#39;, &#39;female&#39;, &#39;61&#39;, &#39;127&#39;, &#39;&#39;, &#39;170&#39;, &#39;82&#39;]
+[&#39;2795&#39;, &#39;171&#39;, &#39;92&#39;, &#39;54&#39;, &#39;40&#39;, &#39;male&#39;, &#39;71&#39;, &#39;214&#39;, &#39;medium&#39;, &#39;138&#39;, &#39;94&#39;]
+[&#39;3250&#39;, &#39;164&#39;, &#39;86&#39;, &#39;40&#39;, &#39;23&#39;, &#39;female&#39;, &#39;69&#39;, &#39;245&#39;, &#39;large&#39;, &#39;126&#39;, &#39;75&#39;]
+[&#39;3750&#39;, &#39;170&#39;, &#39;69&#39;, &#39;64&#39;, &#39;20&#39;, &#39;female&#39;, &#39;64&#39;, &#39;161&#39;, &#39;medium&#39;, &#39;108&#39;, &#39;70&#39;]
+[&#39;3751&#39;, &#39;180&#39;, &#39;84&#39;, &#39;69&#39;, &#39;40&#39;, &#39;female&#39;, &#39;68&#39;, &#39;264&#39;, &#39;medium&#39;, &#39;142&#39;, &#39;98&#39;]
+[&#39;3752&#39;, &#39;204&#39;, &#39;57&#39;, &#39;74&#39;, &#39;52&#39;, &#39;male&#39;, &#39;75&#39;, &#39;142&#39;, &#39;small&#39;, &#39;140&#39;, &#39;90&#39;]
+[&#39;4000&#39;, &#39;209&#39;, &#39;113&#39;, &#39;65&#39;, &#39;76&#39;, &#39;female&#39;, &#39;60&#39;, &#39;143&#39;, &#39;large&#39;, &#39;156&#39;, &#39;78&#39;]
+[&#39;4500&#39;, &#39;242&#39;, &#39;108&#39;, &#39;53&#39;, &#39;46&#39;, &#39;female&#39;, &#39;62&#39;, &#39;183&#39;, &#39;medium&#39;, &#39;130&#39;, &#39;86&#39;]
+[&#39;4501&#39;, &#39;134&#39;, &#39;105&#39;, &#39;42&#39;, &#39;48&#39;, &#39;male&#39;, &#39;70&#39;, &#39;173&#39;, &#39;large&#39;, &#39;178&#39;, &#39;120&#39;]
+[&#39;4506&#39;, &#39;217&#39;, &#39;81&#39;, &#39;60&#39;, &#39;22&#39;, &#39;female&#39;, &#39;71&#39;, &#39;223&#39;, &#39;medium&#39;, &#39;120&#39;, &#39;75&#39;]
+[&#39;4515&#39;, &#39;251&#39;, &#39;94&#39;, &#39;36&#39;, &#39;58&#39;, &#39;female&#39;, &#39;63&#39;, &#39;154&#39;, &#39;large&#39;, &#39;174&#39;, &#39;75&#39;]
+[&#39;4517&#39;, &#39;217&#39;, &#39;88&#39;, &#39;40&#39;, &#39;34&#39;, &#39;male&#39;, &#39;73&#39;, &#39;219&#39;, &#39;medium&#39;, &#39;145&#39;, &#39;100&#39;]
+[&#39;4750&#39;, &#39;300&#39;, &#39;103&#39;, &#39;44&#39;, &#39;61&#39;, &#39;female&#39;, &#39;67&#39;, &#39;169&#39;, &#39;small&#39;, &#39;138&#39;, &#39;78&#39;]
+[&#39;4751&#39;, &#39;218&#39;, &#39;87&#39;, &#39;38&#39;, &#39;40&#39;, &#39;male&#39;, &#39;73&#39;, &#39;200&#39;, &#39;small&#39;, &#39;120&#39;, &#39;76&#39;]
+[&#39;4753&#39;, &#39;189&#39;, &#39;96&#39;, &#39;47&#39;, &#39;28&#39;, &#39;female&#39;, &#39;64&#39;, &#39;200&#39;, &#39;medium&#39;, &#39;136&#39;, &#39;52&#39;]
+[&#39;4758&#39;, &#39;185&#39;, &#39;84&#39;, &#39;52&#39;, &#39;53&#39;, &#39;female&#39;, &#39;61&#39;, &#39;145&#39;, &#39;medium&#39;, &#39;147&#39;, &#39;72&#39;]
+[&#39;4759&#39;, &#39;206&#39;, &#39;85&#39;, &#39;46&#39;, &#39;67&#39;, &#39;male&#39;, &#39;67&#39;, &#39;178&#39;, &#39;large&#39;, &#39;119&#39;, &#39;68&#39;]
+[&#39;4760&#39;, &#39;218&#39;, &#39;182&#39;, &#39;54&#39;, &#39;51&#39;, &#39;female&#39;, &#39;&#39;, &#39;215&#39;, &#39;large&#39;, &#39;139&#39;, &#39;69&#39;]
+[&#39;4761&#39;, &#39;189&#39;, &#39;75&#39;, &#39;72&#39;, &#39;49&#39;, &#39;female&#39;, &#39;62&#39;, &#39;205&#39;, &#39;medium&#39;, &#39;120&#39;, &#39;80&#39;]
+[&#39;4763&#39;, &#39;229&#39;, &#39;95&#39;, &#39;74&#39;, &#39;65&#39;, &#39;female&#39;, &#39;62&#39;, &#39;151&#39;, &#39;medium&#39;, &#39;125&#39;, &#39;64&#39;]
+[&#39;4767&#39;, &#39;228&#39;, &#39;76&#39;, &#39;53&#39;, &#39;54&#39;, &#39;male&#39;, &#39;66&#39;, &#39;170&#39;, &#39;large&#39;, &#39;121&#39;, &#39;62&#39;]
+[&#39;4770&#39;, &#39;159&#39;, &#39;88&#39;, &#39;43&#39;, &#39;38&#39;, &#39;male&#39;, &#39;68&#39;, &#39;169&#39;, &#39;large&#39;, &#39;138&#39;, &#39;79&#39;]
+[&#39;4771&#39;, &#39;249&#39;, &#39;197&#39;, &#39;44&#39;, &#39;64&#39;, &#39;female&#39;, &#39;63&#39;, &#39;159&#39;, &#39;medium&#39;, &#39;151&#39;, &#39;85&#39;]
+[&#39;4772&#39;, &#39;170&#39;, &#39;106&#39;, &#39;42&#39;, &#39;41&#39;, &#39;female&#39;, &#39;61&#39;, &#39;110&#39;, &#39;small&#39;, &#39;103&#39;, &#39;64&#39;]
+[&#39;4776&#39;, &#39;174&#39;, &#39;125&#39;, &#39;44&#39;, &#39;67&#39;, &#39;male&#39;, &#39;68&#39;, &#39;198&#39;, &#39;large&#39;, &#39;119&#39;, &#39;72&#39;]
+[&#39;4780&#39;, &#39;204&#39;, &#39;62&#39;, &#39;70&#39;, &#39;27&#39;, &#39;female&#39;, &#39;67&#39;, &#39;185&#39;, &#39;medium&#39;, &#39;110&#39;, &#39;90&#39;]
+[&#39;4783&#39;, &#39;203&#39;, &#39;84&#39;, &#39;75&#39;, &#39;21&#39;, &#39;female&#39;, &#39;63&#39;, &#39;142&#39;, &#39;medium&#39;, &#39;125&#39;, &#39;85&#39;]
+[&#39;4786&#39;, &#39;241&#39;, &#39;86&#39;, &#39;63&#39;, &#39;41&#39;, &#39;female&#39;, &#39;59&#39;, &#39;139&#39;, &#39;medium&#39;, &#39;112&#39;, &#39;72&#39;]
+[&#39;4787&#39;, &#39;245&#39;, &#39;120&#39;, &#39;39&#39;, &#39;47&#39;, &#39;female&#39;, &#39;63&#39;, &#39;156&#39;, &#39;medium&#39;, &#39;142&#39;, &#39;102&#39;]
+[&#39;4789&#39;, &#39;143&#39;, &#39;91&#39;, &#39;37&#39;, &#39;61&#39;, &#39;female&#39;, &#39;65&#39;, &#39;220&#39;, &#39;large&#39;, &#39;160&#39;, &#39;92&#39;]
+[&#39;4790&#39;, &#39;224&#39;, &#39;341&#39;, &#39;33&#39;, &#39;65&#39;, &#39;male&#39;, &#39;67&#39;, &#39;197&#39;, &#39;medium&#39;, &#39;160&#39;, &#39;80&#39;]
+[&#39;4792&#39;, &#39;168&#39;, &#39;69&#39;, &#39;45&#39;, &#39;28&#39;, &#39;female&#39;, &#39;63&#39;, &#39;200&#39;, &#39;large&#39;, &#39;111&#39;, &#39;65&#39;]
+[&#39;4793&#39;, &#39;184&#39;, &#39;79&#39;, &#39;39&#39;, &#39;41&#39;, &#39;male&#39;, &#39;69&#39;, &#39;154&#39;, &#39;large&#39;, &#39;136&#39;, &#39;96&#39;]
+[&#39;4794&#39;, &#39;199&#39;, &#39;130&#39;, &#39;48&#39;, &#39;37&#39;, &#39;female&#39;, &#39;61&#39;, &#39;203&#39;, &#39;large&#39;, &#39;136&#39;, &#39;84&#39;]
+[&#39;4795&#39;, &#39;158&#39;, &#39;91&#39;, &#39;48&#39;, &#39;50&#39;, &#39;male&#39;, &#39;71&#39;, &#39;180&#39;, &#39;medium&#39;, &#39;136&#39;, &#39;90&#39;]
+[&#39;4796&#39;, &#39;209&#39;, &#39;176&#39;, &#39;55&#39;, &#39;57&#39;, &#39;female&#39;, &#39;61&#39;, &#39;150&#39;, &#39;small&#39;, &#39;115&#39;, &#39;68&#39;]
+[&#39;4801&#39;, &#39;214&#39;, &#39;111&#39;, &#39;59&#39;, &#39;28&#39;, &#39;male&#39;, &#39;68&#39;, &#39;204&#39;, &#39;medium&#39;, &#39;130&#39;, &#39;90&#39;]
+[&#39;4802&#39;, &#39;293&#39;, &#39;85&#39;, &#39;94&#39;, &#39;31&#39;, &#39;female&#39;, &#39;67&#39;, &#39;200&#39;, &#39;medium&#39;, &#39;110&#39;, &#39;90&#39;]
+[&#39;4803&#39;, &#39;227&#39;, &#39;105&#39;, &#39;44&#39;, &#39;83&#39;, &#39;female&#39;, &#39;59&#39;, &#39;125&#39;, &#39;medium&#39;, &#39;150&#39;, &#39;90&#39;]
+[&#39;4805&#39;, &#39;292&#39;, &#39;235&#39;, &#39;55&#39;, &#39;79&#39;, &#39;male&#39;, &#39;70&#39;, &#39;165&#39;, &#39;&#39;, &#39;170&#39;, &#39;90&#39;]
+[&#39;4808&#39;, &#39;218&#39;, &#39;80&#39;, &#39;71&#39;, &#39;68&#39;, &#39;male&#39;, &#39;70&#39;, &#39;170&#39;, &#39;large&#39;, &#39;130&#39;, &#39;73&#39;]
+[&#39;4813&#39;, &#39;244&#39;, &#39;101&#39;, &#39;36&#39;, &#39;32&#39;, &#39;male&#39;, &#39;70&#39;, &#39;212&#39;, &#39;&#39;, &#39;132&#39;, &#39;90&#39;]
+[&#39;4818&#39;, &#39;283&#39;, &#39;83&#39;, &#39;74&#39;, &#39;26&#39;, &#39;male&#39;, &#39;72&#39;, &#39;227&#39;, &#39;large&#39;, &#39;158&#39;, &#39;104&#39;]
+[&#39;4821&#39;, &#39;186&#39;, &#39;74&#39;, &#39;76&#39;, &#39;36&#39;, &#39;male&#39;, &#39;69&#39;, &#39;150&#39;, &#39;small&#39;, &#39;138&#39;, &#39;82&#39;]
+[&#39;4822&#39;, &#39;273&#39;, &#39;94&#39;, &#39;49&#39;, &#39;53&#39;, &#39;female&#39;, &#39;64&#39;, &#39;174&#39;, &#39;medium&#39;, &#39;160&#39;, &#39;96&#39;]
+[&#39;4823&#39;, &#39;193&#39;, &#39;77&#39;, &#39;49&#39;, &#39;19&#39;, &#39;female&#39;, &#39;61&#39;, &#39;119&#39;, &#39;small&#39;, &#39;118&#39;, &#39;70&#39;]
+[&#39;4825&#39;, &#39;194&#39;, &#39;80&#39;, &#39;34&#39;, &#39;63&#39;, &#39;male&#39;, &#39;73&#39;, &#39;175&#39;, &#39;medium&#39;, &#39;131&#39;, &#39;88&#39;]
+[&#39;4826&#39;, &#39;231&#39;, &#39;105&#39;, &#39;61&#39;, &#39;58&#39;, &#39;female&#39;, &#39;63&#39;, &#39;230&#39;, &#39;large&#39;, &#39;141&#39;, &#39;99&#39;]
+[&#39;4827&#39;, &#39;217&#39;, &#39;78&#39;, &#39;48&#39;, &#39;53&#39;, &#39;female&#39;, &#39;63&#39;, &#39;158&#39;, &#39;medium&#39;, &#39;139&#39;, &#39;79&#39;]
+[&#39;4833&#39;, &#39;174&#39;, &#39;173&#39;, &#39;34&#39;, &#39;50&#39;, &#39;male&#39;, &#39;70&#39;, &#39;263&#39;, &#39;large&#39;, &#39;159&#39;, &#39;99&#39;]
+[&#39;4835&#39;, &#39;225&#39;, &#39;84&#39;, &#39;82&#39;, &#39;41&#39;, &#39;male&#39;, &#39;71&#39;, &#39;156&#39;, &#39;small&#39;, &#39;150&#39;, &#39;80&#39;]
+[&#39;4840&#39;, &#39;268&#39;, &#39;85&#39;, &#39;51&#39;, &#39;48&#39;, &#39;male&#39;, &#39;70&#39;, &#39;120&#39;, &#39;small&#39;, &#39;150&#39;, &#39;105&#39;]
+[&#39;4841&#39;, &#39;195&#39;, &#39;108&#39;, &#39;46&#39;, &#39;59&#39;, &#39;female&#39;, &#39;67&#39;, &#39;172&#39;, &#39;small&#39;, &#39;150&#39;, &#39;102&#39;]
+[&#39;4842&#39;, &#39;179&#39;, &#39;70&#39;, &#39;52&#39;, &#39;34&#39;, &#39;male&#39;, &#39;72&#39;, &#39;170&#39;, &#39;medium&#39;, &#39;138&#39;, &#39;82&#39;]
+[&#39;4843&#39;, &#39;215&#39;, &#39;119&#39;, &#39;44&#39;, &#39;63&#39;, &#39;female&#39;, &#39;63&#39;, &#39;158&#39;, &#39;medium&#39;, &#39;160&#39;, &#39;68&#39;]
+[&#39;10000&#39;, &#39;185&#39;, &#39;76&#39;, &#39;58&#39;, &#39;23&#39;, &#39;male&#39;, &#39;76&#39;, &#39;164&#39;, &#39;small&#39;, &#39;124&#39;, &#39;78&#39;]
+[&#39;10001&#39;, &#39;132&#39;, &#39;99&#39;, &#39;34&#39;, &#39;21&#39;, &#39;female&#39;, &#39;65&#39;, &#39;169&#39;, &#39;large&#39;, &#39;112&#39;, &#39;62&#39;]
+[&#39;10012&#39;, &#39;175&#39;, &#39;91&#39;, &#39;42&#39;, &#39;23&#39;, &#39;female&#39;, &#39;65&#39;, &#39;235&#39;, &#39;medium&#39;, &#39;110&#39;, &#39;80&#39;]
+[&#39;10014&#39;, &#39;179&#39;, &#39;81&#39;, &#39;35&#39;, &#39;36&#39;, &#39;female&#39;, &#39;63&#39;, &#39;125&#39;, &#39;medium&#39;, &#39;110&#39;, &#39;76&#39;]
+[&#39;10016&#39;, &#39;228&#39;, &#39;115&#39;, &#39;61&#39;, &#39;71&#39;, &#39;female&#39;, &#39;63&#39;, &#39;244&#39;, &#39;large&#39;, &#39;170&#39;, &#39;92&#39;]
+[&#39;10020&#39;, &#39;181&#39;, &#39;177&#39;, &#39;24&#39;, &#39;64&#39;, &#39;male&#39;, &#39;71&#39;, &#39;225&#39;, &#39;large&#39;, &#39;130&#39;, &#39;66&#39;]
+[&#39;12002&#39;, &#39;160&#39;, &#39;100&#39;, &#39;36&#39;, &#39;43&#39;, &#39;female&#39;, &#39;64&#39;, &#39;140&#39;, &#39;small&#39;, &#39;180&#39;, &#39;110&#39;]
+[&#39;12004&#39;, &#39;188&#39;, &#39;77&#39;, &#39;45&#39;, &#39;31&#39;, &#39;female&#39;, &#39;67&#39;, &#39;227&#39;, &#39;medium&#39;, &#39;122&#39;, &#39;70&#39;]
+[&#39;12005&#39;, &#39;168&#39;, &#39;101&#39;, &#39;59&#39;, &#39;44&#39;, &#39;female&#39;, &#39;64&#39;, &#39;160&#39;, &#39;small&#39;, &#39;130&#39;, &#39;88&#39;]
+[&#39;12006&#39;, &#39;318&#39;, &#39;270&#39;, &#39;108&#39;, &#39;60&#39;, &#39;female&#39;, &#39;65&#39;, &#39;167&#39;, &#39;medium&#39;, &#39;132&#39;, &#39;72&#39;]
+[&#39;12501&#39;, &#39;192&#39;, &#39;109&#39;, &#39;44&#39;, &#39;43&#39;, &#39;female&#39;, &#39;64&#39;, &#39;325&#39;, &#39;large&#39;, &#39;141&#39;, &#39;79&#39;]
+[&#39;12502&#39;, &#39;209&#39;, &#39;87&#39;, &#39;34&#39;, &#39;48&#39;, &#39;female&#39;, &#39;63&#39;, &#39;121&#39;, &#39;small&#39;, &#39;111&#39;, &#39;62&#39;]
+[&#39;12506&#39;, &#39;129&#39;, &#39;110&#39;, &#39;42&#39;, &#39;56&#39;, &#39;male&#39;, &#39;74&#39;, &#39;151&#39;, &#39;small&#39;, &#39;140&#39;, &#39;75&#39;]
+[&#39;12507&#39;, &#39;160&#39;, &#39;122&#39;, &#39;41&#39;, &#39;55&#39;, &#39;female&#39;, &#39;67&#39;, &#39;223&#39;, &#39;medium&#39;, &#39;136&#39;, &#39;83&#39;]
+[&#39;12509&#39;, &#39;160&#39;, &#39;196&#39;, &#39;33&#39;, &#39;49&#39;, &#39;male&#39;, &#39;71&#39;, &#39;266&#39;, &#39;large&#39;, &#39;150&#39;, &#39;98&#39;]
+[&#39;12751&#39;, &#39;211&#39;, &#39;48&#39;, &#39;34&#39;, &#39;58&#39;, &#39;male&#39;, &#39;67&#39;, &#39;177&#39;, &#39;medium&#39;, &#39;162&#39;, &#39;78&#39;]
+[&#39;12754&#39;, &#39;262&#39;, &#39;93&#39;, &#39;43&#39;, &#39;33&#39;, &#39;female&#39;, &#39;63&#39;, &#39;170&#39;, &#39;medium&#39;, &#39;110&#39;, &#39;68&#39;]
+[&#39;12760&#39;, &#39;201&#39;, &#39;81&#39;, &#39;87&#39;, &#39;48&#39;, &#39;female&#39;, &#39;68&#39;, &#39;146&#39;, &#39;small&#39;, &#39;145&#39;, &#39;95&#39;]
+[&#39;12761&#39;, &#39;263&#39;, &#39;82&#39;, &#39;92&#39;, &#39;66&#39;, &#39;female&#39;, &#39;66&#39;, &#39;121&#39;, &#39;small&#39;, &#39;104&#39;, &#39;64&#39;]
+[&#39;12763&#39;, &#39;219&#39;, &#39;112&#39;, &#39;73&#39;, &#39;59&#39;, &#39;male&#39;, &#39;66&#39;, &#39;170&#39;, &#39;medium&#39;, &#39;146&#39;, &#39;92&#39;]
+[&#39;12765&#39;, &#39;191&#39;, &#39;83&#39;, &#39;88&#39;, &#39;45&#39;, &#39;female&#39;, &#39;67&#39;, &#39;151&#39;, &#39;small&#39;, &#39;130&#39;, &#39;90&#39;]
+[&#39;12766&#39;, &#39;171&#39;, &#39;97&#39;, &#39;69&#39;, &#39;52&#39;, &#39;male&#39;, &#39;71&#39;, &#39;159&#39;, &#39;small&#39;, &#39;125&#39;, &#39;72&#39;]
+[&#39;12768&#39;, &#39;219&#39;, &#39;112&#39;, &#39;73&#39;, &#39;76&#39;, &#39;male&#39;, &#39;64&#39;, &#39;105&#39;, &#39;medium&#39;, &#39;125&#39;, &#39;82&#39;]
+[&#39;12769&#39;, &#39;347&#39;, &#39;197&#39;, &#39;42&#39;, &#39;36&#39;, &#39;male&#39;, &#39;70&#39;, &#39;277&#39;, &#39;large&#39;, &#39;140&#39;, &#39;86&#39;]
+[&#39;12772&#39;, &#39;269&#39;, &#39;73&#39;, &#39;34&#39;, &#39;41&#39;, &#39;female&#39;, &#39;62&#39;, &#39;160&#39;, &#39;medium&#39;, &#39;126&#39;, &#39;90&#39;]
+[&#39;12778&#39;, &#39;164&#39;, &#39;71&#39;, &#39;63&#39;, &#39;20&#39;, &#39;male&#39;, &#39;72&#39;, &#39;145&#39;, &#39;small&#39;, &#39;108&#39;, &#39;78&#39;]
+[&#39;13250&#39;, &#39;181&#39;, &#39;255&#39;, &#39;26&#39;, &#39;50&#39;, &#39;male&#39;, &#39;71&#39;, &#39;320&#39;, &#39;large&#39;, &#39;140&#39;, &#39;86&#39;]
+[&#39;13254&#39;, &#39;190&#39;, &#39;84&#39;, &#39;44&#39;, &#39;43&#39;, &#39;female&#39;, &#39;62&#39;, &#39;163&#39;, &#39;large&#39;, &#39;135&#39;, &#39;88&#39;]
+[&#39;13500&#39;, &#39;255&#39;, &#39;112&#39;, &#39;34&#39;, &#39;82&#39;, &#39;male&#39;, &#39;66&#39;, &#39;163&#39;, &#39;&#39;, &#39;179&#39;, &#39;89&#39;]
+[&#39;13501&#39;, &#39;218&#39;, &#39;126&#39;, &#39;32&#39;, &#39;35&#39;, &#39;male&#39;, &#39;69&#39;, &#39;169&#39;, &#39;medium&#39;, &#39;139&#39;, &#39;90&#39;]
+[&#39;13503&#39;, &#39;223&#39;, &#39;90&#39;, &#39;48&#39;, &#39;47&#39;, &#39;female&#39;, &#39;65&#39;, &#39;232&#39;, &#39;large&#39;, &#39;120&#39;, &#39;86&#39;]
+[&#39;13505&#39;, &#39;254&#39;, &#39;342&#39;, &#39;37&#39;, &#39;75&#39;, &#39;male&#39;, &#39;68&#39;, &#39;210&#39;, &#39;large&#39;, &#39;151&#39;, &#39;87&#39;]
+[&#39;14756&#39;, &#39;236&#39;, &#39;102&#39;, &#39;36&#39;, &#39;62&#39;, &#39;male&#39;, &#39;76&#39;, &#39;160&#39;, &#39;large&#39;, &#39;150&#39;, &#39;80&#39;]
+[&#39;14758&#39;, &#39;176&#39;, &#39;92&#39;, &#39;55&#39;, &#39;31&#39;, &#39;female&#39;, &#39;62&#39;, &#39;145&#39;, &#39;small&#39;, &#39;110&#39;, &#39;72&#39;]
+[&#39;15007&#39;, &#39;158&#39;, &#39;91&#39;, &#39;31&#39;, &#39;50&#39;, &#39;male&#39;, &#39;70&#39;, &#39;215&#39;, &#39;large&#39;, &#39;138&#39;, &#39;89&#39;]
+[&#39;15008&#39;, &#39;181&#39;, &#39;83&#39;, &#39;44&#39;, &#39;39&#39;, &#39;female&#39;, &#39;66&#39;, &#39;255&#39;, &#39;medium&#39;, &#39;140&#39;, &#39;98&#39;]
+[&#39;15010&#39;, &#39;151&#39;, &#39;85&#39;, &#39;48&#39;, &#39;33&#39;, &#39;male&#39;, &#39;69&#39;, &#39;308&#39;, &#39;large&#39;, &#39;110&#39;, &#39;90&#39;]
+[&#39;15012&#39;, &#39;115&#39;, &#39;239&#39;, &#39;36&#39;, &#39;58&#39;, &#39;male&#39;, &#39;69&#39;, &#39;&#39;, &#39;medium&#39;, &#39;125&#39;, &#39;69&#39;]
+[&#39;15013&#39;, &#39;271&#39;, &#39;121&#39;, &#39;40&#39;, &#39;81&#39;, &#39;female&#39;, &#39;64&#39;, &#39;158&#39;, &#39;medium&#39;, &#39;146&#39;, &#39;76&#39;]
+[&#39;15016&#39;, &#39;190&#39;, &#39;92&#39;, &#39;44&#39;, &#39;27&#39;, &#39;female&#39;, &#39;65&#39;, &#39;210&#39;, &#39;medium&#39;, &#39;150&#39;, &#39;106&#39;]
+[&#39;15017&#39;, &#39;118&#39;, &#39;95&#39;, &#39;39&#39;, &#39;47&#39;, &#39;female&#39;, &#39;64&#39;, &#39;123&#39;, &#39;small&#39;, &#39;140&#39;, &#39;76&#39;]
+[&#39;15250&#39;, &#39;168&#39;, &#39;82&#39;, &#39;44&#39;, &#39;33&#39;, &#39;female&#39;, &#39;66&#39;, &#39;118&#39;, &#39;small&#39;, &#39;98&#39;, &#39;66&#39;]
+[&#39;15252&#39;, &#39;254&#39;, &#39;121&#39;, &#39;39&#39;, &#39;67&#39;, &#39;male&#39;, &#39;68&#39;, &#39;167&#39;, &#39;large&#39;, &#39;161&#39;, &#39;118&#39;]
+[&#39;15260&#39;, &#39;193&#39;, &#39;77&#39;, &#39;45&#39;, &#39;42&#39;, &#39;female&#39;, &#39;75&#39;, &#39;186&#39;, &#39;medium&#39;, &#39;125&#39;, &#39;90&#39;]
+[&#39;15264&#39;, &#39;187&#39;, &#39;84&#39;, &#39;64&#39;, &#39;21&#39;, &#39;female&#39;, &#39;63&#39;, &#39;158&#39;, &#39;small&#39;, &#39;138&#39;, &#39;88&#39;]
+[&#39;15271&#39;, &#39;212&#39;, &#39;79&#39;, &#39;49&#39;, &#39;51&#39;, &#39;female&#39;, &#39;65&#39;, &#39;145&#39;, &#39;small&#39;, &#39;230&#39;, &#39;120&#39;]
+[&#39;15274&#39;, &#39;170&#39;, &#39;76&#39;, &#39;60&#39;, &#39;27&#39;, &#39;female&#39;, &#39;63&#39;, &#39;119&#39;, &#39;small&#39;, &#39;122&#39;, &#39;86&#39;]
+[&#39;15276&#39;, &#39;215&#39;, &#39;110&#39;, &#39;36&#39;, &#39;51&#39;, &#39;female&#39;, &#39;67&#39;, &#39;282&#39;, &#39;medium&#39;, &#39;142&#39;, &#39;78&#39;]
+[&#39;15277&#39;, &#39;199&#39;, &#39;85&#39;, &#39;59&#39;, &#39;71&#39;, &#39;male&#39;, &#39;69&#39;, &#39;171&#39;, &#39;large&#39;, &#39;136&#39;, &#39;86&#39;]
+[&#39;15278&#39;, &#39;140&#39;, &#39;385&#39;, &#39;31&#39;, &#39;50&#39;, &#39;male&#39;, &#39;69&#39;, &#39;172&#39;, &#39;large&#39;, &#39;138&#39;, &#39;66&#39;]
+[&#39;15279&#39;, &#39;216&#39;, &#39;79&#39;, &#39;46&#39;, &#39;54&#39;, &#39;female&#39;, &#39;65&#39;, &#39;138&#39;, &#39;small&#39;, &#39;132&#39;, &#39;80&#39;]
+[&#39;15500&#39;, &#39;204&#39;, &#39;113&#39;, &#39;35&#39;, &#39;59&#39;, &#39;male&#39;, &#39;73&#39;, &#39;187&#39;, &#39;medium&#39;, &#39;148&#39;, &#39;76&#39;]
+[&#39;15501&#39;, &#39;193&#39;, &#39;248&#39;, &#39;24&#39;, &#39;59&#39;, &#39;female&#39;, &#39;66&#39;, &#39;189&#39;, &#39;medium&#39;, &#39;140&#39;, &#39;90&#39;]
+[&#39;15502&#39;, &#39;267&#39;, &#39;133&#39;, &#39;34&#39;, &#39;40&#39;, &#39;female&#39;, &#39;59&#39;, &#39;204&#39;, &#39;small&#39;, &#39;118&#39;, &#39;69&#39;]
+[&#39;15512&#39;, &#39;201&#39;, &#39;106&#39;, &#39;53&#39;, &#39;58&#39;, &#39;male&#39;, &#39;66&#39;, &#39;215&#39;, &#39;large&#39;, &#39;186&#39;, &#39;102&#39;]
+[&#39;15513&#39;, &#39;204&#39;, &#39;120&#39;, &#39;44&#39;, &#39;72&#39;, &#39;male&#39;, &#39;65&#39;, &#39;167&#39;, &#39;large&#39;, &#39;140&#39;, &#39;72&#39;]
+[&#39;15514&#39;, &#39;246&#39;, &#39;104&#39;, &#39;62&#39;, &#39;66&#39;, &#39;female&#39;, &#39;66&#39;, &#39;189&#39;, &#39;medium&#39;, &#39;200&#39;, &#39;94&#39;]
+[&#39;15515&#39;, &#39;229&#39;, &#39;91&#39;, &#39;43&#39;, &#39;23&#39;, &#39;male&#39;, &#39;72&#39;, &#39;180&#39;, &#39;small&#39;, &#39;110&#39;, &#39;78&#39;]
+[&#39;15516&#39;, &#39;172&#39;, &#39;101&#39;, &#39;46&#39;, &#39;42&#39;, &#39;female&#39;, &#39;65&#39;, &#39;165&#39;, &#39;small&#39;, &#39;118&#39;, &#39;68&#39;]
+[&#39;15517&#39;, &#39;197&#39;, &#39;120&#39;, &#39;37&#39;, &#39;43&#39;, &#39;male&#39;, &#39;71&#39;, &#39;179&#39;, &#39;medium&#39;, &#39;146&#39;, &#39;98&#39;]
+[&#39;15518&#39;, &#39;205&#39;, &#39;79&#39;, &#39;32&#39;, &#39;75&#39;, &#39;male&#39;, &#39;69&#39;, &#39;204&#39;, &#39;large&#39;, &#39;136&#39;, &#39;90&#39;]
+[&#39;15519&#39;, &#39;219&#39;, &#39;106&#39;, &#39;50&#39;, &#39;65&#39;, &#39;female&#39;, &#39;63&#39;, &#39;233&#39;, &#39;large&#39;, &#39;140&#39;, &#39;90&#39;]
+[&#39;15520&#39;, &#39;174&#39;, &#39;90&#39;, &#39;36&#39;, &#39;34&#39;, &#39;male&#39;, &#39;71&#39;, &#39;210&#39;, &#39;medium&#39;, &#39;142&#39;, &#39;92&#39;]
+[&#39;15521&#39;, &#39;192&#39;, &#39;89&#39;, &#39;30&#39;, &#39;37&#39;, &#39;male&#39;, &#39;71&#39;, &#39;195&#39;, &#39;medium&#39;, &#39;136&#39;, &#39;96&#39;]
+[&#39;15522&#39;, &#39;206&#39;, &#39;94&#39;, &#39;44&#39;, &#39;61&#39;, &#39;female&#39;, &#39;63&#39;, &#39;199&#39;, &#39;medium&#39;, &#39;180&#39;, &#39;96&#39;]
+[&#39;15527&#39;, &#39;160&#39;, &#39;71&#39;, &#39;44&#39;, &#39;36&#39;, &#39;female&#39;, &#39;64&#39;, &#39;185&#39;, &#39;medium&#39;, &#39;110&#39;, &#39;80&#39;]
+[&#39;15529&#39;, &#39;216&#39;, &#39;109&#39;, &#39;86&#39;, &#39;45&#39;, &#39;female&#39;, &#39;67&#39;, &#39;147&#39;, &#39;medium&#39;, &#39;140&#39;, &#39;102&#39;]
+[&#39;15540&#39;, &#39;236&#39;, &#39;111&#39;, &#39;82&#39;, &#39;68&#39;, &#39;female&#39;, &#39;61&#39;, &#39;119&#39;, &#39;small&#39;, &#39;142&#39;, &#39;96&#39;]
+[&#39;15542&#39;, &#39;205&#39;, &#39;88&#39;, &#39;41&#39;, &#39;57&#39;, &#39;male&#39;, &#39;66&#39;, &#39;171&#39;, &#39;medium&#39;, &#39;132&#39;, &#39;82&#39;]
+[&#39;15545&#39;, &#39;206&#39;, &#39;112&#39;, &#39;33&#39;, &#39;41&#39;, &#39;female&#39;, &#39;62&#39;, &#39;184&#39;, &#39;small&#39;, &#39;104&#39;, &#39;80&#39;]
+[&#39;15546&#39;, &#39;143&#39;, &#39;371&#39;, &#39;46&#39;, &#39;68&#39;, &#39;male&#39;, &#39;67&#39;, &#39;158&#39;, &#39;small&#39;, &#39;138&#39;, &#39;82&#39;]
+[&#39;15757&#39;, &#39;173&#39;, &#39;83&#39;, &#39;37&#39;, &#39;40&#39;, &#39;female&#39;, &#39;&#39;, &#39;130&#39;, &#39;small&#39;, &#39;122&#39;, &#39;76&#39;]
+[&#39;15758&#39;, &#39;235&#39;, &#39;91&#39;, &#39;37&#39;, &#39;79&#39;, &#39;female&#39;, &#39;65&#39;, &#39;134&#39;, &#39;small&#39;, &#39;142&#39;, &#39;70&#39;]
+[&#39;15760&#39;, &#39;169&#39;, &#39;95&#39;, &#39;29&#39;, &#39;62&#39;, &#39;male&#39;, &#39;66&#39;, &#39;251&#39;, &#39;large&#39;, &#39;118&#39;, &#39;72&#39;]
+[&#39;15761&#39;, &#39;283&#39;, &#39;145&#39;, &#39;39&#39;, &#39;63&#39;, &#39;female&#39;, &#39;61&#39;, &#39;200&#39;, &#39;medium&#39;, &#39;190&#39;, &#39;110&#39;]
+[&#39;15762&#39;, &#39;174&#39;, &#39;93&#39;, &#39;77&#39;, &#39;55&#39;, &#39;male&#39;, &#39;70&#39;, &#39;140&#39;, &#39;medium&#39;, &#39;118&#39;, &#39;86&#39;]
+[&#39;15763&#39;, &#39;271&#39;, &#39;103&#39;, &#39;90&#39;, &#39;55&#39;, &#39;female&#39;, &#39;63&#39;, &#39;114&#39;, &#39;small&#39;, &#39;180&#39;, &#39;105&#39;]
+[&#39;15766&#39;, &#39;203&#39;, &#39;94&#39;, &#39;62&#39;, &#39;27&#39;, &#39;female&#39;, &#39;67&#39;, &#39;209&#39;, &#39;medium&#39;, &#39;140&#39;, &#39;80&#39;]
+[&#39;15773&#39;, &#39;188&#39;, &#39;174&#39;, &#39;24&#39;, &#39;66&#39;, &#39;male&#39;, &#39;68&#39;, &#39;210&#39;, &#39;large&#39;, &#39;160&#39;, &#39;78&#39;]
+[&#39;15777&#39;, &#39;293&#39;, &#39;87&#39;, &#39;120&#39;, &#39;63&#39;, &#39;female&#39;, &#39;64&#39;, &#39;179&#39;, &#39;medium&#39;, &#39;142&#39;, &#39;80&#39;]
+[&#39;15779&#39;, &#39;215&#39;, &#39;80&#39;, &#39;100&#39;, &#39;78&#39;, &#39;male&#39;, &#39;65&#39;, &#39;109&#39;, &#39;small&#39;, &#39;170&#39;, &#39;88&#39;]
+[&#39;15782&#39;, &#39;207&#39;, &#39;77&#39;, &#39;46&#39;, &#39;68&#39;, &#39;male&#39;, &#39;55&#39;, &#39;130&#39;, &#39;small&#39;, &#39;199&#39;, &#39;115&#39;]
+[&#39;15787&#39;, &#39;179&#39;, &#39;77&#39;, &#39;72&#39;, &#39;31&#39;, &#39;male&#39;, &#39;66&#39;, &#39;145&#39;, &#39;medium&#39;, &#39;131&#39;, &#39;79&#39;]
+[&#39;15792&#39;, &#39;202&#39;, &#39;81&#39;, &#39;55&#39;, &#39;64&#39;, &#39;female&#39;, &#39;62&#39;, &#39;167&#39;, &#39;medium&#39;, &#39;190&#39;, &#39;118&#39;]
+[&#39;15795&#39;, &#39;211&#39;, &#39;98&#39;, &#39;40&#39;, &#39;40&#39;, &#39;female&#39;, &#39;68&#39;, &#39;179&#39;, &#39;small&#39;, &#39;110&#39;, &#39;76&#39;]
+[&#39;15797&#39;, &#39;211&#39;, &#39;225&#39;, &#39;29&#39;, &#39;61&#39;, &#39;female&#39;, &#39;63&#39;, &#39;144&#39;, &#39;medium&#39;, &#39;190&#39;, &#39;100&#39;]
+[&#39;15798&#39;, &#39;151&#39;, &#39;74&#39;, &#39;47&#39;, &#39;28&#39;, &#39;male&#39;, &#39;69&#39;, &#39;130&#39;, &#39;small&#39;, &#39;135&#39;, &#39;75&#39;]
+[&#39;15799&#39;, &#39;171&#39;, &#39;85&#39;, &#39;61&#39;, &#39;34&#39;, &#39;female&#39;, &#39;63&#39;, &#39;164&#39;, &#39;medium&#39;, &#39;120&#39;, &#39;80&#39;]
+[&#39;15800&#39;, &#39;342&#39;, &#39;251&#39;, &#39;48&#39;, &#39;63&#39;, &#39;female&#39;, &#39;65&#39;, &#39;201&#39;, &#39;medium&#39;, &#39;178&#39;, &#39;88&#39;]
+[&#39;15801&#39;, &#39;179&#39;, &#39;236&#39;, &#39;63&#39;, &#39;55&#39;, &#39;male&#39;, &#39;75&#39;, &#39;186&#39;, &#39;medium&#39;, &#39;122&#39;, &#39;74&#39;]
+[&#39;15802&#39;, &#39;155&#39;, &#39;58&#39;, &#39;69&#39;, &#39;26&#39;, &#39;male&#39;, &#39;73&#39;, &#39;174&#39;, &#39;small&#39;, &#39;110&#39;, &#39;76&#39;]
+[&#39;15805&#39;, &#39;197&#39;, &#39;92&#39;, &#39;46&#39;, &#39;36&#39;, &#39;female&#39;, &#39;64&#39;, &#39;136&#39;, &#39;small&#39;, &#39;&#39;, &#39;&#39;]
+[&#39;15812&#39;, &#39;200&#39;, &#39;56&#39;, &#39;51&#39;, &#39;40&#39;, &#39;female&#39;, &#39;62&#39;, &#39;105&#39;, &#39;small&#39;, &#39;125&#39;, &#39;64&#39;]
+[&#39;15813&#39;, &#39;237&#39;, &#39;96&#39;, &#39;52&#39;, &#39;45&#39;, &#39;male&#39;, &#39;69&#39;, &#39;130&#39;, &#39;small&#39;, &#39;137&#39;, &#39;74&#39;]
+[&#39;15814&#39;, &#39;198&#39;, &#39;118&#39;, &#39;46&#39;, &#39;68&#39;, &#39;female&#39;, &#39;63&#39;, &#39;124&#39;, &#39;medium&#39;, &#39;130&#39;, &#39;70&#39;]
+[&#39;15815&#39;, &#39;240&#39;, &#39;88&#39;, &#39;49&#39;, &#39;82&#39;, &#39;female&#39;, &#39;63&#39;, &#39;170&#39;, &#39;medium&#39;, &#39;180&#39;, &#39;86&#39;]
+[&#39;15816&#39;, &#39;192&#39;, &#39;56&#39;, &#39;42&#39;, &#39;60&#39;, &#39;female&#39;, &#39;62&#39;, &#39;134&#39;, &#39;small&#39;, &#39;130&#39;, &#39;70&#39;]
+[&#39;15818&#39;, &#39;145&#39;, &#39;84&#39;, &#39;54&#39;, &#39;30&#39;, &#39;female&#39;, &#39;65&#39;, &#39;165&#39;, &#39;small&#39;, &#39;102&#39;, &#39;56&#39;]
+[&#39;15820&#39;, &#39;269&#39;, &#39;59&#39;, &#39;66&#39;, &#39;41&#39;, &#39;male&#39;, &#39;67&#39;, &#39;191&#39;, &#39;large&#39;, &#39;130&#39;, &#39;73&#39;]
+[&#39;15821&#39;, &#39;240&#39;, &#39;96&#39;, &#39;57&#39;, &#39;54&#39;, &#39;female&#39;, &#39;65&#39;, &#39;175&#39;, &#39;medium&#39;, &#39;152&#39;, &#39;100&#39;]
+[&#39;15827&#39;, &#39;205&#39;, &#39;83&#39;, &#39;42&#39;, &#39;72&#39;, &#39;female&#39;, &#39;61&#39;, &#39;180&#39;, &#39;&#39;, &#39;170&#39;, &#39;90&#39;]
+[&#39;15828&#39;, &#39;266&#39;, &#39;82&#39;, &#39;54&#39;, &#39;47&#39;, &#39;male&#39;, &#39;68&#39;, &#39;142&#39;, &#39;medium&#39;, &#39;118&#39;, &#39;78&#39;]
+[&#39;16000&#39;, &#39;188&#39;, &#39;88&#39;, &#39;51&#39;, &#39;50&#39;, &#39;female&#39;, &#39;61&#39;, &#39;147&#39;, &#39;large&#39;, &#39;160&#39;, &#39;66&#39;]
+[&#39;16001&#39;, &#39;222&#39;, &#39;82&#39;, &#39;87&#39;, &#39;51&#39;, &#39;female&#39;, &#39;66&#39;, &#39;110&#39;, &#39;small&#39;, &#39;150&#39;, &#39;110&#39;]
+[&#39;16003&#39;, &#39;142&#39;, &#39;155&#39;, &#39;25&#39;, &#39;45&#39;, &#39;male&#39;, &#39;69&#39;, &#39;204&#39;, &#39;large&#39;, &#39;165&#39;, &#39;115&#39;]
+[&#39;16004&#39;, &#39;268&#39;, &#39;90&#39;, &#39;48&#39;, &#39;38&#39;, &#39;female&#39;, &#39;63&#39;, &#39;181&#39;, &#39;medium&#39;, &#39;142&#39;, &#39;100&#39;]
+[&#39;16005&#39;, &#39;174&#39;, &#39;105&#39;, &#39;117&#39;, &#39;20&#39;, &#39;male&#39;, &#39;70&#39;, &#39;187&#39;, &#39;medium&#39;, &#39;132&#39;, &#39;86&#39;]
+[&#39;16016&#39;, &#39;214&#39;, &#39;87&#39;, &#39;35&#39;, &#39;44&#39;, &#39;female&#39;, &#39;&#39;, &#39;190&#39;, &#39;large&#39;, &#39;140&#39;, &#39;75&#39;]
+[&#39;17002&#39;, &#39;194&#39;, &#39;54&#39;, &#39;57&#39;, &#39;63&#39;, &#39;male&#39;, &#39;70&#39;, &#39;181&#39;, &#39;large&#39;, &#39;184&#39;, &#39;76&#39;]
+[&#39;17751&#39;, &#39;196&#39;, &#39;115&#39;, &#39;62&#39;, &#39;50&#39;, &#39;male&#39;, &#39;67&#39;, &#39;140&#39;, &#39;medium&#39;, &#39;176&#39;, &#39;110&#39;]
+[&#39;17752&#39;, &#39;207&#39;, &#39;187&#39;, &#39;46&#39;, &#39;44&#39;, &#39;female&#39;, &#39;67&#39;, &#39;201&#39;, &#39;large&#39;, &#39;150&#39;, &#39;74&#39;]
+[&#39;17754&#39;, &#39;204&#39;, &#39;89&#39;, &#39;56&#39;, &#39;48&#39;, &#39;male&#39;, &#39;68&#39;, &#39;196&#39;, &#39;medium&#39;, &#39;170&#39;, &#39;96&#39;]
+[&#39;17755&#39;, &#39;189&#39;, &#39;84&#39;, &#39;46&#39;, &#39;41&#39;, &#39;female&#39;, &#39;63&#39;, &#39;153&#39;, &#39;medium&#39;, &#39;130&#39;, &#39;80&#39;]
+[&#39;17756&#39;, &#39;179&#39;, &#39;77&#39;, &#39;50&#39;, &#39;29&#39;, &#39;male&#39;, &#39;68&#39;, &#39;170&#39;, &#39;small&#39;, &#39;122&#39;, &#39;68&#39;]
+[&#39;17757&#39;, &#39;159&#39;, &#39;100&#39;, &#39;54&#39;, &#39;76&#39;, &#39;male&#39;, &#39;66&#39;, &#39;188&#39;, &#39;large&#39;, &#39;116&#39;, &#39;53&#39;]
+[&#39;17760&#39;, &#39;260&#39;, &#39;68&#39;, &#39;60&#39;, &#39;69&#39;, &#39;female&#39;, &#39;59&#39;, &#39;179&#39;, &#39;large&#39;, &#39;158&#39;, &#39;98&#39;]
+[&#39;17762&#39;, &#39;228&#39;, &#39;79&#39;, &#39;37&#39;, &#39;26&#39;, &#39;male&#39;, &#39;72&#39;, &#39;259&#39;, &#39;large&#39;, &#39;122&#39;, &#39;90&#39;]
+[&#39;17765&#39;, &#39;242&#39;, &#39;74&#39;, &#39;55&#39;, &#39;70&#39;, &#39;female&#39;, &#39;66&#39;, &#39;200&#39;, &#39;medium&#39;, &#39;140&#39;, &#39;65&#39;]
+[&#39;17766&#39;, &#39;227&#39;, &#39;98&#39;, &#39;66&#39;, &#39;25&#39;, &#39;male&#39;, &#39;71&#39;, &#39;162&#39;, &#39;medium&#39;, &#39;123&#39;, &#39;82&#39;]
+[&#39;17767&#39;, &#39;208&#39;, &#39;122&#39;, &#39;51&#39;, &#39;42&#39;, &#39;female&#39;, &#39;62&#39;, &#39;141&#39;, &#39;large&#39;, &#39;118&#39;, &#39;78&#39;]
+[&#39;17771&#39;, &#39;208&#39;, &#39;95&#39;, &#39;32&#39;, &#39;56&#39;, &#39;male&#39;, &#39;68&#39;, &#39;183&#39;, &#39;medium&#39;, &#39;131&#39;, &#39;75&#39;]
+[&#39;17772&#39;, &#39;209&#39;, &#39;89&#39;, &#39;43&#39;, &#39;31&#39;, &#39;female&#39;, &#39;67&#39;, &#39;160&#39;, &#39;medium&#39;, &#39;108&#39;, &#39;58&#39;]
+[&#39;17773&#39;, &#39;163&#39;, &#39;83&#39;, &#39;57&#39;, &#39;31&#39;, &#39;female&#39;, &#39;65&#39;, &#39;120&#39;, &#39;small&#39;, &#39;136&#39;, &#39;86&#39;]
+[&#39;17776&#39;, &#39;201&#39;, &#39;100&#39;, &#39;46&#39;, &#39;27&#39;, &#39;female&#39;, &#39;65&#39;, &#39;145&#39;, &#39;small&#39;, &#39;121&#39;, &#39;75&#39;]
+[&#39;17781&#39;, &#39;237&#39;, &#39;118&#39;, &#39;45&#39;, &#39;73&#39;, &#39;female&#39;, &#39;64&#39;, &#39;174&#39;, &#39;large&#39;, &#39;162&#39;, &#39;75&#39;]
+[&#39;17784&#39;, &#39;176&#39;, &#39;90&#39;, &#39;34&#39;, &#39;32&#39;, &#39;female&#39;, &#39;63&#39;, &#39;252&#39;, &#39;medium&#39;, &#39;100&#39;, &#39;72&#39;]
+[&#39;17790&#39;, &#39;146&#39;, &#39;79&#39;, &#39;41&#39;, &#39;19&#39;, &#39;female&#39;, &#39;60&#39;, &#39;135&#39;, &#39;medium&#39;, &#39;108&#39;, &#39;58&#39;]
+[&#39;17791&#39;, &#39;231&#39;, &#39;70&#39;, &#39;110&#39;, &#39;71&#39;, &#39;female&#39;, &#39;63&#39;, &#39;155&#39;, &#39;small&#39;, &#39;150&#39;, &#39;78&#39;]
+[&#39;17794&#39;, &#39;241&#39;, &#39;92&#39;, &#39;40&#39;, &#39;27&#39;, &#39;female&#39;, &#39;63&#39;, &#39;179&#39;, &#39;medium&#39;, &#39;120&#39;, &#39;75&#39;]
+[&#39;17795&#39;, &#39;305&#39;, &#39;91&#39;, &#39;44&#39;, &#39;31&#39;, &#39;male&#39;, &#39;71&#39;, &#39;211&#39;, &#39;large&#39;, &#39;100&#39;, &#39;60&#39;]
+[&#39;17800&#39;, &#39;149&#39;, &#39;77&#39;, &#39;49&#39;, &#39;20&#39;, &#39;female&#39;, &#39;62&#39;, &#39;115&#39;, &#39;small&#39;, &#39;105&#39;, &#39;82&#39;]
+[&#39;17802&#39;, &#39;183&#39;, &#39;69&#39;, &#39;51&#39;, &#39;31&#39;, &#39;female&#39;, &#39;66&#39;, &#39;190&#39;, &#39;medium&#39;, &#39;125&#39;, &#39;70&#39;]
+[&#39;17805&#39;, &#39;235&#39;, &#39;109&#39;, &#39;59&#39;, &#39;62&#39;, &#39;female&#39;, &#39;63&#39;, &#39;290&#39;, &#39;large&#39;, &#39;175&#39;, &#39;80&#39;]
+[&#39;17808&#39;, &#39;244&#39;, &#39;101&#39;, &#39;39&#39;, &#39;44&#39;, &#39;male&#39;, &#39;71&#39;, &#39;168&#39;, &#39;medium&#39;, &#39;140&#39;, &#39;89&#39;]
+[&#39;17813&#39;, &#39;199&#39;, &#39;153&#39;, &#39;77&#39;, &#39;36&#39;, &#39;female&#39;, &#39;66&#39;, &#39;255&#39;, &#39;large&#39;, &#39;118&#39;, &#39;66&#39;]
+[&#39;17814&#39;, &#39;224&#39;, &#39;85&#39;, &#39;30&#39;, &#39;36&#39;, &#39;male&#39;, &#39;69&#39;, &#39;205&#39;, &#39;medium&#39;, &#39;150&#39;, &#39;99&#39;]
+[&#39;17816&#39;, &#39;173&#39;, &#39;225&#39;, &#39;31&#39;, &#39;47&#39;, &#39;male&#39;, &#39;73&#39;, &#39;260&#39;, &#39;medium&#39;, &#39;150&#39;, &#39;98&#39;]
+[&#39;17817&#39;, &#39;192&#39;, &#39;124&#39;, &#39;31&#39;, &#39;30&#39;, &#39;male&#39;, &#39;72&#39;, &#39;250&#39;, &#39;medium&#39;, &#39;142&#39;, &#39;79&#39;]
+[&#39;17818&#39;, &#39;157&#39;, &#39;91&#39;, &#39;34&#39;, &#39;63&#39;, &#39;male&#39;, &#39;69&#39;, &#39;166&#39;, &#39;large&#39;, &#39;106&#39;, &#39;82&#39;]
+[&#39;17819&#39;, &#39;172&#39;, &#39;117&#39;, &#39;56&#39;, &#39;48&#39;, &#39;female&#39;, &#39;63&#39;, &#39;170&#39;, &#39;medium&#39;, &#39;130&#39;, &#39;82&#39;]
+[&#39;17828&#39;, &#39;170&#39;, &#39;67&#39;, &#39;33&#39;, &#39;65&#39;, &#39;male&#39;, &#39;69&#39;, &#39;182&#39;, &#39;large&#39;, &#39;140&#39;, &#39;65&#39;]
+[&#39;17829&#39;, &#39;215&#39;, &#39;97&#39;, &#39;46&#39;, &#39;59&#39;, &#39;female&#39;, &#39;63&#39;, &#39;176&#39;, &#39;large&#39;, &#39;140&#39;, &#39;70&#39;]
+[&#39;17830&#39;, &#39;214&#39;, &#39;67&#39;, &#39;47&#39;, &#39;37&#39;, &#39;female&#39;, &#39;64&#39;, &#39;145&#39;, &#39;medium&#39;, &#39;108&#39;, &#39;76&#39;]
+[&#39;17834&#39;, &#39;195&#39;, &#39;171&#39;, &#39;29&#39;, &#39;78&#39;, &#39;male&#39;, &#39;66&#39;, &#39;172&#39;, &#39;large&#39;, &#39;130&#39;, &#39;82&#39;]
+[&#39;17835&#39;, &#39;230&#39;, &#39;86&#39;, &#39;37&#39;, &#39;23&#39;, &#39;male&#39;, &#39;71&#39;, &#39;277&#39;, &#39;large&#39;, &#39;150&#39;, &#39;99&#39;]
+[&#39;17841&#39;, &#39;206&#39;, &#39;90&#39;, &#39;38&#39;, &#39;38&#39;, &#39;female&#39;, &#39;69&#39;, &#39;167&#39;, &#39;medium&#39;, &#39;138&#39;, &#39;90&#39;]
+[&#39;17846&#39;, &#39;147&#39;, &#39;86&#39;, &#39;34&#39;, &#39;38&#39;, &#39;male&#39;, &#39;69&#39;, &#39;205&#39;, &#39;small&#39;, &#39;130&#39;, &#39;96&#39;]
+[&#39;17849&#39;, &#39;234&#39;, &#39;78&#39;, &#39;54&#39;, &#39;41&#39;, &#39;male&#39;, &#39;67&#39;, &#39;183&#39;, &#39;medium&#39;, &#39;122&#39;, &#39;96&#39;]
+[&#39;20254&#39;, &#39;135&#39;, &#39;88&#39;, &#39;34&#39;, &#39;29&#39;, &#39;female&#39;, &#39;65&#39;, &#39;123&#39;, &#39;small&#39;, &#39;118&#39;, &#39;61&#39;]
+[&#39;20258&#39;, &#39;226&#39;, &#39;68&#39;, &#39;83&#39;, &#39;49&#39;, &#39;female&#39;, &#39;63&#39;, &#39;128&#39;, &#39;small&#39;, &#39;121&#39;, &#39;75&#39;]
+[&#39;20260&#39;, &#39;179&#39;, &#39;75&#39;, &#39;36&#39;, &#39;23&#39;, &#39;female&#39;, &#39;65&#39;, &#39;183&#39;, &#39;medium&#39;, &#39;120&#39;, &#39;80&#39;]
+[&#39;20261&#39;, &#39;163&#39;, &#39;69&#39;, &#39;48&#39;, &#39;29&#39;, &#39;female&#39;, &#39;62&#39;, &#39;99&#39;, &#39;small&#39;, &#39;125&#39;, &#39;60&#39;]
+[&#39;20267&#39;, &#39;191&#39;, &#39;74&#39;, &#39;33&#39;, &#39;40&#39;, &#39;male&#39;, &#39;72&#39;, &#39;270&#39;, &#39;large&#39;, &#39;136&#39;, &#39;70&#39;]
+[&#39;20271&#39;, &#39;138&#39;, &#39;95&#39;, &#39;40&#39;, &#39;38&#39;, &#39;female&#39;, &#39;60&#39;, &#39;138&#39;, &#39;small&#39;, &#39;140&#39;, &#39;90&#39;]
+[&#39;20272&#39;, &#39;184&#39;, &#39;92&#39;, &#39;36&#39;, &#39;40&#39;, &#39;female&#39;, &#39;63&#39;, &#39;285&#39;, &#39;large&#39;, &#39;142&#39;, &#39;98&#39;]
+[&#39;20274&#39;, &#39;181&#39;, &#39;101&#39;, &#39;44&#39;, &#39;29&#39;, &#39;male&#39;, &#39;68&#39;, &#39;180&#39;, &#39;medium&#39;, &#39;130&#39;, &#39;78&#39;]
+[&#39;20275&#39;, &#39;224&#39;, &#39;98&#39;, &#39;44&#39;, &#39;78&#39;, &#39;female&#39;, &#39;63&#39;, &#39;160&#39;, &#39;large&#39;, &#39;150&#39;, &#39;81&#39;]
+[&#39;20278&#39;, &#39;293&#39;, &#39;115&#39;, &#39;54&#39;, &#39;50&#39;, &#39;male&#39;, &#39;71&#39;, &#39;170&#39;, &#39;medium&#39;, &#39;131&#39;, &#39;75&#39;]
+[&#39;20279&#39;, &#39;147&#39;, &#39;78&#39;, &#39;42&#39;, &#39;23&#39;, &#39;female&#39;, &#39;61&#39;, &#39;185&#39;, &#39;&#39;, &#39;127&#39;, &#39;71&#39;]
+[&#39;20288&#39;, &#39;198&#39;, &#39;92&#39;, &#39;62&#39;, &#39;60&#39;, &#39;male&#39;, &#39;70&#39;, &#39;163&#39;, &#39;medium&#39;, &#39;126&#39;, &#39;78&#39;]
+[&#39;20289&#39;, &#39;152&#39;, &#39;103&#39;, &#39;32&#39;, &#39;40&#39;, &#39;female&#39;, &#39;52&#39;, &#39;187&#39;, &#39;medium&#39;, &#39;148&#39;, &#39;82&#39;]
+[&#39;20290&#39;, &#39;277&#39;, &#39;119&#39;, &#39;62&#39;, &#39;60&#39;, &#39;female&#39;, &#39;61&#39;, &#39;128&#39;, &#39;small&#39;, &#39;140&#39;, &#39;86&#39;]
+[&#39;20292&#39;, &#39;219&#39;, &#39;105&#39;, &#39;63&#39;, &#39;40&#39;, &#39;female&#39;, &#39;62&#39;, &#39;153&#39;, &#39;small&#39;, &#39;106&#39;, &#39;82&#39;]
+[&#39;20293&#39;, &#39;182&#39;, &#39;74&#39;, &#39;44&#39;, &#39;30&#39;, &#39;female&#39;, &#39;62&#39;, &#39;125&#39;, &#39;medium&#39;, &#39;132&#39;, &#39;80&#39;]
+[&#39;20294&#39;, &#39;135&#39;, &#39;88&#39;, &#39;47&#39;, &#39;21&#39;, &#39;male&#39;, &#39;69&#39;, &#39;155&#39;, &#39;small&#39;, &#39;110&#39;, &#39;68&#39;]
+[&#39;20298&#39;, &#39;277&#39;, &#39;88&#39;, &#39;45&#39;, &#39;63&#39;, &#39;female&#39;, &#39;64&#39;, &#39;223&#39;, &#39;medium&#39;, &#39;220&#39;, &#39;100&#39;]
+[&#39;20306&#39;, &#39;212&#39;, &#39;82&#39;, &#39;68&#39;, &#39;63&#39;, &#39;male&#39;, &#39;70&#39;, &#39;161&#39;, &#39;medium&#39;, &#39;180&#39;, &#39;110&#39;]
+[&#39;20308&#39;, &#39;162&#39;, &#39;76&#39;, &#39;40&#39;, &#39;43&#39;, &#39;male&#39;, &#39;67&#39;, &#39;216&#39;, &#39;large&#39;, &#39;100&#39;, &#39;70&#39;]
+[&#39;20309&#39;, &#39;207&#39;, &#39;102&#39;, &#39;43&#39;, &#39;46&#39;, &#39;female&#39;, &#39;63&#39;, &#39;179&#39;, &#39;medium&#39;, &#39;212&#39;, &#39;114&#39;]
+[&#39;20312&#39;, &#39;255&#39;, &#39;100&#39;, &#39;34&#39;, &#39;64&#39;, &#39;male&#39;, &#39;68&#39;, &#39;227&#39;, &#39;medium&#39;, &#39;134&#39;, &#39;74&#39;]
+[&#39;20313&#39;, &#39;404&#39;, &#39;206&#39;, &#39;33&#39;, &#39;56&#39;, &#39;male&#39;, &#39;69&#39;, &#39;159&#39;, &#39;medium&#39;, &#39;162&#39;, &#39;88&#39;]
+[&#39;20314&#39;, &#39;239&#39;, &#39;97&#39;, &#39;55&#39;, &#39;35&#39;, &#39;male&#39;, &#39;74&#39;, &#39;170&#39;, &#39;small&#39;, &#39;122&#39;, &#39;62&#39;]
+[&#39;20315&#39;, &#39;220&#39;, &#39;95&#39;, &#39;58&#39;, &#39;59&#39;, &#39;female&#39;, &#39;66&#39;, &#39;138&#39;, &#39;small&#39;, &#39;138&#39;, &#39;80&#39;]
+[&#39;20318&#39;, &#39;165&#39;, &#39;76&#39;, &#39;46&#39;, &#39;22&#39;, &#39;female&#39;, &#39;63&#39;, &#39;114&#39;, &#39;small&#39;, &#39;112&#39;, &#39;78&#39;]
+[&#39;20325&#39;, &#39;243&#39;, &#39;74&#39;, &#39;42&#39;, &#39;43&#39;, &#39;female&#39;, &#39;64&#39;, &#39;239&#39;, &#39;medium&#39;, &#39;128&#39;, &#39;90&#39;]
+[&#39;20329&#39;, &#39;149&#39;, &#39;138&#39;, &#39;50&#39;, &#39;26&#39;, &#39;female&#39;, &#39;62&#39;, &#39;174&#39;, &#39;medium&#39;, &#39;148&#39;, &#39;92&#39;]
+[&#39;20332&#39;, &#39;178&#39;, &#39;64&#39;, &#39;52&#39;, &#39;41&#39;, &#39;female&#39;, &#39;65&#39;, &#39;188&#39;, &#39;small&#39;, &#39;130&#39;, &#39;76&#39;]
+[&#39;20335&#39;, &#39;190&#39;, &#39;228&#39;, &#39;57&#39;, &#39;43&#39;, &#39;female&#39;, &#39;65&#39;, &#39;198&#39;, &#39;small&#39;, &#39;110&#39;, &#39;64&#39;]
+[&#39;20337&#39;, &#39;226&#39;, &#39;97&#39;, &#39;70&#39;, &#39;20&#39;, &#39;female&#39;, &#39;64&#39;, &#39;114&#39;, &#39;small&#39;, &#39;122&#39;, &#39;64&#39;]
+[&#39;20340&#39;, &#39;132&#39;, &#39;83&#39;, &#39;40&#39;, &#39;28&#39;, &#39;female&#39;, &#39;68&#39;, &#39;225&#39;, &#39;medium&#39;, &#39;136&#39;, &#39;86&#39;]
+[&#39;20343&#39;, &#39;160&#39;, &#39;82&#39;, &#39;41&#39;, &#39;30&#39;, &#39;female&#39;, &#39;63&#39;, &#39;143&#39;, &#39;medium&#39;, &#39;172&#39;, &#39;124&#39;]
+[&#39;20346&#39;, &#39;204&#39;, &#39;173&#39;, &#39;37&#39;, &#39;66&#39;, &#39;male&#39;, &#39;67&#39;, &#39;146&#39;, &#39;medium&#39;, &#39;138&#39;, &#39;78&#39;]
+[&#39;20350&#39;, &#39;164&#39;, &#39;91&#39;, &#39;67&#39;, &#39;20&#39;, &#39;female&#39;, &#39;70&#39;, &#39;141&#39;, &#39;small&#39;, &#39;122&#39;, &#39;86&#39;]
+[&#39;20352&#39;, &#39;155&#39;, &#39;81&#39;, &#39;70&#39;, &#39;32&#39;, &#39;female&#39;, &#39;65&#39;, &#39;151&#39;, &#39;small&#39;, &#39;120&#39;, &#39;68&#39;]
+[&#39;20355&#39;, &#39;251&#39;, &#39;118&#39;, &#39;38&#39;, &#39;38&#39;, &#39;female&#39;, &#39;64&#39;, &#39;248&#39;, &#39;medium&#39;, &#39;110&#39;, &#39;80&#39;]
+[&#39;20361&#39;, &#39;198&#39;, &#39;86&#39;, &#39;66&#39;, &#39;61&#39;, &#39;male&#39;, &#39;74&#39;, &#39;152&#39;, &#39;small&#39;, &#39;138&#39;, &#39;76&#39;]
+[&#39;20365&#39;, &#39;179&#39;, &#39;90&#39;, &#39;60&#39;, &#39;26&#39;, &#39;female&#39;, &#39;60&#39;, &#39;130&#39;, &#39;small&#39;, &#39;138&#39;, &#39;84&#39;]
+[&#39;20367&#39;, &#39;223&#39;, &#39;88&#39;, &#39;42&#39;, &#39;74&#39;, &#39;female&#39;, &#39;62&#39;, &#39;165&#39;, &#39;medium&#39;, &#39;250&#39;, &#39;100&#39;]
+[&#39;20368&#39;, &#39;207&#39;, &#39;71&#39;, &#39;41&#39;, &#39;72&#39;, &#39;male&#39;, &#39;70&#39;, &#39;180&#39;, &#39;medium&#39;, &#39;138&#39;, &#39;88&#39;]
+[&#39;20369&#39;, &#39;244&#39;, &#39;89&#39;, &#39;92&#39;, &#39;21&#39;, &#39;male&#39;, &#39;71&#39;, &#39;163&#39;, &#39;medium&#39;, &#39;116&#39;, &#39;76&#39;]
+[&#39;20750&#39;, &#39;245&#39;, &#39;119&#39;, &#39;26&#39;, &#39;36&#39;, &#39;male&#39;, &#39;66&#39;, &#39;179&#39;, &#39;large&#39;, &#39;150&#39;, &#39;92&#39;]
+[&#39;20754&#39;, &#39;191&#39;, &#39;81&#39;, &#39;53&#39;, &#39;42&#39;, &#39;female&#39;, &#39;61&#39;, &#39;156&#39;, &#39;medium&#39;, &#39;138&#39;, &#39;84&#39;]
+[&#39;20761&#39;, &#39;221&#39;, &#39;120&#39;, &#39;83&#39;, &#39;66&#39;, &#39;female&#39;, &#39;64&#39;, &#39;130&#39;, &#39;small&#39;, &#39;110&#39;, &#39;64&#39;]
+[&#39;20762&#39;, &#39;300&#39;, &#39;65&#39;, &#39;59&#39;, &#39;34&#39;, &#39;female&#39;, &#39;&#39;, &#39;160&#39;, &#39;small&#39;, &#39;120&#39;, &#39;60&#39;]
+[&#39;20765&#39;, &#39;173&#39;, &#39;85&#39;, &#39;58&#39;, &#39;43&#39;, &#39;female&#39;, &#39;69&#39;, &#39;210&#39;, &#39;medium&#39;, &#39;130&#39;, &#39;75&#39;]
+[&#39;20768&#39;, &#39;138&#39;, &#39;81&#39;, &#39;45&#39;, &#39;57&#39;, &#39;male&#39;, &#39;73&#39;, &#39;164&#39;, &#39;small&#39;, &#39;148&#39;, &#39;81&#39;]
+[&#39;20773&#39;, &#39;203&#39;, &#39;71&#39;, &#39;78&#39;, &#39;45&#39;, &#39;male&#39;, &#39;66&#39;, &#39;115&#39;, &#39;small&#39;, &#39;135&#39;, &#39;88&#39;]
+[&#39;20774&#39;, &#39;260&#39;, &#39;67&#39;, &#39;46&#39;, &#39;44&#39;, &#39;female&#39;, &#39;62&#39;, &#39;159&#39;, &#39;small&#39;, &#39;140&#39;, &#39;94&#39;]
+[&#39;20775&#39;, &#39;166&#39;, &#39;77&#39;, &#39;68&#39;, &#39;27&#39;, &#39;male&#39;, &#39;72&#39;, &#39;141&#39;, &#39;small&#39;, &#39;110&#39;, &#39;58&#39;]
+[&#39;20782&#39;, &#39;180&#39;, &#39;92&#39;, &#39;34&#39;, &#39;63&#39;, &#39;male&#39;, &#39;69&#39;, &#39;169&#39;, &#39;small&#39;, &#39;145&#39;, &#39;72&#39;]
+[&#39;20783&#39;, &#39;159&#39;, &#39;172&#39;, &#39;28&#39;, &#39;65&#39;, &#39;male&#39;, &#39;70&#39;, &#39;181&#39;, &#39;large&#39;, &#39;142&#39;, &#39;81&#39;]
+[&#39;20784&#39;, &#39;207&#39;, &#39;75&#39;, &#39;44&#39;, &#39;30&#39;, &#39;male&#39;, &#39;72&#39;, &#39;180&#39;, &#39;small&#39;, &#39;118&#39;, &#39;62&#39;]
+[&#39;20787&#39;, &#39;298&#39;, &#39;84&#39;, &#39;50&#39;, &#39;28&#39;, &#39;male&#39;, &#39;66&#39;, &#39;209&#39;, &#39;medium&#39;, &#39;131&#39;, &#39;111&#39;]
+[&#39;20790&#39;, &#39;203&#39;, &#39;104&#39;, &#39;36&#39;, &#39;41&#39;, &#39;male&#39;, &#39;71&#39;, &#39;210&#39;, &#39;&#39;, &#39;140&#39;, &#39;112&#39;]
+[&#39;21254&#39;, &#39;191&#39;, &#39;155&#39;, &#39;58&#39;, &#39;31&#39;, &#39;female&#39;, &#39;62&#39;, &#39;237&#39;, &#39;large&#39;, &#39;140&#39;, &#39;87&#39;]
+[&#39;21255&#39;, &#39;231&#39;, &#39;84&#39;, &#39;91&#39;, &#39;33&#39;, &#39;male&#39;, &#39;69&#39;, &#39;163&#39;, &#39;small&#39;, &#39;140&#39;, &#39;70&#39;]
+[&#39;21257&#39;, &#39;184&#39;, &#39;76&#39;, &#39;42&#39;, &#39;66&#39;, &#39;male&#39;, &#39;74&#39;, &#39;185&#39;, &#39;medium&#39;, &#39;130&#39;, &#39;75&#39;]
+[&#39;21281&#39;, &#39;164&#39;, &#39;94&#39;, &#39;58&#39;, &#39;28&#39;, &#39;female&#39;, &#39;67&#39;, &#39;180&#39;, &#39;small&#39;, &#39;128&#39;, &#39;94&#39;]
+[&#39;21284&#39;, &#39;134&#39;, &#39;101&#39;, &#39;36&#39;, &#39;25&#39;, &#39;female&#39;, &#39;63&#39;, &#39;245&#39;, &#39;&#39;, &#39;142&#39;, &#39;78&#39;]
+[&#39;21298&#39;, &#39;220&#39;, &#39;60&#39;, &#39;66&#39;, &#39;26&#39;, &#39;male&#39;, &#39;70&#39;, &#39;150&#39;, &#39;small&#39;, &#39;136&#39;, &#39;88&#39;]
+[&#39;21318&#39;, &#39;180&#39;, &#39;76&#39;, &#39;46&#39;, &#39;40&#39;, &#39;female&#39;, &#39;64&#39;, &#39;146&#39;, &#39;medium&#39;, &#39;128&#39;, &#39;82&#39;]
+[&#39;21320&#39;, &#39;216&#39;, &#39;155&#39;, &#39;30&#39;, &#39;38&#39;, &#39;male&#39;, &#39;68&#39;, &#39;145&#39;, &#39;medium&#39;, &#39;110&#39;, &#39;60&#39;]
+[&#39;21321&#39;, &#39;158&#39;, &#39;74&#39;, &#39;64&#39;, &#39;30&#39;, &#39;female&#39;, &#39;62&#39;, &#39;142&#39;, &#39;medium&#39;, &#39;108&#39;, &#39;68&#39;]
+[&#39;21322&#39;, &#39;261&#39;, &#39;101&#39;, &#39;83&#39;, &#39;52&#39;, &#39;female&#39;, &#39;64&#39;, &#39;198&#39;, &#39;medium&#39;, &#39;152&#39;, &#39;92&#39;]
+[&#39;21323&#39;, &#39;172&#39;, &#39;70&#39;, &#39;36&#39;, &#39;22&#39;, &#39;female&#39;, &#39;64&#39;, &#39;148&#39;, &#39;small&#39;, &#39;90&#39;, &#39;48&#39;]
+[&#39;21329&#39;, &#39;249&#39;, &#39;81&#39;, &#39;28&#39;, &#39;51&#39;, &#39;female&#39;, &#39;65&#39;, &#39;200&#39;, &#39;medium&#39;, &#39;122&#39;, &#39;90&#39;]
+[&#39;21333&#39;, &#39;189&#39;, &#39;80&#39;, &#39;40&#39;, &#39;45&#39;, &#39;male&#39;, &#39;69&#39;, &#39;190&#39;, &#39;large&#39;, &#39;140&#39;, &#39;75&#39;]
+[&#39;21334&#39;, &#39;225&#39;, &#39;74&#39;, &#39;36&#39;, &#39;53&#39;, &#39;female&#39;, &#39;63&#39;, &#39;182&#39;, &#39;large&#39;, &#39;126&#39;, &#39;80&#39;]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;21338&#39;, &#39;193&#39;, &#39;75&#39;, &#39;49&#39;, &#39;21&#39;, &#39;female&#39;, &#39;61&#39;, &#39;220&#39;, &#39;small&#39;, &#39;130&#39;, &#39;82&#39;]
+[&#39;21341&#39;, &#39;219&#39;, &#39;78&#39;, &#39;67&#39;, &#39;53&#39;, &#39;female&#39;, &#39;64&#39;, &#39;179&#39;, &#39;medium&#39;, &#39;135&#39;, &#39;100&#39;]
+[&#39;21343&#39;, &#39;156&#39;, &#39;86&#39;, &#39;34&#39;, &#39;37&#39;, &#39;female&#39;, &#39;67&#39;, &#39;212&#39;, &#39;small&#39;, &#39;122&#39;, &#39;74&#39;]
+[&#39;21345&#39;, &#39;224&#39;, &#39;71&#39;, &#39;42&#39;, &#39;34&#39;, &#39;female&#39;, &#39;60&#39;, &#39;165&#39;, &#39;medium&#39;, &#39;135&#39;, &#39;80&#39;]
+[&#39;21346&#39;, &#39;181&#39;, &#39;77&#39;, &#39;46&#39;, &#39;30&#39;, &#39;female&#39;, &#39;66&#39;, &#39;257&#39;, &#39;medium&#39;, &#39;162&#39;, &#39;108&#39;]
+[&#39;21347&#39;, &#39;306&#39;, &#39;92&#39;, &#39;56&#39;, &#39;74&#39;, &#39;male&#39;, &#39;69&#39;, &#39;184&#39;, &#39;large&#39;, &#39;140&#39;, &#39;72&#39;]
+[&#39;21357&#39;, &#39;122&#39;, &#39;82&#39;, &#39;43&#39;, &#39;36&#39;, &#39;female&#39;, &#39;71&#39;, &#39;183&#39;, &#39;&#39;, &#39;110&#39;, &#39;80&#39;]
+[&#39;21359&#39;, &#39;219&#39;, &#39;130&#39;, &#39;44&#39;, &#39;45&#39;, &#39;male&#39;, &#39;67&#39;, &#39;218&#39;, &#39;large&#39;, &#39;172&#39;, &#39;110&#39;]
+[&#39;40251&#39;, &#39;150&#39;, &#39;80&#39;, &#39;38&#39;, &#39;35&#39;, &#39;male&#39;, &#39;73&#39;, &#39;179&#39;, &#39;medium&#39;, &#39;138&#39;, &#39;92&#39;]
+[&#39;40253&#39;, &#39;185&#39;, &#39;67&#39;, &#39;59&#39;, &#39;50&#39;, &#39;female&#39;, &#39;64&#39;, &#39;228&#39;, &#39;medium&#39;, &#39;142&#39;, &#39;90&#39;]
+[&#39;40500&#39;, &#39;226&#39;, &#39;100&#39;, &#39;65&#39;, &#39;27&#39;, &#39;male&#39;, &#39;69&#39;, &#39;289&#39;, &#39;large&#39;, &#39;130&#39;, &#39;100&#39;]
+[&#39;40501&#39;, &#39;206&#39;, &#39;83&#39;, &#39;68&#39;, &#39;52&#39;, &#39;male&#39;, &#39;69&#39;, &#39;153&#39;, &#39;small&#39;, &#39;140&#39;, &#39;98&#39;]
+[&#39;40502&#39;, &#39;199&#39;, &#39;81&#39;, &#39;36&#39;, &#39;42&#39;, &#39;female&#39;, &#39;67&#39;, &#39;235&#39;, &#39;large&#39;, &#39;178&#39;, &#39;100&#39;]
+[&#39;40751&#39;, &#39;239&#39;, &#39;85&#39;, &#39;63&#39;, &#39;39&#39;, &#39;male&#39;, &#39;60&#39;, &#39;144&#39;, &#39;medium&#39;, &#39;162&#39;, &#39;90&#39;]
+[&#39;40754&#39;, &#39;235&#39;, &#39;106&#39;, &#39;37&#39;, &#39;73&#39;, &#39;male&#39;, &#39;65&#39;, &#39;183&#39;, &#39;large&#39;, &#39;134&#39;, &#39;78&#39;]
+[&#39;40755&#39;, &#39;184&#39;, &#39;99&#39;, &#39;36&#39;, &#39;28&#39;, &#39;male&#39;, &#39;67&#39;, &#39;154&#39;, &#39;small&#39;, &#39;124&#39;, &#39;94&#39;]
+[&#39;40762&#39;, &#39;242&#39;, &#39;297&#39;, &#39;34&#39;, &#39;53&#39;, &#39;male&#39;, &#39;69&#39;, &#39;216&#39;, &#39;large&#39;, &#39;142&#39;, &#39;96&#39;]
+[&#39;40764&#39;, &#39;307&#39;, &#39;87&#39;, &#39;58&#39;, &#39;49&#39;, &#39;male&#39;, &#39;67&#39;, &#39;181&#39;, &#39;small&#39;, &#39;120&#39;, &#39;80&#39;]
+[&#39;40772&#39;, &#39;204&#39;, &#39;94&#39;, &#39;54&#39;, &#39;55&#39;, &#39;female&#39;, &#39;66&#39;, &#39;202&#39;, &#39;small&#39;, &#39;140&#39;, &#39;90&#39;]
+[&#39;40773&#39;, &#39;212&#39;, &#39;88&#39;, &#39;36&#39;, &#39;37&#39;, &#39;female&#39;, &#39;64&#39;, &#39;160&#39;, &#39;small&#39;, &#39;124&#39;, &#39;82&#39;]
+[&#39;40774&#39;, &#39;203&#39;, &#39;90&#39;, &#39;51&#39;, &#39;60&#39;, &#39;female&#39;, &#39;59&#39;, &#39;123&#39;, &#39;medium&#39;, &#39;130&#39;, &#39;72&#39;]
+[&#39;40775&#39;, &#39;219&#39;, &#39;173&#39;, &#39;31&#39;, &#39;56&#39;, &#39;female&#39;, &#39;65&#39;, &#39;197&#39;, &#39;small&#39;, &#39;100&#39;, &#39;50&#39;]
+[&#39;40784&#39;, &#39;226&#39;, &#39;279&#39;, &#39;52&#39;, &#39;84&#39;, &#39;female&#39;, &#39;60&#39;, &#39;192&#39;, &#39;small&#39;, &#39;144&#39;, &#39;88&#39;]
+[&#39;40785&#39;, &#39;217&#39;, &#39;75&#39;, &#39;54&#39;, &#39;20&#39;, &#39;female&#39;, &#39;67&#39;, &#39;187&#39;, &#39;medium&#39;, &#39;110&#39;, &#39;72&#39;]
+[&#39;40786&#39;, &#39;157&#39;, &#39;92&#39;, &#39;47&#39;, &#39;80&#39;, &#39;male&#39;, &#39;71&#39;, &#39;212&#39;, &#39;medium&#39;, &#39;156&#39;, &#39;88&#39;]
+[&#39;40787&#39;, &#39;235&#39;, &#39;102&#39;, &#39;42&#39;, &#39;60&#39;, &#39;male&#39;, &#39;69&#39;, &#39;186&#39;, &#39;medium&#39;, &#39;148&#39;, &#39;98&#39;]
+[&#39;40789&#39;, &#39;252&#39;, &#39;161&#39;, &#39;87&#39;, &#39;80&#39;, &#39;female&#39;, &#39;62&#39;, &#39;162&#39;, &#39;small&#39;, &#39;160&#39;, &#39;100&#39;]
+[&#39;40792&#39;, &#39;204&#39;, &#39;71&#39;, &#39;55&#39;, &#39;29&#39;, &#39;female&#39;, &#39;64&#39;, &#39;120&#39;, &#39;small&#39;, &#39;110&#39;, &#39;70&#39;]
+[&#39;40797&#39;, &#39;188&#39;, &#39;84&#39;, &#39;46&#39;, &#39;43&#39;, &#39;female&#39;, &#39;66&#39;, &#39;152&#39;, &#39;small&#39;, &#39;122&#39;, &#39;80&#39;]
+[&#39;40799&#39;, &#39;194&#39;, &#39;95&#39;, &#39;36&#39;, &#39;63&#39;, &#39;female&#39;, &#39;58&#39;, &#39;210&#39;, &#39;medium&#39;, &#39;140&#39;, &#39;100&#39;]
+[&#39;40803&#39;, &#39;215&#39;, &#39;64&#39;, &#39;84&#39;, &#39;37&#39;, &#39;female&#39;, &#39;59&#39;, &#39;148&#39;, &#39;medium&#39;, &#39;140&#39;, &#39;100&#39;]
+[&#39;40804&#39;, &#39;179&#39;, &#39;105&#39;, &#39;60&#39;, &#39;20&#39;, &#39;female&#39;, &#39;58&#39;, &#39;170&#39;, &#39;medium&#39;, &#39;140&#39;, &#39;100&#39;]
+[&#39;40805&#39;, &#39;202&#39;, &#39;84&#39;, &#39;33&#39;, &#39;44&#39;, &#39;male&#39;, &#39;68&#39;, &#39;157&#39;, &#39;small&#39;, &#39;125&#39;, &#39;80&#39;]
+[&#39;41000&#39;, &#39;194&#39;, &#39;87&#39;, &#39;65&#39;, &#39;54&#39;, &#39;male&#39;, &#39;69&#39;, &#39;129&#39;, &#39;small&#39;, &#39;170&#39;, &#39;96&#39;]
+[&#39;41001&#39;, &#39;227&#39;, &#39;85&#39;, &#39;26&#39;, &#39;58&#39;, &#39;male&#39;, &#39;70&#39;, &#39;211&#39;, &#39;large&#39;, &#39;144&#39;, &#39;82&#39;]
+[&#39;41003&#39;, &#39;337&#39;, &#39;85&#39;, &#39;62&#39;, &#39;35&#39;, &#39;male&#39;, &#39;72&#39;, &#39;189&#39;, &#39;medium&#39;, &#39;124&#39;, &#39;84&#39;]
+[&#39;41004&#39;, &#39;255&#39;, &#39;83&#39;, &#39;90&#39;, &#39;52&#39;, &#39;male&#39;, &#39;70&#39;, &#39;120&#39;, &#39;medium&#39;, &#39;170&#39;, &#39;110&#39;]
+[&#39;41021&#39;, &#39;162&#39;, &#39;90&#39;, &#39;46&#39;, &#39;60&#39;, &#39;female&#39;, &#39;63&#39;, &#39;121&#39;, &#39;medium&#39;, &#39;110&#39;, &#39;64&#39;]
+[&#39;41023&#39;, &#39;322&#39;, &#39;87&#39;, &#39;92&#39;, &#39;43&#39;, &#39;female&#39;, &#39;56&#39;, &#39;120&#39;, &#39;&#39;, &#39;120&#39;, &#39;98&#39;]
+[&#39;41029&#39;, &#39;289&#39;, &#39;267&#39;, &#39;38&#39;, &#39;59&#39;, &#39;male&#39;, &#39;68&#39;, &#39;169&#39;, &#39;large&#39;, &#39;142&#39;, &#39;79&#39;]
+[&#39;41034&#39;, &#39;217&#39;, &#39;87&#39;, &#39;40&#39;, &#39;33&#39;, &#39;female&#39;, &#39;62&#39;, &#39;186&#39;, &#39;small&#39;, &#39;140&#39;, &#39;90&#39;]
+[&#39;41035&#39;, &#39;209&#39;, &#39;91&#39;, &#39;36&#39;, &#39;37&#39;, &#39;male&#39;, &#39;70&#39;, &#39;262&#39;, &#39;medium&#39;, &#39;130&#39;, &#39;94&#39;]
+[&#39;41036&#39;, &#39;214&#39;, &#39;77&#39;, &#39;48&#39;, &#39;40&#39;, &#39;male&#39;, &#39;72&#39;, &#39;222&#39;, &#39;medium&#39;, &#39;120&#39;, &#39;84&#39;]
+[&#39;41037&#39;, &#39;302&#39;, &#39;81&#39;, &#39;57&#39;, &#39;38&#39;, &#39;female&#39;, &#39;67&#39;, &#39;222&#39;, &#39;medium&#39;, &#39;128&#39;, &#39;82&#39;]
+[&#39;41039&#39;, &#39;179&#39;, &#39;85&#39;, &#39;52&#39;, &#39;32&#39;, &#39;female&#39;, &#39;62&#39;, &#39;179&#39;, &#39;medium&#39;, &#39;140&#39;, &#39;96&#39;]
+[&#39;41041&#39;, &#39;279&#39;, &#39;270&#39;, &#39;40&#39;, &#39;60&#39;, &#39;female&#39;, &#39;68&#39;, &#39;224&#39;, &#39;large&#39;, &#39;174&#39;, &#39;90&#39;]
+[&#39;41055&#39;, &#39;144&#39;, &#39;81&#39;, &#39;28&#39;, &#39;30&#39;, &#39;male&#39;, &#39;72&#39;, &#39;165&#39;, &#39;small&#39;, &#39;118&#39;, &#39;78&#39;]
+[&#39;41063&#39;, &#39;270&#39;, &#39;73&#39;, &#39;40&#39;, &#39;42&#39;, &#39;male&#39;, &#39;66&#39;, &#39;185&#39;, &#39;large&#39;, &#39;146&#39;, &#39;94&#39;]
+[&#39;41065&#39;, &#39;196&#39;, &#39;120&#39;, &#39;67&#39;, &#39;52&#39;, &#39;female&#39;, &#39;62&#39;, &#39;147&#39;, &#39;medium&#39;, &#39;144&#39;, &#39;94&#39;]
+[&#39;41075&#39;, &#39;221&#39;, &#39;126&#39;, &#39;48&#39;, &#39;59&#39;, &#39;female&#39;, &#39;62&#39;, &#39;177&#39;, &#39;medium&#39;, &#39;130&#39;, &#39;78&#39;]
+[&#39;41078&#39;, &#39;210&#39;, &#39;81&#39;, &#39;81&#39;, &#39;78&#39;, &#39;male&#39;, &#39;66&#39;, &#39;145&#39;, &#39;large&#39;, &#39;110&#39;, &#39;70&#39;]
+[&#39;41253&#39;, &#39;192&#39;, &#39;85&#39;, &#39;69&#39;, &#39;51&#39;, &#39;male&#39;, &#39;65&#39;, &#39;146&#39;, &#39;large&#39;, &#39;130&#39;, &#39;110&#39;]
+[&#39;41254&#39;, &#39;169&#39;, &#39;104&#39;, &#39;58&#39;, &#39;25&#39;, &#39;female&#39;, &#39;60&#39;, &#39;154&#39;, &#39;medium&#39;, &#39;140&#39;, &#39;95&#39;]
+[&#39;41500&#39;, &#39;179&#39;, &#39;85&#39;, &#39;50&#39;, &#39;37&#39;, &#39;male&#39;, &#39;66&#39;, &#39;136&#39;, &#39;medium&#39;, &#39;190&#39;, &#39;94&#39;]
+[&#39;41501&#39;, &#39;216&#39;, &#39;84&#39;, &#39;64&#39;, &#39;54&#39;, &#39;female&#39;, &#39;66&#39;, &#39;168&#39;, &#39;medium&#39;, &#39;132&#39;, &#39;90&#39;]
+[&#39;41503&#39;, &#39;301&#39;, &#39;90&#39;, &#39;118&#39;, &#39;89&#39;, &#39;female&#39;, &#39;61&#39;, &#39;115&#39;, &#39;medium&#39;, &#39;218&#39;, &#39;90&#39;]
+[&#39;41506&#39;, &#39;296&#39;, &#39;369&#39;, &#39;46&#39;, &#39;53&#39;, &#39;male&#39;, &#39;69&#39;, &#39;173&#39;, &#39;medium&#39;, &#39;138&#39;, &#39;94&#39;]
+[&#39;41507&#39;, &#39;284&#39;, &#39;89&#39;, &#39;54&#39;, &#39;51&#39;, &#39;female&#39;, &#39;63&#39;, &#39;154&#39;, &#39;medium&#39;, &#39;140&#39;, &#39;100&#39;]
+[&#39;41510&#39;, &#39;194&#39;, &#39;269&#39;, &#39;38&#39;, &#39;29&#39;, &#39;female&#39;, &#39;69&#39;, &#39;167&#39;, &#39;small&#39;, &#39;120&#39;, &#39;70&#39;]
+[&#39;41752&#39;, &#39;199&#39;, &#39;76&#39;, &#39;52&#39;, &#39;41&#39;, &#39;female&#39;, &#39;63&#39;, &#39;197&#39;, &#39;medium&#39;, &#39;120&#39;, &#39;78&#39;]
+[&#39;41756&#39;, &#39;159&#39;, &#39;88&#39;, &#39;79&#39;, &#39;68&#39;, &#39;female&#39;, &#39;64&#39;, &#39;220&#39;, &#39;medium&#39;, &#39;100&#39;, &#39;72&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>You probably noticed that the row variable is just a list - it is a list of values contained in each column.</p></li>
+<li><p>You can access individual columns exactly the same way you would access values in a list.</p></li>
+<li><p>For example, the value of cholesterol is in a column called ‘chol’, which is a second column and therefore has the index of 1</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Since we already iterated through the CSV file once, we need to tell Python to start at the beginning again</span>
+<span class="c1"># This action is called &#39;resetting the read position of the file object&#39;</span>
+<span class="c1"># It basically is like re-opening the file</span>
+<span class="n">diabetes_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> 
+
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">diabetes_data</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># print only the values for the chol column</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>chol
+203
+165
+228
+78
+249
+248
+195
+227
+177
+263
+242
+215
+238
+183
+191
+213
+255
+230
+194
+196
+186
+234
+203
+281
+228
+179
+232
+
+254
+215
+177
+182
+265
+182
+199
+183
+194
+190
+173
+182
+136
+218
+225
+262
+213
+243
+148
+128
+169
+157
+196
+237
+212
+233
+289
+193
+204
+165
+237
+218
+296
+178
+443
+145
+234
+146
+223
+213
+173
+232
+171
+164
+170
+180
+204
+209
+242
+134
+217
+251
+217
+300
+218
+189
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>185
+206
+218
+189
+229
+228
+159
+249
+170
+174
+204
+203
+241
+245
+143
+224
+168
+184
+199
+158
+209
+214
+293
+227
+292
+218
+244
+283
+186
+273
+193
+194
+231
+217
+174
+225
+268
+195
+179
+215
+185
+132
+175
+179
+228
+181
+160
+188
+168
+318
+192
+209
+129
+160
+160
+211
+262
+201
+263
+219
+191
+171
+219
+347
+269
+164
+181
+190
+255
+218
+223
+254
+236
+176
+158
+181
+151
+115
+271
+190
+118
+168
+254
+193
+187
+212
+170
+215
+199
+140
+216
+204
+193
+267
+201
+204
+246
+229
+172
+197
+205
+219
+174
+192
+206
+160
+216
+236
+205
+206
+143
+173
+235
+169
+283
+174
+271
+203
+188
+293
+215
+207
+179
+202
+211
+211
+151
+171
+342
+179
+155
+197
+200
+237
+198
+240
+192
+145
+269
+240
+205
+266
+188
+222
+142
+268
+174
+214
+194
+196
+207
+204
+189
+179
+159
+260
+228
+242
+227
+208
+208
+209
+163
+201
+237
+176
+146
+231
+241
+305
+149
+183
+235
+244
+199
+224
+173
+192
+157
+172
+170
+215
+214
+195
+230
+206
+147
+234
+135
+226
+179
+163
+191
+138
+184
+181
+224
+293
+147
+198
+152
+277
+219
+182
+135
+277
+212
+162
+207
+255
+404
+239
+220
+165
+243
+149
+178
+190
+226
+132
+160
+204
+164
+155
+251
+198
+179
+223
+207
+244
+245
+191
+221
+300
+173
+138
+203
+260
+166
+180
+159
+207
+298
+203
+191
+231
+184
+164
+134
+220
+180
+216
+158
+261
+172
+249
+189
+225
+193
+219
+156
+224
+181
+306
+122
+219
+150
+185
+226
+206
+199
+239
+235
+184
+242
+307
+204
+212
+203
+219
+226
+217
+157
+235
+252
+204
+188
+194
+215
+179
+202
+194
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>227
+337
+255
+162
+322
+289
+217
+209
+214
+302
+179
+279
+144
+270
+196
+221
+210
+192
+169
+179
+216
+301
+296
+284
+194
+199
+159
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>You probably also noticed that the first row does not contain data - it’s just the column headers</p></li>
+<li><p>In order for us to do any mathematical or statistical operations on the data, we need to EXCLUDE the header</p></li>
+<li><p>We have to skip the header row. We can do this with the <code class="docutils literal notranslate"><span class="pre">next()</span></code> function to separate the header rows</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># One way to do this is with a counter variable</span>
+
+<span class="n">diabetes_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Reset the read position of the file object</span>
+
+<span class="c1"># use next to skip the header row</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">diabetes_file</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="c1"># now we can iterate through just the data values</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">diabetes_data</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># print only the values for the chol column</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id,chol,stab.glu,hdl,age,gender,height,weight,frame,bp.1s,bp.1d
+
+203
+165
+228
+78
+249
+248
+195
+227
+177
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>263
+242
+215
+238
+183
+191
+213
+255
+230
+194
+196
+186
+234
+203
+281
+228
+179
+232
+
+254
+215
+177
+182
+265
+182
+199
+183
+194
+190
+173
+182
+136
+218
+225
+262
+213
+243
+148
+128
+169
+157
+196
+237
+212
+233
+289
+193
+204
+165
+237
+218
+296
+178
+443
+145
+234
+146
+223
+213
+173
+232
+171
+164
+170
+180
+204
+209
+242
+134
+217
+251
+217
+300
+218
+189
+185
+206
+218
+189
+229
+228
+159
+249
+170
+174
+204
+203
+241
+245
+143
+224
+168
+184
+199
+158
+209
+214
+293
+227
+292
+218
+244
+283
+186
+273
+193
+194
+231
+217
+174
+225
+268
+195
+179
+215
+185
+132
+175
+179
+228
+181
+160
+188
+168
+318
+192
+209
+129
+160
+160
+211
+262
+201
+263
+219
+191
+171
+219
+347
+269
+164
+181
+190
+255
+218
+223
+254
+236
+176
+158
+181
+151
+115
+271
+190
+118
+168
+254
+193
+187
+212
+170
+215
+199
+140
+216
+204
+193
+267
+201
+204
+246
+229
+172
+197
+205
+219
+174
+192
+206
+160
+216
+236
+205
+206
+143
+173
+235
+169
+283
+174
+271
+203
+188
+293
+215
+207
+179
+202
+211
+211
+151
+171
+342
+179
+155
+197
+200
+237
+198
+240
+192
+145
+269
+240
+205
+266
+188
+222
+142
+268
+174
+214
+194
+196
+207
+204
+189
+179
+159
+260
+228
+242
+227
+208
+208
+209
+163
+201
+237
+176
+146
+231
+241
+305
+149
+183
+235
+244
+199
+224
+173
+192
+157
+172
+170
+215
+214
+195
+230
+206
+147
+234
+135
+226
+179
+163
+191
+138
+184
+181
+224
+293
+147
+198
+152
+277
+219
+182
+135
+277
+212
+162
+207
+255
+404
+239
+220
+165
+243
+149
+178
+190
+226
+132
+160
+204
+164
+155
+251
+198
+179
+223
+207
+244
+245
+191
+221
+300
+173
+138
+203
+260
+166
+180
+159
+207
+298
+203
+191
+231
+184
+164
+134
+220
+180
+216
+158
+261
+172
+249
+189
+225
+193
+219
+156
+224
+181
+306
+122
+219
+150
+185
+226
+206
+199
+239
+235
+184
+242
+307
+204
+212
+203
+219
+226
+217
+157
+235
+252
+204
+188
+194
+215
+179
+202
+194
+227
+337
+255
+162
+322
+289
+217
+209
+214
+302
+179
+279
+144
+270
+196
+221
+210
+192
+169
+179
+216
+301
+296
+284
+194
+199
+159
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="practice-questions">
+<h2>Practice Questions<a class="headerlink" href="#practice-questions" title="Permalink to this headline">#</a></h2>
+<section id="csv-files-challenge-1">
+<h3>CSV files - Challenge 1<a class="headerlink" href="#csv-files-challenge-1" title="Permalink to this headline">#</a></h3>
+<p>Calculate the average and the highest (max) cholesterol value based on the data available in the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 1: Import csv module</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 2: Read the csv file</span>
+<span class="n">diabetes_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;diabetes.csv&quot;</span><span class="p">)</span>
+<span class="n">diabetes_data</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">diabetes_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">Input In [27],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Step 2: Read the csv file</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">diabetes_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;diabetes.csv&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">diabetes_data</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">diabetes_file</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;diabetes.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 3: Iterate through csv data</span>
+<span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># Initialize a temporary counter</span>
+<span class="n">diabetes_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Reset the read position of the file object</span>
+
+<span class="c1"># Hint: you&#39;ll need to declare variables to store average and maximum cholesterol here (outside of the loop)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">diabetes_data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">cnt</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1">################################################################################################</span>
+        <span class="c1"># This is where you need to complete the logic for calculating average and maximum cholesterol</span>
+        <span class="c1">################################################################################################</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># print only the values for the chol column</span>
+    <span class="n">cnt</span> <span class="o">=</span> <span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># Increment the counter by one</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="answers">
+<h3>Answers<a class="headerlink" href="#answers" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 1: Import csv module</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 2: Read the csv file</span>
+<span class="n">diabetes_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;diabetes.csv&quot;</span><span class="p">)</span>
+<span class="n">diabetes_data</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">diabetes_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 3: Calculate average cholesterol</span>
+
+<span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># Initialize a temporary counter</span>
+<span class="n">diabetes_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Reset the read position of the file object</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># This variable will hold the sum of all cholesterol values</span>
+
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">diabetes_data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cnt</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">cnt</span> <span class="o">=</span> <span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># Increment the counter by one</span>
+        
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total: &quot;</span> <span class="p">,</span> <span class="n">total</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Count: &quot;</span> <span class="p">,</span> <span class="n">cnt</span><span class="p">)</span>
+
+<span class="n">avg_chol</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="n">cnt</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average: &quot;</span><span class="p">,</span> <span class="n">avg_chol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 4: Calculate maximum cholesterol</span>
+
+<span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># Initialize a temporary counter</span>
+<span class="n">diabetes_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Reset the read position of the file object</span>
+<span class="n">max_chol</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># This variable will hold the sum of all cholesterol values</span>
+
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">diabetes_data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cnt</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Every time through the loop (for every row that contains a value)</span>
+            <span class="c1"># we compare the value from the data with the value stored in </span>
+            <span class="c1"># max_chol variable.  </span>
+            <span class="c1"># If the value from the data is larger, we set max_chol to that larger value</span>
+            <span class="c1"># After the loop finishes running, the largest value will be stored in max_chols</span>
+            <span class="k">if</span> <span class="n">max_chol</span> <span class="o">&lt;</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+                <span class="n">max_chol</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">cnt</span> <span class="o">=</span> <span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># Increment the counter by one</span>
+        
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Maximum cholesterol: &quot;</span><span class="p">,</span> <span class="n">max_chol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="1.6_%20Functions.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Functions</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../pandas/pandas-intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to the Pandas</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Matt Burton, Evelyn Chan, Others.<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

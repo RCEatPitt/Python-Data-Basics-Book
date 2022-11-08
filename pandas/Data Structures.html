@@ -1,0 +1,1609 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to Pandas Data Structures &#8212; Python Data Basics</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Loading Data: Reading Files into a Dataframe" href="3%20-%20Loading%20Data.html" />
+    <link rel="prev" title="Data Processing with Python: What and Why Pandas!" href="1%20-%20What%20and%20Why%20Pandas.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Python Data Basics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Python Data Basics
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to Jupyter
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../jupyter/introduction-to-jupyter.html">
+   Introduction to Jupyter
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Centric Python
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/python-intro.html">
+   Introduction to the Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/1.1_Getting%20Started%20with%20Syntax.html">
+   Getting Started in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/1.2_Variables%20Data%20Types%20and%20Operators.html">
+   Data Types and Operators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/1.3_Control%20flow%20and%20Conditional%20%20Statements.html">
+   Control Flow Statements and Conditional Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/1.4_Data%20Structures.html">
+   Python Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/1.5_Loops.html">
+   Looping
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/1.6_%20Functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/1.7_File%20Input%20and%20Output.html">
+   File Input and Output
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Management
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas-intro.html">
+   Introduction to the Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1%20-%20What%20and%20Why%20Pandas.html">
+   Data Processing with Python: What and Why Pandas!
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Introduction to Pandas Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3%20-%20Loading%20Data.html">
+   Loading Data: Reading Files into a Dataframe
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4%20-%20Basic%20Data%20Manipulation.html">
+   Basic Data Manipulation: Exploring and Summarizing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Data%20Cleaning.html">
+   Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Data%20Wrangling.html">
+   Data Wrangling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Working%20with%20Time.html">
+   Working with Time
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/RCEatPitt/Python-Data-Basics-Book/master?urlpath=tree/pandas/Data Structures.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/RCEatPitt/Python-Data-Basics-Book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/RCEatPitt/Python-Data-Basics-Book/issues/new?title=Issue%20on%20page%20%2Fpandas/Data Structures.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/pandas/Data Structures.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#series">
+   Series
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quick-exercise">
+     Quick Exercise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Quick Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#index-by-name">
+   Index by name
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Quick Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframe">
+   DataFrame
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#index">
+   Index
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice-questions">
+   Practice Questions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction to Pandas Data Structures</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#series">
+   Series
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quick-exercise">
+     Quick Exercise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Quick Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#index-by-name">
+   Index by name
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Quick Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframe">
+   DataFrame
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#index">
+   Index
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice-questions">
+   Practice Questions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-pandas-data-structures">
+<h1>Introduction to Pandas Data Structures<a class="headerlink" href="#introduction-to-pandas-data-structures" title="Permalink to this headline">#</a></h1>
+<p>To understand Pandas, which is hard, it is helpful to start with the data structures. In this module we will be covering the following topics:</p>
+<ul class="simple">
+<li><p>Series - For one dimensional data (lists)</p></li>
+<li><p>Dataframe - For two dimensional data (spreadsheets)</p></li>
+<li><p>Index - For naming, selecting, and transforming data within a Pandas Series or Dataframe (column and row names)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import pandas</span>
+<span class="c1">## Remember to import pandas with new notebooks! </span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="series">
+<h2>Series<a class="headerlink" href="#series" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>A one-dimensional array of indexed data</p></li>
+<li><p>Kind of like a blend of a Python list and dictionary</p></li>
+<li><p>You can create them from a Python list</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creating a series using the top-level pandas function</span>
+<span class="c1"># Put the cursor inside the parentheses and hit shift-enter</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/v9/vyyhxg7x1w3ftnfc1c558ngw0000gn/T/ipykernel_54624/3160803186.py:3: FutureWarning: The default dtype for empty Series will be &#39;object&#39; instead of &#39;float64&#39; in a future version. Specify a dtype explicitly to silence this warning.
+  pd.Series()
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Series([], dtype: float64)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a regular Python list</span>
+<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+
+<span class="c1"># Transform that list into a Series</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+
+<span class="c1"># Display the data in the series</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.25
+1    0.50
+2    0.75
+3    1.00
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>A Series is a list-like structure, which means it is <em>ordered</em></p></li>
+<li><p>You can use indexing to grab items in a Series, just like a list</p></li>
+<li><p>Those numbers next to the other numbers, that is the <em>index</em> to the series</p></li>
+<li><p>It is best to use the <code class="docutils literal notranslate"><span class="pre">iloc</span></code> method to grab elements by their location in the series.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># grab the first element</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.25
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># grab the first element using iloc</span>
+<span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.25
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># grab the 4th elemenet</span>
+<span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<section id="quick-exercise">
+<h3>Quick Exercise<a class="headerlink" href="#quick-exercise" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>How might we grab the <em>last</em> element if we didn’t know the length of the list?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># hint: think small
+data.iloc[???]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  Input In [7]
+    data.iloc[???]
+              ^
+SyntaxError: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Also, like lists, you can use <em>slicing</em> notation to grab sub-lists</p></li>
+<li><p>Again, it is best to use the <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> method</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Quick Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Use slices to grab the 2nd and 3rd elements of this series</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># hint: the 2nd &amp; 3rd elements are 0.50 and 0.75
+# your code below
+data.iloc[???]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="index-by-name">
+<h2>Index by name<a class="headerlink" href="#index-by-name" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Series also act like Python dictionaries, <em>ordered</em> python dictionaries</p></li>
+<li><p>This means you can grab things by name in addition to location</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a regular Python Dictionary</span>
+<span class="n">population_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;California&#39;</span><span class="p">:</span> <span class="mi">38332521</span><span class="p">,</span>
+                   <span class="s1">&#39;Texas&#39;</span><span class="p">:</span> <span class="mi">26448193</span><span class="p">,</span>
+                   <span class="s1">&#39;New York&#39;</span><span class="p">:</span> <span class="mi">19651127</span><span class="p">,</span>
+                   <span class="s1">&#39;Florida&#39;</span><span class="p">:</span> <span class="mi">19552860</span><span class="p">,</span>
+                   <span class="s1">&#39;Illinois&#39;</span><span class="p">:</span> <span class="mi">12882135</span><span class="p">}</span>
+
+<span class="c1"># Transform that dictionary into a Series </span>
+<span class="n">population</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">population_dict</span><span class="p">)</span>
+
+<span class="c1"># Display the data</span>
+<span class="n">population</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>California    38332521
+Texas         26448193
+New York      19651127
+Florida       19552860
+Illinois      12882135
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>You can also create a named series with multiple lists</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create two ordered lists</span>
+<span class="n">population_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">38332521</span><span class="p">,</span> <span class="mi">26448193</span><span class="p">,</span> <span class="mi">19651127</span><span class="p">,</span> <span class="mi">19552860</span><span class="p">,</span> <span class="mi">12882135</span><span class="p">]</span>
+<span class="n">states</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;California&#39;</span><span class="p">,</span> <span class="s1">&#39;Texas&#39;</span><span class="p">,</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="s1">&#39;Florida&#39;</span><span class="p">,</span> <span class="s1">&#39;Illinois&#39;</span><span class="p">]</span>
+
+<span class="c1"># Create a Series from those two lists</span>
+<span class="n">population</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">population_list</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">states</span><span class="p">)</span>
+
+<span class="c1"># display the data</span>
+<span class="n">population</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>California    38332521
+Texas         26448193
+New York      19651127
+Florida       19552860
+Illinois      12882135
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>You can use indexing and slicing like above, but now with keys instead of numbers!</p></li>
+<li><p>It is best to use the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> method when looking up things by name instead of by number</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">population</span><span class="p">[</span><span class="s1">&#39;California&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38332521
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select the data value with the name &quot;California&quot;</span>
+<span class="n">population</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;California&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38332521
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># What happens if you try an use a name when it wants</span>
+<span class="n">population</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="s1">&#39;California&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-11-930d9bc91801&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># What happens if you try an use a name when it wants</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">population</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="s1">&#39;California&#39;</span><span class="p">]</span>
+
+<span class="nn">c:\program files (x86)\microsoft visual studio\shared\python36_64\lib\site-packages\pandas\core\indexing.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1476</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1477</span>             <span class="n">maybe_callable</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="n">_apply_if_callable</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1478</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_axis</span><span class="p">(</span><span class="n">maybe_callable</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1479</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1480</span>     <span class="k">def</span> <span class="nf">_is_scalar_access</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+
+<span class="nn">c:\program files (x86)\microsoft visual studio\shared\python36_64\lib\site-packages\pandas\core\indexing.py</span> in <span class="ni">_getitem_axis</span><span class="nt">(self, key, axis)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2093</span>         <span class="c1"># a single integer</span>
+<span class="g g-Whitespace">   </span><span class="mi">2094</span>         <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2095</span>             <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_convert_scalar_indexer</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2096</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2097</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+
+<span class="nn">c:\program files (x86)\microsoft visual studio\shared\python36_64\lib\site-packages\pandas\core\indexing.py</span> in <span class="ni">_convert_scalar_indexer</span><span class="nt">(self, key, axis)</span>
+<span class="g g-Whitespace">    </span><span class="mi">259</span>         <span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">_get_axis</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">260</span>         <span class="c1"># a scalar</span>
+<span class="ne">--&gt; </span><span class="mi">261</span>         <span class="k">return</span> <span class="n">ax</span><span class="o">.</span><span class="n">_convert_scalar_indexer</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">262</span> 
+<span class="g g-Whitespace">    </span><span class="mi">263</span>     <span class="k">def</span> <span class="nf">_convert_slice_indexer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="p">):</span>
+
+<span class="nn">c:\program files (x86)\microsoft visual studio\shared\python36_64\lib\site-packages\pandas\core\indexes\base.py</span> in <span class="ni">_convert_scalar_indexer</span><span class="nt">(self, key, kind)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1635</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1636</span>         <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;iloc&#39;</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1637</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_indexer</span><span class="p">(</span><span class="s1">&#39;positional&#39;</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">kind</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1638</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1639</span>         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ABCMultiIndex</span><span class="p">,):</span>
+
+<span class="nn">c:\program files (x86)\microsoft visual studio\shared\python36_64\lib\site-packages\pandas\core\indexes\base.py</span> in <span class="ni">_validate_indexer</span><span class="nt">(self, form, key, kind)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4126</span>             <span class="k">pass</span>
+<span class="g g-Whitespace">   </span><span class="mi">4127</span>         <span class="k">elif</span> <span class="n">kind</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;iloc&#39;</span><span class="p">,</span> <span class="s1">&#39;getitem&#39;</span><span class="p">]:</span>
+<span class="ne">-&gt; </span><span class="mi">4128</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_invalid_indexer</span><span class="p">(</span><span class="n">form</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4129</span>         <span class="k">return</span> <span class="n">key</span>
+<span class="g g-Whitespace">   </span><span class="mi">4130</span> 
+
+<span class="nn">c:\program files (x86)\microsoft visual studio\shared\python36_64\lib\site-packages\pandas\core\indexes\base.py</span> in <span class="ni">_invalid_indexer</span><span class="nt">(self, form, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1846</span>                         <span class="s2">&quot;indexers [</span><span class="si">{key}</span><span class="s2">] of </span><span class="si">{kind}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1847</span>                             <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">,</span> <span class="n">klass</span><span class="o">=</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+<span class="ne">-&gt; </span><span class="mi">1848</span>                             <span class="n">kind</span><span class="o">=</span><span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">)))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1849</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1850</span>     <span class="k">def</span> <span class="nf">get_duplicates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="ne">TypeError</span>: cannot do positional indexing on &lt;class &#39;pandas.core.indexes.base.Index&#39;&gt; with these indexers [California] of &lt;class &#39;str&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Like a Python dictionary, a Series is a list of key/value pairs</p></li>
+<li><p>But these are <em>ordered</em>, which means you can do slicing</p></li>
+</ul>
+<section id="id2">
+<h3>Quick Exercise<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Try slicing this series, but with keys instead of numbers!</p></li>
+<li><p>Select a subset of the data using the Python slicing notation</p></li>
+<li><p>Don’t forget, use <code class="docutils literal notranslate"><span class="pre">loc</span></code>!</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hint: Use the same : notation, but use the state names listed above</span>
+<span class="c1"># Your code here:</span>
+
+<span class="n">population</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;California&quot;</span> <span class="p">:</span> <span class="s2">&quot;New York&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>California    38332521
+Texas         26448193
+New York      19651127
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try some numeric slicing if you&#39;d like</span>
+
+<span class="n">population</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>California    38332521
+Texas         26448193
+New York      19651127
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="dataframe">
+<h2>DataFrame<a class="headerlink" href="#dataframe" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> are the real workhorse of Pandas and Python Data Science</p></li>
+<li><p>We will be spending a lot of time with data inside of Dataframes, so buckle up!</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> contain two-dimensional data, just like an Excel spreadsheet</p></li>
+<li><p>In practice, a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a bunch of <code class="docutils literal notranslate"><span class="pre">Series</span></code> lined up next to each other</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start with our population Series</span>
+<span class="n">population</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>California    38332521
+Texas         26448193
+New York      19651127
+Florida       19552860
+Illinois      12882135
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Then create another Series for the area</span>
+<span class="n">area_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Illinois&#39;</span><span class="p">:</span> <span class="mi">149995</span><span class="p">,</span> <span class="s1">&#39;California&#39;</span><span class="p">:</span> <span class="mi">423967</span><span class="p">,</span> 
+             <span class="s1">&#39;Texas&#39;</span><span class="p">:</span> <span class="mi">695662</span><span class="p">,</span> <span class="s1">&#39;Florida&#39;</span><span class="p">:</span> <span class="mi">170312</span><span class="p">,</span> 
+             <span class="s1">&#39;New York&#39;</span><span class="p">:</span> <span class="mi">141297</span><span class="p">}</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">area_dict</span><span class="p">)</span>
+<span class="n">area</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Illinois      149995
+California    423967
+Texas         695662
+Florida       170312
+New York      141297
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a dictionary with a key:value for each column</span>
+<span class="n">state_info_dictionary</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;population&#39;</span><span class="p">:</span> <span class="n">population</span><span class="p">,</span>
+                       <span class="s1">&#39;area&#39;</span><span class="p">:</span> <span class="n">area</span><span class="p">}</span>
+
+<span class="c1"># Now mash them together into a DataFrame</span>
+<span class="n">states</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">state_info_dictionary</span><span class="p">)</span>
+<span class="c1"># Display the data</span>
+<span class="n">states</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>population</th>
+      <th>area</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>California</th>
+      <td>38332521</td>
+      <td>423967</td>
+    </tr>
+    <tr>
+      <th>Florida</th>
+      <td>19552860</td>
+      <td>170312</td>
+    </tr>
+    <tr>
+      <th>Illinois</th>
+      <td>12882135</td>
+      <td>149995</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>19651127</td>
+      <td>141297</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>26448193</td>
+      <td>695662</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Pandas automatically lines everything up because they have shared index values</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a list of dictionaries that contain our data.</span>
+<span class="c1"># one dictionary per observation/row</span>
+<span class="n">dead_people</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;ssn&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Jones&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;ssn&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Jane&quot;</span><span class="p">,</span> <span class="s2">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Jones&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">199</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;ssn&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Ethel&quot;</span><span class="p">,</span> <span class="s2">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Jones&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">180</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;ssn&quot;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Hortense&quot;</span><span class="p">,</span> <span class="s2">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Jones&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">178</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;ssn&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Vern&quot;</span><span class="p">,</span> <span class="s2">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Jones&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">178</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="c1"># create a Dataframe from a list of dictionaries</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dead_people</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>ssn</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>200</td>
+      <td>Bob</td>
+      <td>Jones</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>199</td>
+      <td>Jane</td>
+      <td>Jones</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>180</td>
+      <td>Ethel</td>
+      <td>Jones</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>178</td>
+      <td>Hortense</td>
+      <td>Jones</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>178</td>
+      <td>Vern</td>
+      <td>Jones</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a list of lists, each sub-list is an observation/row</span>
+<span class="n">dead_people</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span><span class="s2">&quot;Jones&quot;</span><span class="p">,</span><span class="mi">200</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;Jane&quot;</span><span class="p">,</span><span class="s2">&quot;Jones&quot;</span><span class="p">,</span><span class="mi">199</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="s2">&quot;Ethel&quot;</span><span class="p">,</span><span class="s2">&quot;Jones&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="s2">&quot;Hortense&quot;</span><span class="p">,</span><span class="s2">&quot;Jones&quot;</span><span class="p">,</span><span class="mi">178</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="s2">&quot;Vern&quot;</span><span class="p">,</span><span class="s2">&quot;Jones&quot;</span><span class="p">,</span><span class="mi">178</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="c1"># specify the column names seperately</span>
+<span class="n">column_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ssn&quot;</span><span class="p">,</span><span class="s2">&quot;first_name&quot;</span><span class="p">,</span> <span class="s2">&quot;last_name&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">]</span>
+
+<span class="c1"># make a Dataframe with column names specified separately</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dead_people</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">column_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ssn</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Bob</td>
+      <td>Jones</td>
+      <td>200</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Jane</td>
+      <td>Jones</td>
+      <td>199</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Ethel</td>
+      <td>Jones</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Hortense</td>
+      <td>Jones</td>
+      <td>178</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Vern</td>
+      <td>Jones</td>
+      <td>178</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a list of lists, each sub-list is an observation/row</span>
+<span class="n">dead_people</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span><span class="s2">&quot;Jones&quot;</span><span class="p">,</span><span class="mi">200</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;Jane&quot;</span><span class="p">,</span><span class="s2">&quot;Jones&quot;</span><span class="p">,</span><span class="mi">199</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="s2">&quot;Ethel&quot;</span><span class="p">,</span><span class="s2">&quot;Jones&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="s2">&quot;Hortense&quot;</span><span class="p">,</span><span class="s2">&quot;Jones&quot;</span><span class="p">,</span><span class="mi">178</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="s2">&quot;Vern&quot;</span><span class="p">,</span><span class="s2">&quot;Jones&quot;</span><span class="p">,</span><span class="mi">178</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="c1"># specify the column names seperately</span>
+<span class="n">column_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ssn&quot;</span><span class="p">,</span><span class="s2">&quot;first_name&quot;</span><span class="p">,</span> <span class="s2">&quot;last_name&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">]</span>
+
+<span class="n">row_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">123</span><span class="p">,</span><span class="mi">3452</span><span class="p">,</span><span class="mi">3235</span><span class="p">,</span><span class="mi">4345</span><span class="p">,</span><span class="mi">563463</span><span class="p">]</span>
+
+<span class="c1"># make a Dataframe with column names specified separately</span>
+<span class="n">dead_dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dead_people</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">column_names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">row_ids</span><span class="p">)</span>
+<span class="n">dead_dataframe</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="index">
+<h2>Index<a class="headerlink" href="#index" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code> and <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> are containers for data</p></li>
+<li><p>The Index (and Indexing) is the mechanism to make that data retrievable</p></li>
+<li><p>In a <code class="docutils literal notranslate"><span class="pre">Series</span></code> the index is the key to each value in the list</p></li>
+<li><p>In a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> the index is the column names, but there is also an index for each row</p></li>
+<li><p>Indexing allows you to merge or join disparate datasets together</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">states</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>You can programmatically access the column and row lables by calling the following functions</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the column lables as a list-like data structure</span>
+<span class="n">states</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the row labls as a list-like data structure</span>
+<span class="n">states</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">loc</span></code> method I talked about above allows us to select specific rows and columns <em>by name</em>.</p></li>
+<li><p>Use the syntax <code class="docutils literal notranslate"><span class="pre">[&lt;row&gt;,&lt;column&gt;]</span></code> with index values</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the value of the population column from Illinois</span>
+<span class="n">states</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Illinois&quot;</span><span class="p">,</span> <span class="s2">&quot;population&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We can also be tricky and use more advanced syntax to do more advanced queries.</p></li>
+<li><p>You can do any kind of list slicing in place of <code class="docutils literal notranslate"><span class="pre">&lt;row&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;column&gt;</span></code> to slice rows and columns</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the area for states from Florida to Texas</span>
+<span class="c1"># this is two dimensional slicing</span>
+<span class="n">states</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Florida&quot;</span><span class="p">:</span><span class="s2">&quot;Texas&quot;</span><span class="p">,</span> <span class="s2">&quot;area&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the area for Florida and Texas</span>
+<span class="c1"># Use a list to select multiple specific values</span>
+<span class="n">states</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;Florida&quot;</span><span class="p">,</span> <span class="s2">&quot;Texas&quot;</span><span class="p">],</span> <span class="s2">&quot;area&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get area and population for Florida and Texas</span>
+<span class="c1"># use a &quot;:&quot; to specify &quot;all columns&quot;</span>
+<span class="n">states</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;Florida&quot;</span><span class="p">,</span> <span class="s2">&quot;Texas&quot;</span><span class="p">],</span> <span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select all the rows and columns</span>
+<span class="n">states</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>What is happening here is we are passing a list of names for the rows, and using the colon “:” to say “all columns</p></li>
+<li><p>We can do the same thing with column numbers using <code class="docutils literal notranslate"><span class="pre">iloc</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the area for states from Florida to Texas</span>
+<span class="c1"># this is two dimensional slicing</span>
+<span class="n">states</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the area for Florida and Texas</span>
+<span class="c1"># Use a list to select multiple specific values</span>
+<span class="n">states</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the area for Florida and Texas</span>
+<span class="c1"># Use a list to select multiple specific values</span>
+<span class="n">states</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get area and population for Florida and Texas</span>
+<span class="c1"># use a &quot;:&quot; to specify &quot;all columns&quot;</span>
+<span class="n">states</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="practice-questions">
+<h2>Practice Questions<a class="headerlink" href="#practice-questions" title="Permalink to this headline">#</a></h2>
+<section id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">iloc</span></code> and slicing syntax slice the following dataframe based on the highlighted blocks in the image</p></li>
+<li><p>first think of the slicing syntax to grab just the rows you want THEN think of the slicing syntax for the columns you want</p></li>
+<li><p>Put the row slices <em>before</em> the comma and the column slices <em>after</em> the comma</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is our example Dataframe</span>
+<span class="n">indexing_example</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
+<span class="n">indexing_example</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="first slice exercise" src="../_images/indexing1.png" /></p>
+<ul class="simple">
+<li><p>Select the second two columns of the first two rows.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Put the slicing syntax in your answer here
+indexing_example.iloc[???]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scratch space</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="first slice exercise" src="../_images/indexing2.png" /></p>
+<ul class="simple">
+<li><p>Select the third row</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Put the slicing syntax in your answer here
+indexing_example.iloc[???]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scratch space</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="first slice exercise" src="../_images/indexing3.png" /></p>
+<ul class="simple">
+<li><p>Select the first two columns</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Put the slicing syntax in your answer here
+indexing_example.iloc[???]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scratch space</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="first slice exercise" src="../_images/indexing4.png" /></p>
+<ul class="simple">
+<li><p>Select the first two columns of the second row</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Put the slicing syntax in your answer here
+indexing_example.iloc[???]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scratch space</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h3>Exercise<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">iloc</span></code> and slicing syntax slice the following dataframe based on the highlighted blocks in the image</p></li>
+<li><p>first think of the slicing syntax to grab just the rows you want THEN think of the slicing syntax for the columns you want</p></li>
+<li><p>Put the row slices <em>before</em> the comma and the column slices <em>after</em> the comma</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is our example Dataframe</span>
+<span class="n">indexing_example</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
+<span class="n">indexing_example</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="first slice exercise" src="../_images/indexing1.png" /></p>
+<ul class="simple">
+<li><p>Select the second two columns of the first two rows.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put the slicing syntax in your answer here</span>
+<span class="n">indexing_example</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scratch space</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="first slice exercise" src="../_images/indexing2.png" /></p>
+<ul class="simple">
+<li><p>Select the third row</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put the slicing syntax in your answer here</span>
+<span class="n">indexing_example</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scratch space</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="first slice exercise" src="../_images/indexing3.png" /></p>
+<ul class="simple">
+<li><p>Select the first two columns</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put the slicing syntax in your answer here</span>
+<span class="n">indexing_example</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scratch space</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="first slice exercise" src="../_images/indexing4.png" /></p>
+<ul class="simple">
+<li><p>Select the first two columns of the second row</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put the slicing syntax in your answer here</span>
+<span class="n">indexing_example</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scratch space</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./pandas"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="1%20-%20What%20and%20Why%20Pandas.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Data Processing with Python: What and Why Pandas!</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="3%20-%20Loading%20Data.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Loading Data: Reading Files into a Dataframe</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Matt Burton, Evelyn Chan, Others.<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
